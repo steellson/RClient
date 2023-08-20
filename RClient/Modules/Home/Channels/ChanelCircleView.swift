@@ -15,7 +15,7 @@ struct ChanelCircleView: View {
         image
             .resizable()
             .scaledToFill()
-            .frame(width: 100, height: 100)
+            .frame(maxWidth: 100, maxHeight: 100)
             .clipShape(Circle())
     }
 }

@@ -13,8 +13,6 @@ struct ChanelListView: View {
             ChanelCircleView(image: Image("galaxy"))
             ChanelCircleView(image: Image("galaxy"))
             ChanelCircleView(image: Image("galaxy"))
-            ChanelCircleView(image: Image("galaxy"))
-            ChanelCircleView(image: Image("galaxy"))
             Spacer()
             Button {
                 print("Add chanel")
@@ -22,7 +20,7 @@ struct ChanelListView: View {
                 Text("+")
             }
             .buttonStyle(.borderless)
-            .frame(width: 100, height: 100)
+            .frame(maxWidth: 100, maxHeight: 100)
             .background(.quaternary)
             .clipShape(Circle())
         }

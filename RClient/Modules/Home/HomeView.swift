@@ -11,7 +11,6 @@ struct HomeView: View {
     var body: some View {
         HStack {
             ChanelListView()
-                .frame(maxWidth: 100)
                 .padding()
                 .background(.background)
             
@@ -28,10 +27,6 @@ struct HomeView: View {
             DetialBarView()
                 .frame(maxWidth: 300)
         }
-        .frame(
-            width: 1140,
-            height: 900
-        )
     }
 }
 
