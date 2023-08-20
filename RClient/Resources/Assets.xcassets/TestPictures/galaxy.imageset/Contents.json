@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "4k-universe-blue-galaxy-mmrwwhw8cy5lzxty.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "4k-universe-blue-galaxy-mmrwwhw8cy5lzxty 1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "4k-universe-blue-galaxy-mmrwwhw8cy5lzxty 2.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8442A9238BD0039F608 /* RClientApp.swift */; };
-		3DADF8472A9238BD0039F608 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8462A9238BD0039F608 /* ContentView.swift */; };
+		3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8462A9238BD0039F608 /* HomeView.swift */; };
 		3DADF8492A9238BE0039F608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DADF8482A9238BE0039F608 /* Assets.xcassets */; };
 		3DADF84C2A9238BE0039F608 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DADF84B2A9238BE0039F608 /* Preview Assets.xcassets */; };
 		3DADF8572A9238BE0039F608 /* RClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8562A9238BE0039F608 /* RClientTests.swift */; };
 		3DADF8612A9238BE0039F608 /* RClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8602A9238BE0039F608 /* RClientUITests.swift */; };
 		3DADF8632A9238BE0039F608 /* RClientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8622A9238BE0039F608 /* RClientUITestsLaunchTests.swift */; };
+		3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8732A923B510039F608 /* ChanelCircleView.swift */; };
+		3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8752A923DA70039F608 /* ChanelListView.swift */; };
+		3DADF87A2A92469C0039F608 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8792A92469C0039F608 /* NavigationBarView.swift */; };
+		3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87B2A92472E0039F608 /* ChatSectionView.swift */; };
+		3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87F2A9247E90039F608 /* DetialBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,7 @@
 /* Begin PBXFileReference section */
 		3DADF8412A9238BD0039F608 /* RClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DADF8442A9238BD0039F608 /* RClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientApp.swift; sourceTree = "<group>"; };
-		3DADF8462A9238BD0039F608 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3DADF8462A9238BD0039F608 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3DADF8482A9238BE0039F608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DADF84B2A9238BE0039F608 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3DADF84D2A9238BE0039F608 /* RClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RClient.entitlements; sourceTree = "<group>"; };
@@ -45,6 +50,11 @@
 		3DADF85C2A9238BE0039F608 /* RClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DADF8602A9238BE0039F608 /* RClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientUITests.swift; sourceTree = "<group>"; };
 		3DADF8622A9238BE0039F608 /* RClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3DADF8732A923B510039F608 /* ChanelCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanelCircleView.swift; sourceTree = "<group>"; };
+		3DADF8752A923DA70039F608 /* ChanelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanelListView.swift; sourceTree = "<group>"; };
+		3DADF8792A92469C0039F608 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		3DADF87B2A92472E0039F608 /* ChatSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionView.swift; sourceTree = "<group>"; };
+		3DADF87F2A9247E90039F608 /* DetialBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetialBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +105,10 @@
 		3DADF8432A9238BD0039F608 /* RClient */ = {
 			isa = PBXGroup;
 			children = (
-				3DADF8442A9238BD0039F608 /* RClientApp.swift */,
-				3DADF8462A9238BD0039F608 /* ContentView.swift */,
-				3DADF8482A9238BE0039F608 /* Assets.xcassets */,
 				3DADF84D2A9238BE0039F608 /* RClient.entitlements */,
-				3DADF84A2A9238BE0039F608 /* Preview Content */,
+				3DADF86F2A92396B0039F608 /* App */,
+				3DADF8712A9239DC0039F608 /* Modules */,
+				3DADF8702A9239730039F608 /* Resources */,
 			);
 			path = RClient;
 			sourceTree = "<group>";
@@ -127,6 +136,76 @@
 				3DADF8622A9238BE0039F608 /* RClientUITestsLaunchTests.swift */,
 			);
 			path = RClientUITests;
+			sourceTree = "<group>";
+		};
+		3DADF86F2A92396B0039F608 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8442A9238BD0039F608 /* RClientApp.swift */,
+				3DADF84A2A9238BE0039F608 /* Preview Content */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3DADF8702A9239730039F608 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8482A9238BE0039F608 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3DADF8712A9239DC0039F608 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8722A9239F70039F608 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3DADF8722A9239F70039F608 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8462A9238BD0039F608 /* HomeView.swift */,
+				3DADF8772A923F320039F608 /* Channels */,
+				3DADF8782A9246600039F608 /* NavigationBar */,
+				3DADF87D2A92474E0039F608 /* Chat */,
+				3DADF87E2A9247B70039F608 /* DetailBar */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3DADF8772A923F320039F608 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8752A923DA70039F608 /* ChanelListView.swift */,
+				3DADF8732A923B510039F608 /* ChanelCircleView.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		3DADF8782A9246600039F608 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8792A92469C0039F608 /* NavigationBarView.swift */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		3DADF87D2A92474E0039F608 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF87B2A92472E0039F608 /* ChatSectionView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		3DADF87E2A9247B70039F608 /* DetailBar */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF87F2A9247E90039F608 /* DetialBarView.swift */,
+			);
+			path = DetailBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DADF8472A9238BD0039F608 /* ContentView.swift in Sources */,
+				3DADF87A2A92469C0039F608 /* NavigationBarView.swift in Sources */,
+				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
+				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,
+				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
 				3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */,
+				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
+				3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RClient/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RClient/App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -446,7 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RClient/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RClient/App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

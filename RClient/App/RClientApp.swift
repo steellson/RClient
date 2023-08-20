@@ -11,7 +11,7 @@ import SwiftUI
 struct RClientApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
