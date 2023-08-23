@@ -11,7 +11,8 @@ import SwiftUI
 struct RClientApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+//            HomeView()
+            JoinServerView()
         }
     }
 }

@@ -23,6 +23,8 @@
 		3DADF8852A92715A0039F608 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8842A92715A0039F608 /* Room.swift */; };
 		3DADF8872A927C6E0039F608 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8862A927C6E0039F608 /* Message.swift */; };
 		3DADF8892A927CE10039F608 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8882A927CE10039F608 /* Subscription.swift */; };
+		3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88B2A9399620039F608 /* JoinServerView.swift */; };
+		3DADF88E2A939BE30039F608 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88D2A939BE30039F608 /* Resources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		3DADF8842A92715A0039F608 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		3DADF8862A927C6E0039F608 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3DADF8882A927CE10039F608 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		3DADF88B2A9399620039F608 /* JoinServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerView.swift; sourceTree = "<group>"; };
+		3DADF88D2A939BE30039F608 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF8482A9238BE0039F608 /* Assets.xcassets */,
+				3DADF88D2A939BE30039F608 /* Resources.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 		3DADF8712A9239DC0039F608 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3DADF88A2A93993A0039F608 /* JoinServer */,
 				3DADF8722A9239F70039F608 /* Home */,
 			);
 			path = Modules;
@@ -226,6 +232,14 @@
 				3DADF8882A927CE10039F608 /* Subscription.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		3DADF88A2A93993A0039F608 /* JoinServer */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF88B2A9399620039F608 /* JoinServerView.swift */,
+			);
+			path = JoinServer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,8 +381,10 @@
 				3DADF8852A92715A0039F608 /* Room.swift in Sources */,
 				3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */,
 				3DADF8872A927C6E0039F608 /* Message.swift in Sources */,
+				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
 				3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */,
+				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
