@@ -25,6 +25,14 @@
 		3DADF8892A927CE10039F608 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8882A927CE10039F608 /* Subscription.swift */; };
 		3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88B2A9399620039F608 /* JoinServerView.swift */; };
 		3DADF88E2A939BE30039F608 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88D2A939BE30039F608 /* Resources.swift */; };
+		3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */; };
+		3DADF8932A9635B70039F608 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8922A9635B70039F608 /* CombineMoya */; };
+		3DADF8952A9635B70039F608 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8942A9635B70039F608 /* Moya */; };
+		3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8972A9636A70039F608 /* MoyaService.swift */; };
+		3DADF89B2A9656630039F608 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89A2A9656630039F608 /* LoginViewModel.swift */; };
+		3DADF89D2A965B860039F608 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* URLManager.swift */; };
+		3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89E2A9667EA0039F608 /* UserService.swift */; };
+		3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +75,12 @@
 		3DADF8882A927CE10039F608 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		3DADF88B2A9399620039F608 /* JoinServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerView.swift; sourceTree = "<group>"; };
 		3DADF88D2A939BE30039F608 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerViewModel.swift; sourceTree = "<group>"; };
+		3DADF8972A9636A70039F608 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
+		3DADF89A2A9656630039F608 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		3DADF89C2A965B860039F608 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		3DADF89E2A9667EA0039F608 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientAppViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DADF8952A9635B70039F608 /* Moya in Frameworks */,
+				3DADF8932A9635B70039F608 /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +138,7 @@
 				3DADF8812A9250540039F608 /* Entities */,
 				3DADF8712A9239DC0039F608 /* Modules */,
 				3DADF8702A9239730039F608 /* Resources */,
+				3DADF8962A96367F0039F608 /* Services */,
 			);
 			path = RClient;
 			sourceTree = "<group>";
@@ -155,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF8442A9238BD0039F608 /* RClientApp.swift */,
+				3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */,
 				3DADF84A2A9238BE0039F608 /* Preview Content */,
 			);
 			path = App;
@@ -173,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF88A2A93993A0039F608 /* JoinServer */,
+				3DADF8992A96564E0039F608 /* Login */,
 				3DADF8722A9239F70039F608 /* Home */,
 			);
 			path = Modules;
@@ -238,8 +257,27 @@
 			isa = PBXGroup;
 			children = (
 				3DADF88B2A9399620039F608 /* JoinServerView.swift */,
+				3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */,
 			);
 			path = JoinServer;
+			sourceTree = "<group>";
+		};
+		3DADF8962A96367F0039F608 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF8972A9636A70039F608 /* MoyaService.swift */,
+				3DADF89C2A965B860039F608 /* URLManager.swift */,
+				3DADF89E2A9667EA0039F608 /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3DADF8992A96564E0039F608 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF89A2A9656630039F608 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +296,10 @@
 			dependencies = (
 			);
 			name = RClient;
+			packageProductDependencies = (
+				3DADF8922A9635B70039F608 /* CombineMoya */,
+				3DADF8942A9635B70039F608 /* Moya */,
+			);
 			productName = RClient;
 			productReference = 3DADF8412A9238BD0039F608 /* RClient.app */;
 			productType = "com.apple.product-type.application";
@@ -330,6 +372,9 @@
 				Base,
 			);
 			mainGroup = 3DADF8382A9238BD0039F608;
+			packageReferences = (
+				3DADF8912A9635B70039F608 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 3DADF8422A9238BD0039F608 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -374,16 +419,22 @@
 			files = (
 				3DADF87A2A92469C0039F608 /* NavigationBarView.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
+				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
+				3DADF89D2A965B860039F608 /* URLManager.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
+				3DADF89B2A9656630039F608 /* LoginViewModel.swift in Sources */,
 				3DADF8892A927CE10039F608 /* Subscription.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
 				3DADF8852A92715A0039F608 /* Room.swift in Sources */,
+				3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */,
+				3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */,
 				3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */,
 				3DADF8872A927C6E0039F608 /* Message.swift in Sources */,
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
 				3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */,
+				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,6 +751,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DADF8912A9635B70039F608 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DADF8922A9635B70039F608 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DADF8912A9635B70039F608 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		3DADF8942A9635B70039F608 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DADF8912A9635B70039F608 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3DADF8392A9238BD0039F608 /* Project object */;
 }

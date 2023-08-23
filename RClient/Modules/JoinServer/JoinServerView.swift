@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JoinServerView: View {
     
-    @State private var textFieldText = ""
+    @ObservedObject var viewModel = JoinServerViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,7 +27,7 @@ struct JoinServerView: View {
                             
             TextField(
                 R.Strings.rocketChatOpenServerUrl.rawValue,
-                text: $textFieldText
+                text: $viewModel.serverUrl
             )
             .textFieldStyle(.roundedBorder)
             .frame(width: 280)
@@ -37,7 +37,7 @@ struct JoinServerView: View {
             }
             
             Button {
-                print("Connect...")
+                viewModel.joinServer()
             } label: {
                 Text("Connect")
                     .font(.callout)
