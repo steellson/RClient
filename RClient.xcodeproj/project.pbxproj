@@ -33,6 +33,7 @@
 		3DADF89D2A965B860039F608 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* URLManager.swift */; };
 		3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89E2A9667EA0039F608 /* UserService.swift */; };
 		3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */; };
+		3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A52A9677F40039F608 /* RClientFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		3DADF89C2A965B860039F608 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		3DADF89E2A9667EA0039F608 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientAppViewModel.swift; sourceTree = "<group>"; };
+		3DADF8A52A9677F40039F608 /* RClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				3DADF8442A9238BD0039F608 /* RClientApp.swift */,
 				3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */,
+				3DADF8A52A9677F40039F608 /* RClientFactory.swift */,
 				3DADF84A2A9238BE0039F608 /* Preview Content */,
 			);
 			path = App;
@@ -421,6 +424,7 @@
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
 				3DADF89D2A965B860039F608 /* URLManager.swift in Sources */,
+				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
 				3DADF89B2A9656630039F608 /* LoginViewModel.swift in Sources */,

@@ -12,13 +12,19 @@ final class JoinServerViewModel: ObservableObject {
     
     @Published var serverUrl: String = ""
     
-    private let udManager = URLManager()
+    private let urlManager: URLManager
+    
+    init(
+        urlManager: URLManager
+    ) {
+        self.urlManager = urlManager
+    }
     
     func joinServer() {
         
         // Make url persisted
         // TODO: - Regex checking url required
-        udManager.save(currentServerUrl: serverUrl)
+        urlManager.save(currentServerUrl: serverUrl)
         
         // Next login
     }

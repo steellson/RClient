@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JoinServerView: View {
     
-    @ObservedObject var viewModel = JoinServerViewModel()
+    @ObservedObject var viewModel: JoinServerViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -58,6 +58,6 @@ struct JoinServerView: View {
 
 struct JoinServerView_Previews: PreviewProvider {
     static var previews: some View {
-        JoinServerView()
+        screenFactory.makeJoinServerScreen()
     }
 }

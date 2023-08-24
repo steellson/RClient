@@ -9,16 +9,17 @@ import SwiftUI
 
 @main
 struct RClientApp: App {
-    
-    @ObservedObject var viewModel = RClientAppViewModel()
+        
+    @ObservedObject var viewModel = screenFactory.rClientViewModel
     
     var body: some Scene {
         WindowGroup {
             if !viewModel.isClientOnboarded() {
                 HomeView()
             } else {
-                JoinServerView()
+                screenFactory.makeJoinServerScreen()
             }
         }
     }
 }
+

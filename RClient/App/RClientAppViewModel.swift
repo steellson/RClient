@@ -9,7 +9,13 @@ import Foundation
 
 final class RClientAppViewModel: ObservableObject {
     
-    private let userService = UserService()
+    private let userService: UserService
+    
+    init(
+        userService: UserService
+    ) {
+        self.userService = userService
+    }
     
     func isClientOnboarded() -> Bool {
         userService.isOnboarded()

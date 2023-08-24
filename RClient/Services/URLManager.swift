@@ -17,26 +17,29 @@ final class URLManager {
         case currentServerUrl
     }
         
-    private let instance = UserDefaults.standard
+    private let userDefaultsInstance: UserDefaults
     
+    init(userDefaultsInstance: UserDefaults) {
+        self.userDefaultsInstance = userDefaultsInstance
+    }
 }
 
 
 extension URLManager {
     
     func save(currentServerUrl: String) {
-        instance.set(currentServerUrl, forKey: UDKeys.currentServerUrl.rawValue)
-        print("Current server URL: \(instance.object(forKey: UDKeys.currentServerUrl.rawValue)!) succsesfully saved!")
+        userDefaultsInstance.set(currentServerUrl, forKey: UDKeys.currentServerUrl.rawValue)
+        print("Current server URL: \(userDefaultsInstance.object(forKey: UDKeys.currentServerUrl.rawValue)!) succsesfully saved!")
     }
     
     func getCurrentServerUrl() throws -> String? {
-        guard let currentUrl = instance.string(forKey: UDKeys.currentServerUrl.rawValue) else {
+        guard let currentUrl = userDefaultsInstance.string(forKey: UDKeys.currentServerUrl.rawValue) else {
             throw URLManagerError.cantGetCurrentUrl
         }
         return currentUrl
     }
     
     func check(item forKey: UDKeys) -> Bool {
-        instance.object(forKey: forKey.rawValue) != nil
+        userDefaultsInstance.object(forKey: forKey.rawValue) != nil
     }
 }

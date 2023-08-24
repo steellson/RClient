@@ -12,7 +12,13 @@ final class LoginViewModel: ObservableObject {
     
     @Published var user: User?
     
-    private let moyaProvider = MoyaProvider<RocketChatAPI>()
+    private let moyaProvider: MoyaProvider<RocketChatAPI>
+    
+    init(
+        moyaProvider: MoyaProvider<RocketChatAPI>
+    ) {
+        self.moyaProvider = moyaProvider
+    }
     
     func login(with user: User) {
         moyaProvider.request(.login(user: user),

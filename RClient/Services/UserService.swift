@@ -9,8 +9,16 @@ import Foundation
 
 final class UserService {
     
-    private var user: User?
-    private let urlManager = URLManager()
+    let user: User?
+    
+    private let urlManager: URLManager
+    
+    init(
+        urlManager: URLManager
+    ) {
+        self.user = nil
+        self.urlManager = urlManager
+    }
 }
 
 

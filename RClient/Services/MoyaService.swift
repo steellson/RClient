@@ -16,7 +16,11 @@ public enum RocketChatAPI {
 extension RocketChatAPI: TargetType {
     
     public var serverUrl: String {
-        (try? URLManager().getCurrentServerUrl()) ?? "https://open.rocket.chat/"
+        let udInstance = UserDefaults.standard
+        return (
+            try? URLManager(
+                userDefaultsInstance: udInstance
+            ).getCurrentServerUrl()) ?? "https://open.rocket.chat/"
     }
     
     public var baseURL: URL { URL(string: "\(serverUrl)/api/v1")! }
