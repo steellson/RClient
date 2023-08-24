@@ -10,7 +10,8 @@ import Moya
 
 final class LoginViewModel: ObservableObject {
     
-    @Published var user: User?
+    @Published var emailText: String = ""
+    @Published var passwordText: String = ""
     
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     

@@ -20,6 +20,9 @@ final class ApplicationFactory {
     
     fileprivate let rClientViewModel: RClientAppViewModel
     fileprivate let joinServerViewModel: JoinServerViewModel
+    fileprivate let loginScreenViewModel: LoginViewModel
+    fileprivate let registrationScreenViewModel: RegistrationViewModel
+    fileprivate let homeScreenViewModel: HomeViewModel
     
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
@@ -28,6 +31,9 @@ final class ApplicationFactory {
         
         rClientViewModel = RClientAppViewModel(userService: userService)
         joinServerViewModel = JoinServerViewModel(urlManager: urlManager)
+        loginScreenViewModel =  LoginViewModel(moyaProvider: apiProvider)
+        registrationScreenViewModel = RegistrationViewModel()
+        homeScreenViewModel = HomeViewModel()
     }
 }
 
@@ -38,6 +44,8 @@ protocol ScreenFactoryProtocol: AnyObject {
     var rClientViewModel: RClientAppViewModel { get }
     
     func makeJoinServerScreen() -> JoinServerView
+    func makeLoginScreen() -> LoginView
+    func makeRegistrationScreenView() -> RegistrationView
     func makeHomeScreen() -> HomeView
 }
 
@@ -58,6 +66,15 @@ extension ScreenFactory: ScreenFactoryProtocol {
         JoinServerView(viewModel: applicationFactory.joinServerViewModel)
     }
     
+    func makeLoginScreen() -> LoginView {
+        LoginView(viewModel: applicationFactory.loginScreenViewModel)
+    }
+    
+    func makeRegistrationScreenView() -> RegistrationView {
+        RegistrationView(viewModel: applicationFactory.registrationScreenViewModel)
+    }
+
+
     func makeHomeScreen() -> HomeView {
         HomeView()
     }

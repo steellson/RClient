@@ -9,6 +9,14 @@ import Foundation
 
 struct User: Codable {
     
+    let _id: String
+    let email: String
+    let password: String
+    
+}
+
+//struct User: Codable {
+//
 //    enum UserStatus: String, Codable {
 //        case online
 //        case offline
@@ -54,7 +62,7 @@ struct User: Codable {
 //    let banners: [Banner]?          // ???
     
     //    let customFields: CustomFields?
-}
+//}
 
 
 // MARK: - Other

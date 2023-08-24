@@ -13,5 +13,10 @@ public enum R {
         case rocketChatOpenServerUrl = " https://open.rocket.chat/"
         
         case joinServerFieldPreviewText = "Enter URL of your server:"
+        
+        case loginScreenWelcomeTitle = "Welcome to the Rocket.Chat!"
+        case loginScreenSubtitle = "Enter your creditnails: "
+        case loginScreenEmailFieldPlaceholder = "Enter email"
+        case loginScreenPasswordFieldPlaceholder = "Enter password"
     }
 }
