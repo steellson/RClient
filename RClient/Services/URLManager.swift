@@ -27,9 +27,19 @@ final class URLManager {
 
 extension URLManager {
     
+    func validateUrl (urlString: String) -> Bool {
+        urlString.starts(with: "https://") && urlString.contains(".")
+//        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+//        return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
+    }
+    
     func save(currentServerUrl: String) {
-        userDefaultsInstance.set(currentServerUrl, forKey: UDKeys.currentServerUrl.rawValue)
-        print("Current server URL: \(userDefaultsInstance.object(forKey: UDKeys.currentServerUrl.rawValue)!) succsesfully saved!")
+        if validateUrl(urlString: currentServerUrl) {
+            userDefaultsInstance.set(currentServerUrl, forKey: UDKeys.currentServerUrl.rawValue)
+            print("Current server URL: \(userDefaultsInstance.object(forKey: UDKeys.currentServerUrl.rawValue)!) succsesfully saved!")
+        } else {
+            print("URL validation error")
+        }
     }
     
     func getCurrentServerUrl() throws -> String? {

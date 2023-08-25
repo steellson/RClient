@@ -61,7 +61,7 @@ struct LoginView: View {
                     .padding(.vertical)
                     
                     Button {
-                        
+                        print("Login...")
                     } label: {
                         Text("Login")
                             .font(.callout)
@@ -75,7 +75,6 @@ struct LoginView: View {
                     }
                     .buttonStyle(.borderless)
                 }
-            
             }
             .padding()
             

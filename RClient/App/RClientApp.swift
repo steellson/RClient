@@ -17,7 +17,7 @@ struct RClientApp: App {
             if !viewModel.isClientOnboarded() {
                 HomeView()
             } else {
-                screenFactory.makeLoginScreen()
+                screenFactory.makeJoinServerScreen()
             }
         }
     }
