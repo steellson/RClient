@@ -8,8 +8,8 @@
 import Foundation
 import Moya
 
-public enum RocketChatAPI {
-    case login(user: Encodable)
+enum RocketChatAPI {
+    case login(withCreditions: ServerCreditions)
     
 }
 
@@ -18,9 +18,8 @@ extension RocketChatAPI: TargetType {
     public var serverUrl: String {
         let udInstance = UserDefaults.standard
         return (
-            try? URLManager(
-                userDefaultsInstance: udInstance
-            ).getCurrentServerUrl()) ?? "https://open.rocket.chat/"
+            try? URLManager(userDefaultsInstance: udInstance)
+                .getCurrentServerCreditions()?.url) ?? "https://open.rocket.chat/"
     }
     
     public var baseURL: URL { URL(string: "\(serverUrl)/api/v1")! }
@@ -39,7 +38,7 @@ extension RocketChatAPI: TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .login(let user): return .requestJSONEncodable(user)
+        case .login(let creditions): return .requestJSONEncodable(creditions)
         }
     }
     

@@ -25,6 +25,6 @@ final class UserService {
 extension UserService {
     
     func isOnboarded() -> Bool {
-        urlManager.check(item: .currentServerUrl)
+        urlManager.check(item: .currentServerCreditions)
     }
 }

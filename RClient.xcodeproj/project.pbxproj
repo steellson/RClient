@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444652A9CD13700A26D83 /* Color+Extension.swift */; };
+		3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */; };
 		3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8442A9238BD0039F608 /* RClientApp.swift */; };
 		3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8462A9238BD0039F608 /* HomeView.swift */; };
 		3DADF8492A9238BE0039F608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DADF8482A9238BE0039F608 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D4444652A9CD13700A26D83 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		3DADF8412A9238BD0039F608 /* RClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DADF8442A9238BD0039F608 /* RClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientApp.swift; sourceTree = "<group>"; };
 		3DADF8462A9238BD0039F608 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -120,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D4444642A9CD03600A26D83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D4444652A9CD13700A26D83 /* Color+Extension.swift */,
+				3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3DADF8382A9238BD0039F608 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 				3DADF84D2A9238BE0039F608 /* RClient.entitlements */,
 				3DADF86F2A92396B0039F608 /* App */,
 				3DADF8812A9250540039F608 /* Entities */,
+				3D4444642A9CD03600A26D83 /* Extensions */,
 				3DADF8712A9239DC0039F608 /* Modules */,
 				3DADF8702A9239730039F608 /* Resources */,
 				3DADF8962A96367F0039F608 /* Services */,
@@ -440,7 +454,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */,
 				3DADF87A2A92469C0039F608 /* NavigationBarView.swift in Sources */,
+				3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */,
 				3DADF8AA2A976A7E0039F608 /* HomeViewModel.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,

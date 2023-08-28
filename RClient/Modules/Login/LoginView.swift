@@ -11,74 +11,84 @@ struct LoginView: View {
     
     @ObservedObject var viewModel: LoginViewModel
     
+    private var strokeColor: Color {
+        viewModel.isFieldsValid ? .white : .rocketRed
+    }
+    
     var body: some View {
-        VStack {
-            Image("rocketLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 180, height: 180)
-                .padding()
-            
-            Spacer()
-            
-            HStack {
+        
+        NavigationStack {
+            VStack {
+                Image("rocketLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 180, height: 180)
+                    .padding()
                 
-                VStack(
-                    alignment: .leading,
-                    spacing: 10
-                ) {
-                    Text(R.Strings.loginScreenWelcomeTitle.rawValue)
-                        .font(.title)
-                        .fontWeight(.semibold)
+                Spacer()
+                
+                HStack {
                     
-                    Text(R.Strings.loginScreenSubtitle.rawValue)
-                        .font(.title3)
-                        .fontWeight(.regular)
-                    
-                    VStack {
-                        TextField(
-                            R.Strings.loginScreenEmailFieldPlaceholder.rawValue,
-                            text: $viewModel.emailText
-                        )
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: 280)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(.white, lineWidth: 0.5)
-                        }
+                    VStack(
+                        alignment: .leading,
+                        spacing: 10
+                    ) {
+                        Text(R.Strings.loginScreenWelcomeTitle.rawValue)
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                         
-                        SecureField(
-                            R.Strings.loginScreenPasswordFieldPlaceholder.rawValue,
-                            text: $viewModel.passwordText
-                        )
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: 280)
+                        Text(R.Strings.loginScreenSubtitle.rawValue)
+                            .font(.title3)
+                            .fontWeight(.regular)
+                        
+                        VStack {
+                            TextField(
+                                R.Strings.loginScreenEmailFieldPlaceholder.rawValue,
+                                text: $viewModel.emailText
+                            )
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 280)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(strokeColor, lineWidth: 0.8)
+                            }
+                            
+                            SecureField(
+                                R.Strings.loginScreenPasswordFieldPlaceholder.rawValue,
+                                text: $viewModel.passwordText
+                            )
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 280)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(strokeColor, lineWidth: 0.8)
+                            }
+                        }
+                        .padding(.vertical)
+                        
+                        Button {
+                            print("Login...")
+                        } label: {
+                            Text("Login")
+                                .font(.callout)
+                                .fontWeight(.medium)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 28)
+                        }
                         .overlay {
                             RoundedRectangle(cornerRadius: 6)
-                                .stroke(.white, lineWidth: 0.5)
+                                .stroke(strokeColor, lineWidth: 0.8)
                         }
+                        .buttonStyle(.borderless)
                     }
-                    .padding(.vertical)
-                    
-                    Button {
-                        print("Login...")
-                    } label: {
-                        Text("Login")
-                            .font(.callout)
-                            .fontWeight(.medium)
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 28)
-                    }
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(.white, lineWidth: 0.5)
-                    }
-                    .buttonStyle(.borderless)
                 }
+                .padding()
+                
+                Spacer()
             }
-            .padding()
-            
-            Spacer()
+            .navigationBarBackButtonHidden()
         }
         .padding(.vertical, 50)
     }

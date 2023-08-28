@@ -15,6 +15,11 @@ struct User: Codable {
     
 }
 
+struct ServerCreditions: Encodable {
+    let url: String
+    let token: String?
+}
+
 //struct User: Codable {
 //
 //    enum UserStatus: String, Codable {

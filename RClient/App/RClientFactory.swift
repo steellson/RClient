@@ -30,7 +30,7 @@ final class ApplicationFactory {
         userService = UserService(urlManager: urlManager)
         
         rClientViewModel = RClientAppViewModel(userService: userService)
-        joinServerViewModel = JoinServerViewModel(urlManager: urlManager)
+        joinServerViewModel = JoinServerViewModel(urlManager: urlManager, moyaService: apiProvider)
         loginScreenViewModel =  LoginViewModel(moyaProvider: apiProvider)
         registrationScreenViewModel = RegistrationViewModel()
         homeScreenViewModel = HomeViewModel()

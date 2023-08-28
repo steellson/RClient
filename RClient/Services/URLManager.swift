@@ -10,11 +10,12 @@ import Foundation
 final class URLManager {
     
     enum URLManagerError: Error {
+        case cantValidateUrl
         case cantGetCurrentUrl
     }
         
     public enum UDKeys: String {
-        case currentServerUrl
+        case currentServerCreditions
     }
         
     private let userDefaultsInstance: UserDefaults
@@ -27,26 +28,25 @@ final class URLManager {
 
 extension URLManager {
     
-    func validateUrl (urlString: String) -> Bool {
-        urlString.starts(with: "https://") && urlString.contains(".")
-//        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
-//        return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
+    func validateUrl(urlString: String) -> Bool {
+        urlString.starts(with: "https://")
+        && urlString.contains(".")
+        && urlString.count >= 15
     }
     
-    func save(currentServerUrl: String) {
-        if validateUrl(urlString: currentServerUrl) {
-            userDefaultsInstance.set(currentServerUrl, forKey: UDKeys.currentServerUrl.rawValue)
-            print("Current server URL: \(userDefaultsInstance.object(forKey: UDKeys.currentServerUrl.rawValue)!) succsesfully saved!")
-        } else {
-            print("URL validation error")
+    func save(serverCreditions: ServerCreditions) throws {
+        guard validateUrl(urlString: serverCreditions.url) else {
+            throw URLManagerError.cantValidateUrl
         }
+        userDefaultsInstance.set(serverCreditions, forKey: UDKeys.currentServerCreditions.rawValue)
+        print("URL is valid! Current creditionals: \(serverCreditions) saved!")
     }
     
-    func getCurrentServerUrl() throws -> String? {
-        guard let currentUrl = userDefaultsInstance.string(forKey: UDKeys.currentServerUrl.rawValue) else {
+    func getCurrentServerCreditions() throws -> ServerCreditions? {
+        guard let currentServerCreditions = userDefaultsInstance.object(forKey: UDKeys.currentServerCreditions.rawValue) as? ServerCreditions else {
             throw URLManagerError.cantGetCurrentUrl
         }
-        return currentUrl
+        return currentServerCreditions
     }
     
     func check(item forKey: UDKeys) -> Bool {

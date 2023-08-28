@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import Moya
 
 final class LoginViewModel: ObservableObject {
@@ -13,17 +14,34 @@ final class LoginViewModel: ObservableObject {
     @Published var emailText: String = ""
     @Published var passwordText: String = ""
     
+    @Published var isFieldsValid: Bool = false
+    
     private let moyaProvider: MoyaProvider<RocketChatAPI>
+    
+    private var anyCancellables: Set<AnyCancellable> = []
     
     init(
         moyaProvider: MoyaProvider<RocketChatAPI>
     ) {
         self.moyaProvider = moyaProvider
+        
+        validateFields()
     }
     
-    func login(with user: User) {
-        moyaProvider.request(.login(user: user),
-                             completion: { result in
+    func validateFields() {
+        Publishers.CombineLatest($emailText, $passwordText)
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .map { emailText, passwordText in
+                !(emailText.isEmpty || passwordText.isEmpty)
+            }
+            .assign(to: \.isFieldsValid, on: self)
+            .store(in: &anyCancellables)
+    }
+    
+    func login(with creditions: ServerCreditions) {
+        moyaProvider
+            .request(.login(withCreditions: creditions),
+                     completion: { result in
             switch result {
             case .success(let response):
                 print("Success!\n\(response.data)")
