@@ -14,7 +14,7 @@ final class LoginViewModel: ObservableObject {
     @Published var emailText: String = ""
     @Published var passwordText: String = ""
     
-    @Published var isFieldsValid: Bool = false
+    @Published private(set) var isFieldsValid: Bool = false
     
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     
@@ -38,11 +38,19 @@ final class LoginViewModel: ObservableObject {
             .store(in: &anyCancellables)
     }
     
-    func login(with user: User) {
+    func signIn() {
+        login(
+            with: User(
+                user: emailText,
+                password: passwordText
+        ))
+    }
+    
+    private func login(with user: User) {
         moyaProvider.request(.login(user: user), completion: { result in
             switch result {
             case .success(let response):
-                print("Success!\n\(response.data)")
+                print("Success!\n\("RESOPONSE DATA:\(response.data),\nSTATUS: \(response.statusCode)")")
             case .failure(let error):
                 print("Failure: \(error.localizedDescription)")
             }

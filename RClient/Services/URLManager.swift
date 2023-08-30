@@ -11,8 +11,6 @@ import Combine
 final class URLManager {
     
 //    enum URLManagerError: Error {
-//        case cantValidateUrl
-//        case cantGetCurrentUrl
 //        case cantGetServerCreditions
 //    }
     
@@ -46,6 +44,13 @@ extension URLManager {
         && urlString.count >= 15
     }
     
+    func save(serverCreditions: ServerCreditions) {
+        guard var creds = userDefaultsInstance.array(forKey: UDKeys.serverCreditions.rawValue) as? [ServerCreditions] else {
+            print("DEBUG: Cant get creds from UD"); return
+        }
+        creds.append(serverCreditions)
+        userDefaultsInstance.set(creds, forKey: UDKeys.serverCreditions.rawValue)
+    }
     
     // Subscriptins
     

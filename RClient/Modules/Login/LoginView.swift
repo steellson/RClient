@@ -68,7 +68,7 @@ struct LoginView: View {
                         .padding(.vertical)
                         
                         Button {
-                            print("Login...")
+                            viewModel.signIn()
                         } label: {
                             Text("Login")
                                 .font(.callout)

@@ -43,8 +43,8 @@ final class JoinServerViewModel: ObservableObject {
     }
     
     func setupServerCreditions() {
-//        isTokenExists = true
-        print("a")
+        urlManager.save(serverCreditions: ServerCreditions(url: serverUrl))
+        print(urlManager.serverCreds)
     }
 }
 
