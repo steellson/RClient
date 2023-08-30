@@ -38,10 +38,8 @@ final class LoginViewModel: ObservableObject {
             .store(in: &anyCancellables)
     }
     
-    func login(with creditions: ServerCreditions) {
-        moyaProvider
-            .request(.login(withCreditions: creditions),
-                     completion: { result in
+    func login(with user: User) {
+        moyaProvider.request(.login(user: user), completion: { result in
             switch result {
             case .success(let response):
                 print("Success!\n\(response.data)")

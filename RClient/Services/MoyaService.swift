@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum RocketChatAPI {
-    case login(withCreditions: ServerCreditions)
+    case login(user: User)
     
 }
 
@@ -43,7 +43,7 @@ extension RocketChatAPI: TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .login(let creditions): return .requestJSONEncodable(creditions)
+        case .login(let user): return .requestJSONEncodable(user)
         }
     }
     

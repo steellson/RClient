@@ -20,7 +20,7 @@ final class URLManager {
         case serverCreditions
     }
     
-    @Published var serverCreds = [ServerCreditions]()
+    @Published private(set) var serverCreds = [ServerCreditions]()
     @Published private(set) var isCredsEmpty: Bool = true
     
     private let userDefaultsInstance: UserDefaults
