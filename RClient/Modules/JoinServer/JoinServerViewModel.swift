@@ -15,7 +15,7 @@ final class JoinServerViewModel: ObservableObject {
     
     @Published var isValidUrl: Bool = false
     @Published var isTokenExists: Bool = false
-    
+        
     private let urlManager: URLManager
     private let moyaService: MoyaProvider<RocketChatAPI>
     
@@ -34,7 +34,7 @@ final class JoinServerViewModel: ObservableObject {
     private func validateInputUrl() {
         $serverUrl
             .dropFirst()
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [unowned self] urlString in
                 self.urlManager.validateUrl(urlString: urlString)
             }
@@ -42,15 +42,10 @@ final class JoinServerViewModel: ObservableObject {
             .store(in: &anyCancellables)
     }
     
-    private func checkTokenExistance() {
-        do {
-            try urlManager.getCurrentServerCreditions()
-                .publisher
-                .map { $0.token != nil }
-                .assign(to: \.isTokenExists, on: self)
-                .store(in: &anyCancellables)
-        } catch let error {
-            print("Cant get current server creditions \(error.localizedDescription)")
-        }
+    func setupServerCreditions() {
+//        isTokenExists = true
+        print("a")
     }
 }
+
+

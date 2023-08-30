@@ -6,25 +6,25 @@
 //
 
 import Foundation
+import Combine
 
 final class UserService {
     
-    let user: User?
-    
+    @Published var isUserOnboarded: Bool = false
+        
     private let urlManager: URLManager
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(
         urlManager: URLManager
     ) {
-        self.user = nil
         self.urlManager = urlManager
-    }
-}
 
-
-extension UserService {
-    
-    func isOnboarded() -> Bool {
-        urlManager.check(item: .currentServerCreditions)
+        urlManager.$isCredsEmpty
+            .removeDuplicates()
+            .map { !$0 }
+            .assign(to: \.isUserOnboarded, on: self)
+            .store(in: &cancellables)
     }
 }

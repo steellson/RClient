@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import Combine
 
 final class RClientAppViewModel: ObservableObject {
     
+    @Published var isUserOnboarded: Bool = false
+    
     private let userService: UserService
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(
         userService: UserService
     ) {
         self.userService = userService
-    }
-    
-    func isClientOnboarded() -> Bool {
-        userService.isOnboarded()
+        
+        userService.$isUserOnboarded
+            .removeDuplicates()
+            .assign(to: \.isUserOnboarded, on: self)
+            .store(in: &cancellables)
     }
 }

@@ -18,8 +18,13 @@ extension RocketChatAPI: TargetType {
     public var serverUrl: String {
         let udInstance = UserDefaults.standard
         return (
-            try? URLManager(userDefaultsInstance: udInstance)
-                .getCurrentServerCreditions()?.url) ?? "https://open.rocket.chat/"
+            URLManager(
+                userDefaultsInstance: udInstance
+            )
+            .serverCreds
+                .first?
+                .url
+        ) ?? "https://open.rocket.chat/"
     }
     
     public var baseURL: URL { URL(string: "\(serverUrl)/api/v1")! }

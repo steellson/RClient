@@ -81,6 +81,6 @@ extension ScreenFactory: ScreenFactoryProtocol {
 }
 
 
-//MARK: - Initialization
+//MARK: - Global Initialization
 
 let screenFactory: ScreenFactoryProtocol = ScreenFactory()

@@ -43,12 +43,8 @@ struct JoinServerView: View {
                             .stroke(strokeColor, lineWidth: 0.8)
                     }
                     
-                    NavigationLink("Connect") {
-                        if viewModel.isTokenExists {
-                            screenFactory.makeHomeScreen()
-                        } else {
-                            screenFactory.makeLoginScreen()
-                        }
+                    Button("Connect") {
+                        viewModel.setupServerCreditions()
                     }
                     .disabled(!viewModel.isValidUrl)
                     .font(.callout)
