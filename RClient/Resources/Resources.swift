@@ -9,6 +9,10 @@ import Foundation
 
 public enum R {
     
+    enum SystemDebugError: String {
+        case serverCreditionsContainerExists = "UserDefaults: ** Server creditions already configured **"
+    }
+    
     enum Strings: String {
         case rocketChatOpenServerUrl = " https://open.rocket.chat/"
         

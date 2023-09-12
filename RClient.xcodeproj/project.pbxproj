@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444652A9CD13700A26D83 /* Color+Extension.swift */; };
 		3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */; };
+		3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */; };
 		3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8442A9238BD0039F608 /* RClientApp.swift */; };
 		3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8462A9238BD0039F608 /* HomeView.swift */; };
 		3DADF8492A9238BE0039F608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DADF8482A9238BE0039F608 /* Assets.xcassets */; };
@@ -59,6 +60,8 @@
 /* Begin PBXFileReference section */
 		3D4444652A9CD13700A26D83 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
+		3D44446F2AA20F5300A26D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCreditions.swift; sourceTree = "<group>"; };
 		3DADF8412A9238BD0039F608 /* RClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DADF8442A9238BD0039F608 /* RClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientApp.swift; sourceTree = "<group>"; };
 		3DADF8462A9238BD0039F608 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF84D2A9238BE0039F608 /* RClient.entitlements */,
+				3D44446F2AA20F5300A26D83 /* Info.plist */,
 				3DADF86F2A92396B0039F608 /* App */,
 				3DADF8812A9250540039F608 /* Entities */,
 				3D4444642A9CD03600A26D83 /* Extensions */,
@@ -267,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF8822A92509A0039F608 /* User.swift */,
+				3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -465,6 +470,7 @@
 				3DADF8A82A9769FC0039F608 /* LoginView.swift in Sources */,
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
+				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
 				3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */,
 				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
@@ -631,6 +637,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RClient/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,6 +665,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RClient/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

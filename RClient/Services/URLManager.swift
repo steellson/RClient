@@ -10,15 +10,10 @@ import Combine
 
 final class URLManager {
     
-//    enum URLManagerError: Error {
-//        case cantGetServerCreditions
-//    }
-    
     public enum UDKeys: String {
         case serverCreditions
     }
     
-    @Published private(set) var serverCreds = [ServerCreditions]()
     @Published private(set) var isCredsEmpty: Bool = true
     
     private let userDefaultsInstance: UserDefaults
@@ -30,9 +25,12 @@ final class URLManager {
     ) {
         self.userDefaultsInstance = userDefaultsInstance
         
-        setupServerCreds()
         checkForCreds()
+        
+        #warning("debug")
+        print("*** ALL CREDS:\n\(getAllServerCreds().compactMap { $0 }) ***\n")
     }
+    
 }
 
 
@@ -44,29 +42,51 @@ extension URLManager {
         && urlString.count >= 15
     }
     
-    func save(serverCreditions: ServerCreditions) {
-        guard var creds = userDefaultsInstance.array(forKey: UDKeys.serverCreditions.rawValue) as? [ServerCreditions] else {
-            print("DEBUG: Cant get creds from UD"); return
+    func getAllServerCreds() -> CreditionsStorage {
+        if let credsData = userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue) as? Data {
+            
+            guard let creds = try? JSONDecoder().decode(CreditionsStorage.self, from: credsData) else {
+                print("DEBUG: Cant get creds from data"); return [:]
+            }
+            return creds
+            
+        } else {
+            return [:]
         }
-        creds.append(serverCreditions)
-        userDefaultsInstance.set(creds, forKey: UDKeys.serverCreditions.rawValue)
     }
     
-    // Subscriptins
+    func save(serverCreditions: ServerCreditions, identity: String) {
+        var creds = getAllServerCreds()
+        
+        if creds.keys.count > 0 {
+            creds.keys.forEach { key in
+                
+                if key == identity {
+                    print("ERROR: Identity already exist. Must be re-writed")
+                } else {
+                    creds[identity] = serverCreditions
+                    let encodedCreds  = try? JSONEncoder().encode(creds)
+                    userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
+                }
+            }
+        } else {
+            creds[identity] = serverCreditions
+            let encodedCreds  = try? JSONEncoder().encode(creds)
+            userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
+        }
+    }
+}
+
+//MARK: - Private Subscriptions Extension
+
+private extension URLManager {
     
     func checkForCreds() {
-        userDefaultsInstance.array(forKey: UDKeys.serverCreditions.rawValue)
+        userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue)
             .publisher
-            .map { $0.isEmpty }
+            .map { ($0 as? CreditionsStorage)?.isEmpty ?? false }
             .assign(to: \.isCredsEmpty, on: self)
             .store(in: &anyCancellables)
     }
     
-    func setupServerCreds() {
-        userDefaultsInstance.array(forKey: UDKeys.serverCreditions.rawValue)
-            .publisher
-            .map { $0 as? [ServerCreditions] ?? [] }
-            .assign(to: \.serverCreds, on: self)
-            .store(in: &anyCancellables)
-    }
 }

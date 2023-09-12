@@ -43,8 +43,10 @@ final class JoinServerViewModel: ObservableObject {
     }
     
     func setupServerCreditions() {
-        urlManager.save(serverCreditions: ServerCreditions(url: serverUrl))
-        print(urlManager.serverCreds)
+        urlManager.save(
+            serverCreditions: ServerCreditions(url: serverUrl),
+            identity: UUID().uuidString
+        )
     }
 }
 

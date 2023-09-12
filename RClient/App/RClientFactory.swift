@@ -34,6 +34,21 @@ final class ApplicationFactory {
         loginScreenViewModel =  LoginViewModel(moyaProvider: apiProvider)
         registrationScreenViewModel = RegistrationViewModel()
         homeScreenViewModel = HomeViewModel()
+        
+        setupServerCreditionsContainer()
+        
+//        userDefaultsInstance.removeObject(forKey: URLManager.UDKeys.serverCreditions.rawValue)
+    }
+    
+    private func setupServerCreditionsContainer() {
+        var container = CreditionsStorage()
+        
+        if userDefaultsInstance.object(forKey: URLManager.UDKeys.serverCreditions.rawValue) != nil {
+            print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
+        } else {
+            container["initial"] = nil
+            userDefaultsInstance.set(container, forKey: URLManager.UDKeys.serverCreditions.rawValue)
+        }
     }
 }
 
