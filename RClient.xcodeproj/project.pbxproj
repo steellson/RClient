@@ -38,6 +38,7 @@
 		3DADF8AA2A976A7E0039F608 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A92A976A7E0039F608 /* HomeViewModel.swift */; };
 		3DADF8AD2A976B840039F608 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8AC2A976B840039F608 /* RegistrationViewModel.swift */; };
 		3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8AE2A976B990039F608 /* RegistrationView.swift */; };
+		3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C862AB1D51E00D7468E /* ValidationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		3DADF8AC2A976B840039F608 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3DADF8AE2A976B990039F608 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3DB39C852AB197F100D7468E /* RClientDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RClientDebug.entitlements; sourceTree = "<group>"; };
+		3DB39C862AB1D51E00D7468E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				3DADF8972A9636A70039F608 /* MoyaService.swift */,
 				3DADF89C2A965B860039F608 /* URLManager.swift */,
 				3DADF89E2A9667EA0039F608 /* UserService.swift */,
+				3DB39C862AB1D51E00D7468E /* ValidationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				3DADF8AA2A976A7E0039F608 /* HomeViewModel.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
+				3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */,
 				3DADF89D2A965B860039F608 /* URLManager.swift in Sources */,
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,

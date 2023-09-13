@@ -17,15 +17,19 @@ final class JoinServerViewModel: ObservableObject {
     @Published var isTokenExists: Bool = false
         
     private let urlManager: URLManager
+    private let validationService: ValidationService
+
     private let moyaService: MoyaProvider<RocketChatAPI>
     
     private var anyCancellables: Set<AnyCancellable> = []
 
     init(
         urlManager: URLManager,
+        validationService: ValidationService,
         moyaService: MoyaProvider<RocketChatAPI>
     ) {
         self.urlManager = urlManager
+        self.validationService = validationService
         self.moyaService = moyaService
         
         validateInputUrl()
@@ -35,8 +39,8 @@ final class JoinServerViewModel: ObservableObject {
         $serverUrl
             .dropFirst()
             .debounce(for: 1, scheduler: DispatchQueue.main)
-            .map { [unowned self] urlString in
-                self.urlManager.validateUrl(urlString: urlString)
+            .map { [validationService] urlString in
+                validationService.validate(urlString, method: .urlString)
             }
             .assign(to: \.isValidUrl, on: self)
             .store(in: &anyCancellables)
@@ -44,8 +48,7 @@ final class JoinServerViewModel: ObservableObject {
     
     func setupServerCreditions() {
         urlManager.save(
-            serverCreditions: ServerCreditions(url: serverUrl),
-            identity: UUID().uuidString
+            serverCreditions: ServerCreditions(url: serverUrl)
         )
     }
 }

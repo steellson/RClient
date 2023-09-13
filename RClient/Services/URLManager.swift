@@ -36,43 +36,38 @@ final class URLManager {
 
 extension URLManager {
     
-    func validateUrl(urlString: String) -> Bool {
-        urlString.starts(with: "https://")
-        && urlString.contains(".")
-        && urlString.count >= 15
-    }
-    
-    func getAllServerCreds() -> CreditionsStorage {
+    func getAllServerCreds() -> [ServerCreditions] {
         if let credsData = userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue) as? Data {
             
-            guard let creds = try? JSONDecoder().decode(CreditionsStorage.self, from: credsData) else {
-                print("DEBUG: Cant get creds from data"); return [:]
+            guard let creds = try? JSONDecoder().decode([ServerCreditions].self, from: credsData) else {
+                print("DEBUG: Cant get creds from data"); return []
             }
             return creds
             
         } else {
-            return [:]
+            return []
         }
     }
     
-    func save(serverCreditions: ServerCreditions, identity: String) {
+    func save(serverCreditions: ServerCreditions) {
+        
         var creds = getAllServerCreds()
         
-        if creds.keys.count > 0 {
-            creds.keys.forEach { key in
-                
-                if key == identity {
-                    print("ERROR: Identity already exist. Must be re-writed")
-                } else {
-                    creds[identity] = serverCreditions
-                    let encodedCreds  = try? JSONEncoder().encode(creds)
+        if creds.isEmpty {
+            
+            creds.append(serverCreditions)
+            let encodedCreds = try? JSONEncoder().encode(creds)
+            userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
+        } else {
+            
+            creds.forEach { cred in
+                if cred.url != serverCreditions.url {
+                    let encodedCreds = try? JSONEncoder().encode(creds)
                     userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
+                } else {
+                    print("ERROR: URL already exists!")
                 }
             }
-        } else {
-            creds[identity] = serverCreditions
-            let encodedCreds  = try? JSONEncoder().encode(creds)
-            userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
         }
     }
 }
@@ -84,7 +79,7 @@ private extension URLManager {
     func checkForCreds() {
         userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue)
             .publisher
-            .map { ($0 as? CreditionsStorage)?.isEmpty ?? false }
+            .map { ($0 as? [ServerCreditions])?.isEmpty ?? false }
             .assign(to: \.isCredsEmpty, on: self)
             .store(in: &anyCancellables)
     }

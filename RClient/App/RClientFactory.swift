@@ -16,6 +16,7 @@ final class ApplicationFactory {
     fileprivate let apiProvider: MoyaProvider<RocketChatAPI>
     fileprivate let urlManager: URLManager
     fileprivate let userService: UserService
+    fileprivate let validationService: ValidationService
     fileprivate let userDefaultsInstance: UserDefaults = UserDefaults.standard
     
     fileprivate let rClientViewModel: RClientAppViewModel
@@ -28,10 +29,18 @@ final class ApplicationFactory {
         apiProvider = MoyaProvider<RocketChatAPI>()
         urlManager = URLManager(userDefaultsInstance: userDefaultsInstance)
         userService = UserService(urlManager: urlManager)
+        validationService = ValidationService()
         
         rClientViewModel = RClientAppViewModel(userService: userService)
-        joinServerViewModel = JoinServerViewModel(urlManager: urlManager, moyaService: apiProvider)
-        loginScreenViewModel =  LoginViewModel(moyaProvider: apiProvider)
+        joinServerViewModel = JoinServerViewModel(
+                                                urlManager: urlManager,
+                                                validationService: validationService,
+                                                moyaService: apiProvider
+        )
+        loginScreenViewModel =  LoginViewModel(
+            validationService: validationService,
+            moyaProvider: apiProvider
+        )
         registrationScreenViewModel = RegistrationViewModel()
         homeScreenViewModel = HomeViewModel()
         
@@ -41,12 +50,11 @@ final class ApplicationFactory {
     }
     
     private func setupServerCreditionsContainer() {
-        var container = CreditionsStorage()
+        let container = [ServerCreditions]()
         
         if userDefaultsInstance.object(forKey: URLManager.UDKeys.serverCreditions.rawValue) != nil {
             print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
         } else {
-            container["initial"] = nil
             userDefaultsInstance.set(container, forKey: URLManager.UDKeys.serverCreditions.rawValue)
         }
     }

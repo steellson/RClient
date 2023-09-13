@@ -20,7 +20,6 @@ extension RocketChatAPI: TargetType {
         return URLManager(userDefaultsInstance: udInstance)
             .getAllServerCreds()
             .first?
-            .value?
             .url ?? "https://open.rocket.chat"
     }
     

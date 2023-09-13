@@ -12,7 +12,3 @@ struct ServerCreditions: Codable {
     let url: String
     var token: String?
 }
-
-// Identity + Creds
-
-typealias CreditionsStorage = [String: ServerCreditions?]
