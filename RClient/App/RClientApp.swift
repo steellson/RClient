@@ -15,7 +15,7 @@ struct RClientApp: App {
     var body: some Scene {
         WindowGroup {
             if viewModel.isUserOnboarded {
-                screenFactory.makeHomeScreen()
+                screenFactory.makeLoginScreen()
             } else {
                 screenFactory.makeJoinServerScreen()
             }

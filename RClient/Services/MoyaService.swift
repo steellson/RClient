@@ -16,10 +16,12 @@ enum RocketChatAPI {
 extension RocketChatAPI: TargetType {
     
     public var serverUrl: String {
-        guard let creds = UserDefaults.standard.object(forKey: URLManager.UDKeys.serverCreditions.rawValue) as? CreditionsStorage else {
-            print("serverURL ERROR");return String()
-        }
-        return creds.first?.value?.url ?? "https://398b-94-180-63-98.ngrok-free.app"
+        let udInstance = UserDefaults.standard
+        return URLManager(userDefaultsInstance: udInstance)
+            .getAllServerCreds()
+            .first?
+            .value?
+            .url ?? "https://open.rocket.chat"
     }
     
     public var baseURL: URL { URL(string: "\(serverUrl)/api/v1")! }
@@ -46,8 +48,7 @@ extension RocketChatAPI: TargetType {
         switch self {
         case .login: return [
             "Content-Type": "application/json"
-//            "X-Auth-Token": "D_dv-vu7jM3TH8qIpqCEQMi_JL2w6l4QE8czJflcLLQ",
-//            "X-User-Id": "2DGHszq2oqJAzm36X"
+            
         ]
         }
     }

@@ -92,6 +92,7 @@
 		3DADF8A92A976A7E0039F608 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3DADF8AC2A976B840039F608 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3DADF8AE2A976B990039F608 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		3DB39C852AB197F100D7468E /* RClientDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RClientDebug.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF84D2A9238BE0039F608 /* RClient.entitlements */,
+				3DB39C852AB197F100D7468E /* RClientDebug.entitlements */,
 				3D44446F2AA20F5300A26D83 /* Info.plist */,
 				3DADF86F2A92396B0039F608 /* App */,
 				3DADF8812A9250540039F608 /* Entities */,
@@ -628,7 +630,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RClient/RClient.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RClient/RClientDebug.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

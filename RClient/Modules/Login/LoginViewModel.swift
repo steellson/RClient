@@ -39,11 +39,7 @@ final class LoginViewModel: ObservableObject {
     }
     
     func signIn() {
-        login(
-            with: User(
-                user: emailText,
-                password: passwordText
-        ))
+        login(with: User(user: emailText, password: passwordText))
     }
     
     private func login(with user: User) {
