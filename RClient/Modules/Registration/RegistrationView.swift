@@ -9,10 +9,15 @@ import SwiftUI
 
 struct RegistrationView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @ObservedObject var viewModel: RegistrationViewModel
     
     var body: some View {
         VStack {
+            Button("Back") {
+                dismiss()
+            }
             Text("Reg")
         }
     }

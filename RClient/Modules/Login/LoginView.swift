@@ -81,7 +81,21 @@ struct LoginView: View {
                             RoundedRectangle(cornerRadius: 6)
                                 .stroke(strokeColor, lineWidth: 0.8)
                         }
+                        .disabled(!viewModel.isFieldsValid)
                         .buttonStyle(.borderless)
+                         
+                        Spacer()
+                        
+                        NavigationLink {
+                            screenFactory.makeRegistrationScreenView()
+                        } label: {
+                            Text("Need registration?")
+                                .underline()
+                                .font(.system(size: 12))
+                                .fontWeight(.light)
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.top, 30)
                     }
                 }
                 .padding()
