@@ -14,7 +14,7 @@ struct RegistrationView: View {
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
-        viewModel.isFieldsValid ? .white : .rocketRed
+        viewModel.isLoginFieldsValid ? .white : .rocketRed
     }
     
     var body: some View {
@@ -34,39 +34,39 @@ struct RegistrationView: View {
             VStack(spacing: 18) {
                 TextField(
                     R.Strings.registrationScreenUsernameFieldPlaceholder.rawValue,
-                    text: $viewModel.emailText
+                    text: $viewModel.usernameText
                 )
                 .modifier(TextFieldModifier(strokeColor: strokeColor))
                 
                 TextField(
                     R.Strings.registrationScreenFullNameFieldPlaceholder.rawValue,
-                    text: $viewModel.emailText
+                    text: $viewModel.fullNameText
                 )
                 .modifier(TextFieldModifier(strokeColor: strokeColor))
                 
                 TextField(
                     R.Strings.registrationScreenEmailFieldPlaceholder.rawValue,
-                    text: $viewModel.emailText
+                    text: $viewModel.registrationEmailText
                 )
                 .modifier(TextFieldModifier(strokeColor: strokeColor))
                 
                 SecureField(
                     R.Strings.registrationScreenPasswordFieldPlaceholder.rawValue,
-                    text: $viewModel.emailText
+                    text: $viewModel.registrationPasswordText
                 )
                 .modifier(TextFieldModifier(strokeColor: strokeColor))
                 
                 SecureField(
                     R.Strings.registrationScreenReplyFieldPlaceholder.rawValue,
-                    text: $viewModel.passwordText
+                    text: $viewModel.replyPasswordText
                 )
                 .modifier(TextFieldModifier(strokeColor: strokeColor))
                 
                 Button("Sign Up") {
-                    
+                    viewModel.signUp()
                 }
                 .modifier(RCButtonModifier(strokeColor: strokeColor))
-                .disabled(!viewModel.isFieldsValid)
+                .disabled(!viewModel.isRegistrationFieldsValid)
                 .padding(.vertical)
             }
             .padding(.bottom)

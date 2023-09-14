@@ -35,6 +35,19 @@ final class JoinServerViewModel: ObservableObject {
         validateInputUrl()
     }
     
+    
+    func setupServerCreditions() {
+        urlManager.save(
+            serverCreditions: ServerCreditions(url: serverUrl)
+        )
+    }
+    
+}
+
+//MARK: - Subscriptions
+
+private extension JoinServerViewModel {
+    
     private func validateInputUrl() {
         $serverUrl
             .dropFirst()
@@ -46,11 +59,4 @@ final class JoinServerViewModel: ObservableObject {
             .store(in: &anyCancellables)
     }
     
-    func setupServerCreditions() {
-        urlManager.save(
-            serverCreditions: ServerCreditions(url: serverUrl)
-        )
-    }
 }
-
-

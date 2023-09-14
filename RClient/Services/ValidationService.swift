@@ -13,7 +13,10 @@ final class ValidationService {
         case urlString = "https://"
         case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         case password = "[a-zA-Z0-9!@#$%^&*]+"
-        case username = "^[a-z][0-9].{3,12}$"
+        case username = "^[a-zA-Z0-9]*$"
+        case fullName = "^[a-zA-Z]+([_]?[a-zA-Z0-9])*$"
+        
+        case none
     }
     
     func validate(_ string: String, method: Methods) -> Bool {
@@ -26,6 +29,9 @@ final class ValidationService {
             return NSPredicate(format: "SELF MATCHES %@", Methods.password.rawValue).evaluate(with: string)
         case .username:
             return NSPredicate(format: "SELF MATCHES %@", Methods.username.rawValue).evaluate(with: string)
+        case .fullName:
+            return NSPredicate(format: "SELF MATCHES %@", Methods.fullName.rawValue).evaluate(with: string)
+        case .none: return true
         }
     }
 }

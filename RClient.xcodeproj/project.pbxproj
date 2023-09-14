@@ -231,11 +231,11 @@
 			isa = PBXGroup;
 			children = (
 				3DADF8462A9238BD0039F608 /* HomeView.swift */,
+				3DADF8A92A976A7E0039F608 /* HomeViewModel.swift */,
 				3DADF8772A923F320039F608 /* Channels */,
 				3DADF8782A9246600039F608 /* NavigationBar */,
 				3DADF87D2A92474E0039F608 /* Chat */,
 				3DADF87E2A9247B70039F608 /* DetailBar */,
-				3DADF8A92A976A7E0039F608 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

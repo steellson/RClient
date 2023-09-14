@@ -12,7 +12,7 @@ struct LoginView: View {
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
-        viewModel.isFieldsValid ? .white : .rocketRed
+        viewModel.isLoginFieldsValid ? .white : .rocketRed
     }
     
     var body: some View {
@@ -45,14 +45,14 @@ struct LoginView: View {
                         VStack {
                             TextField(
                                 R.Strings.loginScreenEmailFieldPlaceholder.rawValue,
-                                text: $viewModel.emailText
+                                text: $viewModel.loginEmailText
                             )
                             .modifier(TextFieldModifier(strokeColor: strokeColor))
 
                             
                             SecureField(
                                 R.Strings.loginScreenPasswordFieldPlaceholder.rawValue,
-                                text: $viewModel.passwordText
+                                text: $viewModel.loginPasswordText
                             )
                             .modifier(TextFieldModifier(strokeColor: strokeColor))
                         }
@@ -62,7 +62,7 @@ struct LoginView: View {
                             viewModel.signIn()
                         }
                         .modifier(RCButtonModifier(strokeColor: strokeColor))
-                        .disabled(!viewModel.isFieldsValid)
+                        .disabled(!viewModel.isLoginFieldsValid)
                          
                         Spacer()
                         

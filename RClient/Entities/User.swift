@@ -8,10 +8,13 @@
 import Foundation
 
 struct User: Codable {
-    
     var user: String
     var password: String
-//    var resume: ServerCreditions?
-    
 }
 
+struct UserForm: Codable {
+    var username: String
+    var name: String
+    var email: String
+    var pass: String
+}
