@@ -20,9 +20,8 @@ final class ApplicationFactory {
     fileprivate let userDefaultsInstance: UserDefaults = UserDefaults.standard
     
     fileprivate let rClientViewModel: RClientAppViewModel
+    fileprivate let authorizationViewModel: AuthorizationViewModel
     fileprivate let joinServerViewModel: JoinServerViewModel
-    fileprivate let loginScreenViewModel: LoginViewModel
-    fileprivate let registrationScreenViewModel: RegistrationViewModel
     fileprivate let homeScreenViewModel: HomeViewModel
     
     init() {
@@ -32,16 +31,15 @@ final class ApplicationFactory {
         validationService = ValidationService()
         
         rClientViewModel = RClientAppViewModel(userService: userService)
+        authorizationViewModel =  AuthorizationViewModel(
+            validationService: validationService,
+            moyaProvider: apiProvider
+        )
         joinServerViewModel = JoinServerViewModel(
                                                 urlManager: urlManager,
                                                 validationService: validationService,
                                                 moyaService: apiProvider
         )
-        loginScreenViewModel =  LoginViewModel(
-            validationService: validationService,
-            moyaProvider: apiProvider
-        )
-        registrationScreenViewModel = RegistrationViewModel()
         homeScreenViewModel = HomeViewModel()
         
         setupServerCreditionsContainer()
@@ -90,11 +88,11 @@ extension ScreenFactory: ScreenFactoryProtocol {
     }
     
     func makeLoginScreen() -> LoginView {
-        LoginView(viewModel: applicationFactory.loginScreenViewModel)
+        LoginView(viewModel: applicationFactory.authorizationViewModel)
     }
     
     func makeRegistrationScreenView() -> RegistrationView {
-        RegistrationView(viewModel: applicationFactory.registrationScreenViewModel)
+        RegistrationView(viewModel: applicationFactory.authorizationViewModel)
     }
 
 

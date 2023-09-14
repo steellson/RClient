@@ -29,16 +29,17 @@
 		3DADF8932A9635B70039F608 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8922A9635B70039F608 /* CombineMoya */; };
 		3DADF8952A9635B70039F608 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8942A9635B70039F608 /* Moya */; };
 		3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8972A9636A70039F608 /* MoyaService.swift */; };
-		3DADF89B2A9656630039F608 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89A2A9656630039F608 /* LoginViewModel.swift */; };
+		3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */; };
 		3DADF89D2A965B860039F608 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* URLManager.swift */; };
 		3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89E2A9667EA0039F608 /* UserService.swift */; };
 		3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */; };
 		3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A52A9677F40039F608 /* RClientFactory.swift */; };
 		3DADF8A82A9769FC0039F608 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A72A9769FC0039F608 /* LoginView.swift */; };
 		3DADF8AA2A976A7E0039F608 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A92A976A7E0039F608 /* HomeViewModel.swift */; };
-		3DADF8AD2A976B840039F608 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8AC2A976B840039F608 /* RegistrationViewModel.swift */; };
 		3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8AE2A976B990039F608 /* RegistrationView.swift */; };
 		3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C862AB1D51E00D7468E /* ValidationService.swift */; };
+		3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C892AB361C300D7468E /* TextFieldModifier.swift */; };
+		3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,17 +85,18 @@
 		3DADF88D2A939BE30039F608 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerViewModel.swift; sourceTree = "<group>"; };
 		3DADF8972A9636A70039F608 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
-		3DADF89A2A9656630039F608 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		3DADF89C2A965B860039F608 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		3DADF89E2A9667EA0039F608 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientAppViewModel.swift; sourceTree = "<group>"; };
 		3DADF8A52A9677F40039F608 /* RClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientFactory.swift; sourceTree = "<group>"; };
 		3DADF8A72A9769FC0039F608 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3DADF8A92A976A7E0039F608 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		3DADF8AC2A976B840039F608 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3DADF8AE2A976B990039F608 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3DB39C852AB197F100D7468E /* RClientDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RClientDebug.entitlements; sourceTree = "<group>"; };
 		3DB39C862AB1D51E00D7468E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
+		3DB39C892AB361C300D7468E /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
+		3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCButtonModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				3DADF8812A9250540039F608 /* Entities */,
 				3D4444642A9CD03600A26D83 /* Extensions */,
 				3DADF8712A9239DC0039F608 /* Modules */,
+				3DB39C882AB361AB00D7468E /* Modifiers */,
 				3DADF8702A9239730039F608 /* Resources */,
 				3DADF8962A96367F0039F608 /* Services */,
 			);
@@ -217,9 +220,8 @@
 		3DADF8712A9239DC0039F608 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3DADF8992A96564E0039F608 /* Authorization */,
 				3DADF88A2A93993A0039F608 /* JoinServer */,
-				3DADF8992A96564E0039F608 /* Login */,
-				3DADF8AB2A976B780039F608 /* Registration */,
 				3DADF8722A9239F70039F608 /* Home */,
 			);
 			path = Modules;
@@ -300,22 +302,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		3DADF8992A96564E0039F608 /* Login */ = {
+		3DADF8992A96564E0039F608 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */,
 				3DADF8A72A9769FC0039F608 /* LoginView.swift */,
-				3DADF89A2A9656630039F608 /* LoginViewModel.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		3DADF8AB2A976B780039F608 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-				3DADF8AC2A976B840039F608 /* RegistrationViewModel.swift */,
 				3DADF8AE2A976B990039F608 /* RegistrationView.swift */,
 			);
-			path = Registration;
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		3DB39C882AB361AB00D7468E /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				3DB39C892AB361C300D7468E /* TextFieldModifier.swift */,
+				3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,10 +469,9 @@
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
-				3DADF89B2A9656630039F608 /* LoginViewModel.swift in Sources */,
+				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
 				3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */,
-				3DADF8AD2A976B840039F608 /* RegistrationViewModel.swift in Sources */,
 				3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */,
 				3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */,
 				3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */,
@@ -477,6 +479,8 @@
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
 				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
+				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,
+				3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */,
 				3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */,
 				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,

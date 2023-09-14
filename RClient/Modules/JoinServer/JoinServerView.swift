@@ -36,27 +36,13 @@ struct JoinServerView: View {
                         R.Strings.rocketChatOpenServerUrl.rawValue,
                         text: $viewModel.serverUrl
                     )
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 280)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(strokeColor, lineWidth: 0.8)
-                    }
+                    .modifier(TextFieldModifier(strokeColor: strokeColor))
                     
                     Button("Connect") {
                         viewModel.setupServerCreditions()
                     }
+                    .modifier(RCButtonModifier(strokeColor: strokeColor))
                     .disabled(!viewModel.isValidUrl)
-                    .font(.callout)
-                    .fontWeight(.medium)
-                    .foregroundColor(.white)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 28)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(strokeColor, lineWidth: 0.8)
-                    }
-                    .buttonStyle(.borderless)
                     .padding(.vertical)
                 }
                 .padding(.horizontal, 30)

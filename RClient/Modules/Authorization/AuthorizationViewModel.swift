@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import Moya
 
-final class LoginViewModel: ObservableObject {
+final class AuthorizationViewModel: ObservableObject {
     
     @Published var emailText: String = ""
     @Published var passwordText: String = ""

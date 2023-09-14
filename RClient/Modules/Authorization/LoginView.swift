@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @ObservedObject var viewModel: LoginViewModel
+    @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
         viewModel.isFieldsValid ? .white : .rocketRed
@@ -47,42 +47,22 @@ struct LoginView: View {
                                 R.Strings.loginScreenEmailFieldPlaceholder.rawValue,
                                 text: $viewModel.emailText
                             )
-                            .textFieldStyle(.roundedBorder)
-                            .frame(width: 280)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(strokeColor, lineWidth: 0.8)
-                            }
+                            .modifier(TextFieldModifier(strokeColor: strokeColor))
+
                             
                             SecureField(
                                 R.Strings.loginScreenPasswordFieldPlaceholder.rawValue,
                                 text: $viewModel.passwordText
                             )
-                            .textFieldStyle(.roundedBorder)
-                            .frame(width: 280)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(strokeColor, lineWidth: 0.8)
-                            }
+                            .modifier(TextFieldModifier(strokeColor: strokeColor))
                         }
                         .padding(.vertical)
                         
-                        Button {
+                        Button("Login") {
                             viewModel.signIn()
-                        } label: {
-                            Text("Login")
-                                .font(.callout)
-                                .fontWeight(.medium)
-                                .foregroundColor(.white)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 28)
                         }
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(strokeColor, lineWidth: 0.8)
-                        }
+                        .modifier(RCButtonModifier(strokeColor: strokeColor))
                         .disabled(!viewModel.isFieldsValid)
-                        .buttonStyle(.borderless)
                          
                         Spacer()
                         
