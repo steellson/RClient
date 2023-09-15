@@ -14,7 +14,7 @@ struct RegistrationView: View {
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
-        viewModel.isLoginFieldsValid ? .white : .rocketRed
+        viewModel.isRegistrationFieldsValid ? .white : .rocketRed
     }
     
     var body: some View {

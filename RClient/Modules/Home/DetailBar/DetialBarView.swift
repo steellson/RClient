@@ -10,6 +10,7 @@ import SwiftUI
 struct DetialBarView: View {
     var body: some View {
         Text("Detail section")
+            .frame(minWidth: 160)
     }
 }
 

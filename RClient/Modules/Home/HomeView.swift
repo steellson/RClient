@@ -8,25 +8,33 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    private let minHeight: CGFloat = 600
+    
     var body: some View {
         HStack {
             ChanelListView()
-                .padding()
                 .background(.background)
+                .frame(minWidth: 100, minHeight: minHeight)
+
             
             Spacer()
-            NavigationBarView()
-                .frame(minWidth: 200)
+            NavigationView()
+                .border(.gray, width: 0.4)
+                .frame(minWidth: 140, minHeight: minHeight)
                 
             Spacer()
             
             ChatSectionView()
-                .frame(minWidth: 200)
+                .border(.gray, width: 0.4)
+                .frame(minWidth: 240, minHeight: minHeight)
+            
             Spacer()
             
             DetialBarView()
-                .frame(maxWidth: 300)
+                .frame(minWidth: 160, minHeight: minHeight)
         }
+        .clipped()
     }
 }
 

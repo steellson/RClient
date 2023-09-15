@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatSectionView: View {
     var body: some View {
         Text("Chat section")
+            .frame(minWidth: 240)
     }
 }
 

@@ -20,7 +20,7 @@ struct ChanelListView: View {
                 Text("+")
             }
             .buttonStyle(.borderless)
-            .frame(maxWidth: 100, maxHeight: 100)
+            .frame(maxWidth: 40, maxHeight: 40)
             .background(.quaternary)
             .clipShape(Circle())
         }

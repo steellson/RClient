@@ -52,7 +52,7 @@ final class AuthorizationViewModel: ObservableObject {
             pass: registrationPasswordText
         ))
     }
-
+    
     private func login(with user: User) {
         moyaProvider.request(.login(user: user), completion: { result in
             switch result {
@@ -96,13 +96,13 @@ private extension AuthorizationViewModel {
             $loginEmailText,
             $loginPasswordText
         )
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
-            .map { [validationService] emailText, passwordText in
-                (validationService.validate(emailText, method: .email)
-                 && validationService.validate(passwordText, method: .password))
-            }
-            .assign(to: \.isLoginFieldsValid, on: self)
-            .store(in: &anyCancellables)
+        .debounce(for: 0.3, scheduler: DispatchQueue.main)
+        .map { [validationService] emailText, passwordText in
+            (validationService.validate(emailText, method: .email)
+             && validationService.validate(passwordText, method: .password))
+        }
+        .assign(to: \.isLoginFieldsValid, on: self)
+        .store(in: &anyCancellables)
     }
     
     private func validateRegistrationFields() {
@@ -112,16 +112,16 @@ private extension AuthorizationViewModel {
             $registrationEmailText,
             $registrationPasswordText
         )
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
-            .map { [unowned self] usernameText, fullNameText, emailText, passwordText in
-                (
-                    self.validationService.validate(usernameText, method: .username)
-                    && self.validationService.validate(fullNameText, method: .fullName)
-                    && self.validationService.validate(emailText, method: .email)
-                    && self.validationService.validate(passwordText, method: .password)
-                ) && passwordText == self.registrationPasswordText
-            }
-            .assign(to: \.isRegistrationFieldsValid, on: self)
-            .store(in: &anyCancellables)
+        .debounce(for: 0.3, scheduler: DispatchQueue.main)
+        .map { [unowned self] usernameText, fullNameText, emailText, passwordText in
+            (
+                self.validationService.validate(usernameText, method: .username)
+                && self.validationService.validate(fullNameText, method: .fullName)
+                && self.validationService.validate(emailText, method: .email)
+                && self.validationService.validate(passwordText, method: .password)
+            ) && self.replyPasswordText == self.registrationPasswordText
+        }
+        .assign(to: \.isRegistrationFieldsValid, on: self)
+        .store(in: &anyCancellables)
     }
 }

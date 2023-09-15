@@ -12,9 +12,9 @@ final class ValidationService {
     enum Methods: String {
         case urlString = "https://"
         case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        case password = "[a-zA-Z0-9!@#$%^&*]+"
-        case username = "^[a-zA-Z0-9]*$"
-        case fullName = "^[a-zA-Z]+([_]?[a-zA-Z0-9])*$"
+        case password = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+        case username = "^[A-Za-z]\\w{2,16}$"
+        case fullName = "[a-zA-Z ]{3,30}$"
         
         case none
     }

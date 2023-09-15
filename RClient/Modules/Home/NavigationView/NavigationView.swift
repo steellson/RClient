@@ -1,5 +1,5 @@
 //
-//  NavigationBarView.swift
+//  NavigationView.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 20.08.2023.
@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct NavigationBarView: View {
+struct NavigationView: View {
     var body: some View {
         Text("Navigation bar")
+            .frame(minWidth: 140)
     }
 }
 
-struct NavigationBarView_Previews: PreviewProvider {
+struct NavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBarView()
+        NavigationView()
     }
 }
