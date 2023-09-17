@@ -16,7 +16,7 @@ final class JoinServerViewModel: ObservableObject {
     @Published var isValidUrl: Bool = false
     @Published var isTokenExists: Bool = false
         
-    private let urlManager: URLManager
+    private let localStorageManager: LocalStorageManager
     private let validationService: ValidationService
 
     private let moyaService: MoyaProvider<RocketChatAPI>
@@ -24,11 +24,11 @@ final class JoinServerViewModel: ObservableObject {
     private var anyCancellables: Set<AnyCancellable> = []
 
     init(
-        urlManager: URLManager,
+        localStorageManager: LocalStorageManager,
         validationService: ValidationService,
         moyaService: MoyaProvider<RocketChatAPI>
     ) {
-        self.urlManager = urlManager
+        self.localStorageManager = localStorageManager
         self.validationService = validationService
         self.moyaService = moyaService
         
@@ -37,7 +37,7 @@ final class JoinServerViewModel: ObservableObject {
     
     
     func setupServerCreditions() {
-        urlManager.save(
+        localStorageManager.save(
             serverCreditions: ServerCreditions(url: serverUrl)
         )
     }

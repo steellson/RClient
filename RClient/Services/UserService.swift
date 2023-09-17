@@ -11,17 +11,18 @@ import Combine
 final class UserService {
     
     @Published var isUserOnboarded: Bool = false
+    @Published var isUserauthorized: Bool = false
         
-    private let urlManager: URLManager
+    private let localStorageManager: LocalStorageManager
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        urlManager: URLManager
+        localStorageManager: LocalStorageManager
     ) {
-        self.urlManager = urlManager
+        self.localStorageManager = localStorageManager
 
-        urlManager.$isCredsEmpty
+        localStorageManager.$isCredsEmpty
             .removeDuplicates()
             .map { !$0 }
             .assign(to: \.isUserOnboarded, on: self)

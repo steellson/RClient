@@ -14,7 +14,8 @@ import Moya
 final class ApplicationFactory {
     
     fileprivate let apiProvider: MoyaProvider<RocketChatAPI>
-    fileprivate let urlManager: URLManager
+    fileprivate let keyChainService: KeyChainService
+    fileprivate let localStorageManager: LocalStorageManager
     fileprivate let userService: UserService
     fileprivate let validationService: ValidationService
     fileprivate let userDefaultsInstance: UserDefaults = UserDefaults.standard
@@ -26,17 +27,22 @@ final class ApplicationFactory {
     
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
-        urlManager = URLManager(userDefaultsInstance: userDefaultsInstance)
-        userService = UserService(urlManager: urlManager)
+        keyChainService = KeyChainService()
+        localStorageManager = LocalStorageManager(
+            userDefaultsInstance: userDefaultsInstance,
+            keyChainService: keyChainService
+        )
+        userService = UserService(localStorageManager: localStorageManager)
         validationService = ValidationService()
         
         rClientViewModel = RClientAppViewModel(userService: userService)
         authorizationViewModel =  AuthorizationViewModel(
             validationService: validationService,
-            moyaProvider: apiProvider
+            moyaProvider: apiProvider,
+            localStorageManager: localStorageManager
         )
         joinServerViewModel = JoinServerViewModel(
-                                                urlManager: urlManager,
+                                                localStorageManager: localStorageManager,
                                                 validationService: validationService,
                                                 moyaService: apiProvider
         )
@@ -44,16 +50,16 @@ final class ApplicationFactory {
         
         setupServerCreditionsContainer()
         
-//        userDefaultsInstance.removeObject(forKey: URLManager.UDKeys.serverCreditions.rawValue)
+//        userDefaultsInstance.removeObject(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
     }
     
     private func setupServerCreditionsContainer() {
         let container = [ServerCreditions]()
         
-        if userDefaultsInstance.object(forKey: URLManager.UDKeys.serverCreditions.rawValue) != nil {
+        if userDefaultsInstance.object(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue) != nil {
             print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
         } else {
-            userDefaultsInstance.set(container, forKey: URLManager.UDKeys.serverCreditions.rawValue)
+            userDefaultsInstance.set(container, forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
         }
     }
 }

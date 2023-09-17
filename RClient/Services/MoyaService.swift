@@ -8,18 +8,19 @@
 import Foundation
 import Moya
 
-enum RocketChatAPI {
-    case login(user: User)
-    case signUp(form: UserForm)
+enum RocketChatAPI{
+    case login(user: UserLoginForm)
+    case signUp(form: UserRegistrationForm)
     
 }
 
 extension RocketChatAPI: TargetType {
     
     public var serverUrl: String {
-        let udInstance = UserDefaults.standard
-        return URLManager(userDefaultsInstance: udInstance)
-            .getAllServerCreds()
+        (
+            UserDefaults.standard
+            .object(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue) as? [ServerCreditions]
+        )?
             .first?
             .url ?? "https://open.rocket.chat"
     }

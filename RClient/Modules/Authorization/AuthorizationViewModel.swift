@@ -25,15 +25,18 @@ final class AuthorizationViewModel: ObservableObject {
     
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     private let validationService: ValidationService
+    private let localStorageManager: LocalStorageManager
     
     private var anyCancellables: Set<AnyCancellable> = []
     
     init(
         validationService: ValidationService,
-        moyaProvider: MoyaProvider<RocketChatAPI>
+        moyaProvider: MoyaProvider<RocketChatAPI>,
+        localStorageManager: LocalStorageManager
     ) {
         self.validationService = validationService
         self.moyaProvider = moyaProvider
+        self.localStorageManager = localStorageManager
         
         validateLoginFields()
         validateRegistrationFields()
@@ -41,44 +44,66 @@ final class AuthorizationViewModel: ObservableObject {
     
     
     func signIn() {
-        login(with: User(user: loginEmailText, password: loginPasswordText))
+        guard let lastCreditions = localStorageManager.getAllServerCreds().first else {
+            print("ERROR: Current url is not found"); return
+        }
+        login(
+            with: UserLoginForm(user: loginEmailText, password: loginPasswordText),
+            serverUrl: lastCreditions.url
+        )
     }
     
     func signUp() {
-        registration(with: UserForm(
-            username: usernameText,
-            name: fullNameText,
+        registration(with: UserRegistrationForm(
             email: registrationEmailText,
-            pass: registrationPasswordText
+            pass: registrationPasswordText,
+            username: usernameText,
+            name: fullNameText
         ))
     }
     
-    private func login(with user: User) {
-        moyaProvider.request(.login(user: user), completion: { result in
+    private func login(with user: UserLoginForm, serverUrl: String) {
+        moyaProvider.request(.login(user: user), completion: { [unowned self] result in
             switch result {
             case .success(let response):
-                do {
-                    let responseJSON = try response.mapJSON(failsOnEmptyData: true)
-                    print("Success!\n\("RESOPONSE DATA:\(responseJSON),\nSTATUS: \(response.statusCode)")")
-                } catch let error {
-                    print(error.localizedDescription)
+                
+                if response.statusCode == 200 {
+                    do {
+                        let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: response.data)
+                        
+                        DispatchQueue.global(qos: .background).async {
+                            self.localStorageManager.saveAccessToken(forServer: serverUrl, token: loginResponse.data.authToken)
+                        }
+                        print(loginResponse.data.authToken)
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    print("ERROR! Check status code: \(response.statusCode)")
                 }
+                
             case .failure(let error):
                 print("Failure: \(error.localizedDescription)")
             }
         })
     }
     
-    private func registration(with form: UserForm) {
+    private func registration(with form: UserRegistrationForm) {
         moyaProvider.request(.signUp(form: form), completion: { result in
             switch result {
             case .success(let response):
-                do {
-                    let responseJSON = try response.mapJSON(failsOnEmptyData: true)
-                    print("Success!\n\("RESOPONSE DATA:\(responseJSON),\nSTATUS: \(response.statusCode)")")
-                } catch let error {
-                    print(error.localizedDescription)
+                
+                if response.statusCode == 200 {
+                    do {
+                        let signUpResponse = try JSONDecoder().decode(RegistrationResponse.self, from: response.data)
+                        print(signUpResponse.user)
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    print("ERROR! Check status code: \(response.statusCode)")
                 }
+                
             case .failure(let error):
                 print("Failure: \(error.localizedDescription)")
             }
@@ -98,7 +123,7 @@ private extension AuthorizationViewModel {
         )
         .debounce(for: 0.3, scheduler: DispatchQueue.main)
         .map { [validationService] emailText, passwordText in
-            (validationService.validate(emailText, method: .email)
+            (validationService.validate(emailText, method: .username)
              && validationService.validate(passwordText, method: .password))
         }
         .assign(to: \.isLoginFieldsValid, on: self)

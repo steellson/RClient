@@ -30,7 +30,7 @@
 		3DADF8952A9635B70039F608 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8942A9635B70039F608 /* Moya */; };
 		3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8972A9636A70039F608 /* MoyaService.swift */; };
 		3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */; };
-		3DADF89D2A965B860039F608 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* URLManager.swift */; };
+		3DADF89D2A965B860039F608 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* LocalStorageManager.swift */; };
 		3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89E2A9667EA0039F608 /* UserService.swift */; };
 		3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */; };
 		3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A52A9677F40039F608 /* RClientFactory.swift */; };
@@ -40,6 +40,12 @@
 		3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C862AB1D51E00D7468E /* ValidationService.swift */; };
 		3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C892AB361C300D7468E /* TextFieldModifier.swift */; };
 		3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */; };
+		3DB39C912AB6EEBC00D7468E /* Stored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C902AB6EEBC00D7468E /* Stored.swift */; };
+		3DB39C942AB70FE500D7468E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C932AB70FE500D7468E /* Settings.swift */; };
+		3DB39C962AB7101000D7468E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C952AB7101000D7468E /* Response.swift */; };
+		3DB39C982AB7104800D7468E /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C972AB7104800D7468E /* Form.swift */; };
+		3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C992AB710BF00D7468E /* AuthServices.swift */; };
+		3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C9B2AB7199700D7468E /* KeyChainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +92,7 @@
 		3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerViewModel.swift; sourceTree = "<group>"; };
 		3DADF8972A9636A70039F608 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
-		3DADF89C2A965B860039F608 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		3DADF89C2A965B860039F608 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		3DADF89E2A9667EA0039F608 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientAppViewModel.swift; sourceTree = "<group>"; };
 		3DADF8A52A9677F40039F608 /* RClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientFactory.swift; sourceTree = "<group>"; };
@@ -97,6 +103,12 @@
 		3DB39C862AB1D51E00D7468E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		3DB39C892AB361C300D7468E /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
 		3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCButtonModifier.swift; sourceTree = "<group>"; };
+		3DB39C902AB6EEBC00D7468E /* Stored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stored.swift; sourceTree = "<group>"; };
+		3DB39C932AB70FE500D7468E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		3DB39C952AB7101000D7468E /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		3DB39C972AB7104800D7468E /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		3DB39C992AB710BF00D7468E /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		3DB39C9B2AB7199700D7468E /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +216,7 @@
 				3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */,
 				3DADF8A52A9677F40039F608 /* RClientFactory.swift */,
 				3DADF84A2A9238BE0039F608 /* Preview Content */,
+				3DB39C922AB6EEBF00D7468E /* Protocols */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -276,8 +289,12 @@
 		3DADF8812A9250540039F608 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				3DB39C992AB710BF00D7468E /* AuthServices.swift */,
+				3DB39C972AB7104800D7468E /* Form.swift */,
 				3DADF8822A92509A0039F608 /* User.swift */,
+				3DB39C952AB7101000D7468E /* Response.swift */,
 				3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */,
+				3DB39C932AB70FE500D7468E /* Settings.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -294,8 +311,9 @@
 		3DADF8962A96367F0039F608 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3DB39C9B2AB7199700D7468E /* KeyChainService.swift */,
+				3DADF89C2A965B860039F608 /* LocalStorageManager.swift */,
 				3DADF8972A9636A70039F608 /* MoyaService.swift */,
-				3DADF89C2A965B860039F608 /* URLManager.swift */,
 				3DADF89E2A9667EA0039F608 /* UserService.swift */,
 				3DB39C862AB1D51E00D7468E /* ValidationService.swift */,
 			);
@@ -319,6 +337,14 @@
 				3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		3DB39C922AB6EEBF00D7468E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3DB39C902AB6EEBC00D7468E /* Stored.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,23 +491,29 @@
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
 				3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */,
-				3DADF89D2A965B860039F608 /* URLManager.swift in Sources */,
+				3DADF89D2A965B860039F608 /* LocalStorageManager.swift in Sources */,
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
 				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
+				3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */,
 				3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */,
 				3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */,
 				3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */,
 				3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */,
+				3DB39C982AB7104800D7468E /* Form.swift in Sources */,
 				3DADF8A82A9769FC0039F608 /* LoginView.swift in Sources */,
+				3DB39C942AB70FE500D7468E /* Settings.swift in Sources */,
+				3DB39C962AB7101000D7468E /* Response.swift in Sources */,
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
 				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
 				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,
 				3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */,
+				3DB39C912AB6EEBC00D7468E /* Stored.swift in Sources */,
 				3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */,
+				3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */,
 				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
 			);
