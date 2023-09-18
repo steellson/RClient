@@ -14,7 +14,7 @@ final class JoinServerViewModel: ObservableObject {
     @Published var serverUrl: String = ""
     
     @Published var isValidUrl: Bool = false
-    @Published var isTokenExists: Bool = false
+    @Published var alertIsPresented: Bool = false
         
     private let localStorageManager: LocalStorageManager
     private let validationService: ValidationService
@@ -41,7 +41,6 @@ final class JoinServerViewModel: ObservableObject {
             serverCreditions: ServerCreditions(url: serverUrl)
         )
     }
-    
 }
 
 //MARK: - Subscriptions

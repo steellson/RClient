@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
@@ -48,7 +50,6 @@ struct LoginView: View {
                                 text: $viewModel.loginEmailText
                             )
                             .modifier(TextFieldModifier(strokeColor: strokeColor))
-
                             
                             SecureField(
                                 R.Strings.loginScreenPasswordFieldPlaceholder.rawValue,
@@ -60,10 +61,23 @@ struct LoginView: View {
                         
                         Button("Login") {
                             viewModel.signIn()
+                            viewModel.isLoginAlertShowing.toggle()
                         }
                         .modifier(RCButtonModifier(strokeColor: strokeColor))
                         .disabled(!viewModel.isLoginFieldsValid)
-                         
+                        .alert(
+                            "Login successfull!",
+                            isPresented: $viewModel.isLoginAlertShowing) {
+                                
+                                NavigationLink("Tap to continue") {
+                                    screenFactory.makeHomeScreen()
+                                }
+                                .background(.clear)
+                            } message: {
+                                Text("Let's start it :)")
+                            }
+                        
+                        
                         Spacer()
                         
                         NavigationLink {
@@ -76,6 +90,16 @@ struct LoginView: View {
                         }
                         .buttonStyle(.plain)
                         .padding(.top, 30)
+                        
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("Want to change server?")
+                                .underline()
+                                .font(.system(size: 12))
+                                .fontWeight(.light)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding()

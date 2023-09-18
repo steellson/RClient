@@ -40,10 +40,20 @@ struct JoinServerView: View {
                     
                     Button("Connect") {
                         viewModel.setupServerCreditions()
+                        viewModel.alertIsPresented.toggle()
                     }
                     .modifier(RCButtonModifier(strokeColor: strokeColor))
                     .disabled(!viewModel.isValidUrl)
-                    .padding(.vertical)
+                    .alert(
+                        "Server added!",
+                        isPresented: $viewModel.alertIsPresented) {
+                            NavigationLink("Go authorize!") {
+                                screenFactory.makeLoginScreen()
+                            }
+                        } message: {
+                            Text("You could change it later")
+                        }
+                        .padding(.vertical)
                 }
                 .padding(.horizontal, 30)
             }

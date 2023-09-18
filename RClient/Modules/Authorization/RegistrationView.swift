@@ -64,9 +64,18 @@ struct RegistrationView: View {
                 
                 Button("Sign Up") {
                     viewModel.signUp()
+                    viewModel.isRegistrationAlertShowing.toggle()
                 }
                 .modifier(RCButtonModifier(strokeColor: strokeColor))
                 .disabled(!viewModel.isRegistrationFieldsValid)
+                .alert("Registration completed!",
+                       isPresented: $viewModel.isRegistrationAlertShowing) {
+                    Button("Go") {
+                        dismiss()
+                    }
+                } message: {
+                    Text("Now you can enter from login page with your creds!")
+                }
                 .padding(.vertical)
             }
             .padding(.bottom)

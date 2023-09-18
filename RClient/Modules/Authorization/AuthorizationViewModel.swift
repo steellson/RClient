@@ -14,6 +14,9 @@ final class AuthorizationViewModel: ObservableObject {
     @Published var loginEmailText: String = ""
     @Published var loginPasswordText: String = ""
     
+    @Published var isLoginAlertShowing: Bool = false
+    @Published var isRegistrationAlertShowing: Bool = false
+    
     @Published var usernameText: String = ""
     @Published var fullNameText: String = ""
     @Published var registrationEmailText: String = ""

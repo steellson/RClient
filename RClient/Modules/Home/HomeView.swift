@@ -34,7 +34,6 @@ struct HomeView: View {
             DetialBarView()
                 .frame(minWidth: 160, minHeight: minHeight)
         }
-        .clipped()
     }
 }
 

@@ -10,6 +10,7 @@ import Foundation
 final class KeyChainService {
     
     enum KeyChainError: Error {
+        case itemNotFound
         case duplicateItems
         case unknown(status: OSStatus)
     }
@@ -42,5 +43,20 @@ final class KeyChainService {
         
         guard status == errSecSuccess else { throw KeyChainError.unknown(status: status) }
         return result as? Data
+    }
+    
+    func removeCreds(forServer serverUrl: String) throws {
+        let query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "RClient: \(serverUrl)" as AnyObject,
+            kSecReturnData as String: kCFBooleanTrue,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        guard status != errSecItemNotFound else { throw KeyChainError.itemNotFound }
+        guard status == errSecSuccess else { throw KeyChainError.unknown(status: status) }
+        print("Deleted!")
     }
 }

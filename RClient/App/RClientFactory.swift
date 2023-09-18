@@ -49,17 +49,34 @@ final class ApplicationFactory {
         homeScreenViewModel = HomeViewModel()
         
         setupServerCreditionsContainer()
-        
-//        userDefaultsInstance.removeObject(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
+//        removeServerCreditionsContainer()
+//        removeKeyChainRecord(forServer: "https://open.rocket.chat")
     }
+}
+
+//MARK: - App manage methods
+
+private extension ApplicationFactory {
     
-    private func setupServerCreditionsContainer() {
+    func setupServerCreditionsContainer() {
         let container = [ServerCreditions]()
         
         if userDefaultsInstance.object(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue) != nil {
             print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
         } else {
             userDefaultsInstance.set(container, forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
+        }
+    }
+    
+    func removeServerCreditionsContainer() {
+        userDefaultsInstance.removeObject(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
+    }
+    
+    func removeKeyChainRecord(forServer url: String) {
+        do {
+            try keyChainService.removeCreds(forServer: url)
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }

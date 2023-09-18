@@ -10,7 +10,8 @@ import Combine
 
 final class RClientAppViewModel: ObservableObject {
     
-    @Published var isUserOnboarded: Bool = false
+    var isUserOnboarded: Bool = false
+    var isUserAuthorized: Bool = false
     
     private let userService: UserService
     
@@ -24,6 +25,11 @@ final class RClientAppViewModel: ObservableObject {
         userService.$isUserOnboarded
             .removeDuplicates()
             .assign(to: \.isUserOnboarded, on: self)
+            .store(in: &cancellables)
+        
+        userService.$isUserAuthorized
+            .removeDuplicates()
+            .assign(to: \.isUserAuthorized, on: self)
             .store(in: &cancellables)
     }
 }
