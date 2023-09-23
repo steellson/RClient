@@ -14,7 +14,7 @@ struct NavigationSectionView: View {
     
     var body: some View {
         Text("Navigation bar")
-            .frame(minWidth: 140)
+            .padding(5)
     }
 }
 

@@ -15,7 +15,7 @@ final class ApplicationFactory {
     
     fileprivate let apiProvider: MoyaProvider<RocketChatAPI>
     fileprivate let keyChainService: KeyChainService
-    fileprivate let localStorageManager: LocalStorageService
+    fileprivate let localStorageService: LocalStorageService
     fileprivate let userService: UserService
     fileprivate let validationService: ValidationService
     fileprivate let userDefaultsInstance: UserDefaults = UserDefaults.standard
@@ -32,26 +32,28 @@ final class ApplicationFactory {
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
         keyChainService = KeyChainService()
-        localStorageManager = LocalStorageService(
+        localStorageService = LocalStorageService(
             userDefaultsInstance: userDefaultsInstance,
             keyChainService: keyChainService
         )
-        userService = UserService(localStorageManager: localStorageManager)
+        userService = UserService(localStorageService: localStorageService)
         validationService = ValidationService()
         
         rClientViewModel = RClientAppViewModel(userService: userService)
         authorizationViewModel =  AuthorizationViewModel(
             validationService: validationService,
             moyaProvider: apiProvider,
-            localStorageManager: localStorageManager
+            localStorageService: localStorageService
         )
         joinServerViewModel = JoinServerViewModel(
-                                                localStorageManager: localStorageManager,
+                                                localStorageService: localStorageService,
                                                 validationService: validationService,
                                                 moyaService: apiProvider
         )
         homeScreenViewModel = HomeViewModel()
-        channelSectionViewModel = ChannelListViewModel()
+        channelSectionViewModel = ChannelListViewModel(
+            localStorageService: localStorageService
+        )
         navigationSectionViewModel = NavigationSectionViewModel()
         chatSectionViewModel = ChatSectionViewModel()
         detailSectionViewModel = DetailSectionViewModel()

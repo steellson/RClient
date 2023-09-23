@@ -28,18 +28,18 @@ final class AuthorizationViewModel: ObservableObject {
     
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     private let validationService: ValidationService
-    private let localStorageManager: LocalStorageService
+    private let localStorageService: LocalStorageService
     
     private var anyCancellables: Set<AnyCancellable> = []
     
     init(
         validationService: ValidationService,
         moyaProvider: MoyaProvider<RocketChatAPI>,
-        localStorageManager: LocalStorageService
+        localStorageService: LocalStorageService
     ) {
         self.validationService = validationService
         self.moyaProvider = moyaProvider
-        self.localStorageManager = localStorageManager
+        self.localStorageService = localStorageService
         
         validateLoginFields()
         validateRegistrationFields()
@@ -47,7 +47,7 @@ final class AuthorizationViewModel: ObservableObject {
     
     
     func signIn() {
-        guard let lastCreditions = localStorageManager.getAllServerCreds().first else {
+        guard let lastCreditions = localStorageService.getAllServerCreds().first else {
             print("ERROR: Current url is not found"); return
         }
         login(
@@ -75,7 +75,7 @@ final class AuthorizationViewModel: ObservableObject {
                         let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: response.data)
                         
                         DispatchQueue.global(qos: .background).async {
-                            self.localStorageManager.saveAccessToken(forServer: serverUrl, token: loginResponse.data.authToken)
+                            self.localStorageService.saveAccessToken(forServer: serverUrl, token: loginResponse.data.authToken)
                         }
                         print(loginResponse.data.authToken)
                     } catch let error {

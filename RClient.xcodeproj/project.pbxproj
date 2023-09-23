@@ -50,6 +50,8 @@
 		3DE462D62ABF1D9000E78FC1 /* NavigationSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */; };
 		3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */; };
 		3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */; };
+		3DE462DC2ABF281E00E78FC1 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462DB2ABF281E00E78FC1 /* Channel.swift */; };
+		3DE462DF2ABF289400E78FC1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DE462DE2ABF289400E78FC1 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,7 @@
 		3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionViewModel.swift; sourceTree = "<group>"; };
+		3DE462DB2ABF281E00E78FC1 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE462DF2ABF289400E78FC1 /* Kingfisher in Frameworks */,
 				3DADF8952A9635B70039F608 /* Moya in Frameworks */,
 				3DADF8932A9635B70039F608 /* CombineMoya in Frameworks */,
 			);
@@ -302,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB39C992AB710BF00D7468E /* AuthServices.swift */,
+				3DE462DB2ABF281E00E78FC1 /* Channel.swift */,
 				3DB39C972AB7104800D7468E /* Form.swift */,
 				3DADF8822A92509A0039F608 /* User.swift */,
 				3DB39C952AB7101000D7468E /* Response.swift */,
@@ -378,6 +383,7 @@
 			packageProductDependencies = (
 				3DADF8922A9635B70039F608 /* CombineMoya */,
 				3DADF8942A9635B70039F608 /* Moya */,
+				3DE462DE2ABF289400E78FC1 /* Kingfisher */,
 			);
 			productName = RClient;
 			productReference = 3DADF8412A9238BD0039F608 /* RClient.app */;
@@ -453,6 +459,7 @@
 			mainGroup = 3DADF8382A9238BD0039F608;
 			packageReferences = (
 				3DADF8912A9635B70039F608 /* XCRemoteSwiftPackageReference "Moya" */,
+				3DE462DD2ABF289400E78FC1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3DADF8422A9238BD0039F608 /* Products */;
 			projectDirPath = "";
@@ -520,6 +527,7 @@
 				3DB39C942AB70FE500D7468E /* Settings.swift in Sources */,
 				3DB39C962AB7101000D7468E /* Response.swift in Sources */,
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
+				3DE462DC2ABF281E00E78FC1 /* Channel.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
 				3DE462D62ABF1D9000E78FC1 /* NavigationSectionViewModel.swift in Sources */,
 				3DE462D42ABF1D1300E78FC1 /* ChannelListViewModel.swift in Sources */,
@@ -860,6 +868,14 @@
 				minimumVersion = 15.0.0;
 			};
 		};
+		3DE462DD2ABF289400E78FC1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -872,6 +888,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3DADF8912A9635B70039F608 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		3DE462DE2ABF289400E78FC1 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DE462DD2ABF289400E78FC1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

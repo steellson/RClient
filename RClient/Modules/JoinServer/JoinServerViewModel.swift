@@ -16,7 +16,7 @@ final class JoinServerViewModel: ObservableObject {
     @Published var isValidUrl: Bool = false
     @Published var alertIsPresented: Bool = false
         
-    private let localStorageManager: LocalStorageService
+    private let localStorageService: LocalStorageService
     private let validationService: ValidationService
 
     private let moyaService: MoyaProvider<RocketChatAPI>
@@ -24,11 +24,11 @@ final class JoinServerViewModel: ObservableObject {
     private var anyCancellables: Set<AnyCancellable> = []
 
     init(
-        localStorageManager: LocalStorageService,
+        localStorageService: LocalStorageService,
         validationService: ValidationService,
         moyaService: MoyaProvider<RocketChatAPI>
     ) {
-        self.localStorageManager = localStorageManager
+        self.localStorageService = localStorageService
         self.validationService = validationService
         self.moyaService = moyaService
         
@@ -37,7 +37,7 @@ final class JoinServerViewModel: ObservableObject {
     
     
     func setupServerCreditions() {
-        localStorageManager.save(
+        localStorageService.save(
             serverCreditions: ServerCreditions(url: serverUrl)
         )
     }

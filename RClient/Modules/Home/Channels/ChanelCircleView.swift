@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ChanelCircleView: View {
     
-    @State var image: Image
+    @State var image: KFImage
     
     var body: some View {
         image
@@ -27,7 +28,7 @@ struct ChanelCircleView: View {
 struct ChannelCircleView_Previews: PreviewProvider {
     static var previews: some View {
         ChanelCircleView(
-            image: Image("arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
+            image: KFImage(URL(string: "https://open.rocket.chat"))
         )
     }
 }

@@ -10,24 +10,24 @@ import Foundation
 final class UserService {
 
     var isUserOnboarded: Bool {
-        !localStorageManager.getAllServerCreds().isEmpty
+        !localStorageService.getAllServerCreds().isEmpty
     }
     
     var isUserAuthorized: Bool {
-        (localStorageManager.getAccessToken(for: serverCreditions.first?.url) != nil)
+        (localStorageService.getAccessToken(for: serverCreditions.first?.url) != nil)
     }
         
     private var serverCreditions: [ServerCreditions] {
-        localStorageManager.getAllServerCreds()
+        localStorageService.getAllServerCreds()
     }
     
-    private let localStorageManager: LocalStorageService
+    private let localStorageService: LocalStorageService
     
     
     init(
-        localStorageManager: LocalStorageService
+        localStorageService: LocalStorageService
     ) {
-        self.localStorageManager = localStorageManager
+        self.localStorageService = localStorageService
 
     }
 }

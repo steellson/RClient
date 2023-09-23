@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ChanelListView: View {
     
@@ -13,10 +14,18 @@ struct ChanelListView: View {
     
     var body: some View {
         VStack {
-            ChanelCircleView(image: Image("galaxy"))
-            ChanelCircleView(image: Image("galaxy"))
-            ChanelCircleView(image: Image("galaxy"))
+            LazyVStack {
+                ForEach(viewModel.channels) { channel in
+                    ChanelCircleView(
+                        image: channel.image ?? KFImage(
+                            URL(string: "https://open.rocket.chat")
+                        )
+                    )
+                }
+            }
+            
             Spacer()
+            
             Button {
                 print("Add chanel")
             } label: {
@@ -27,7 +36,7 @@ struct ChanelListView: View {
             .background(.quaternary)
             .clipShape(Circle())
         }
-        .padding(10)
+        .padding(.vertical, 10)
     }
 }
 

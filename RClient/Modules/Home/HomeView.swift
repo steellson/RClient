@@ -14,28 +14,46 @@ struct HomeView: View {
     private let minHeight: CGFloat = 600
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             
+            // Channels section
             screenFactory.makeChannelListView()
                 .background(.background)
-                .frame(minWidth: 100, minHeight: minHeight)
+                .frame(
+                    minWidth: 80,
+                    maxWidth: 80,
+                    minHeight: minHeight,
+                    maxHeight: .infinity
+                )
             
-            Spacer()
-            
+            // Navigation section
             screenFactory.makeNavigationSectionView()
                 .border(.gray, width: 0.4)
-                .frame(minWidth: 140, minHeight: minHeight)
-                
-            Spacer()
-            
+                .frame(
+                    minWidth: 200,
+                    maxWidth: .infinity,
+                    minHeight: minHeight,
+                    maxHeight: .infinity
+                )
+                 
+            // Chat section
             screenFactory.makeChatSectionView()
                 .border(.gray, width: 0.4)
-                .frame(minWidth: 240, minHeight: minHeight)
-            
-            Spacer()
-            
+                .frame(
+                    minWidth: 400,
+                    maxWidth: .infinity,
+                    minHeight: minHeight,
+                    maxHeight: .infinity
+                )
+              
+            // Detail section
             screenFactory.makeDetailSectionView()
-                .frame(minWidth: 160, minHeight: minHeight)
+                .frame(
+                    minWidth: 100,
+                    maxWidth: .infinity,
+                    minHeight: minHeight,
+                    maxHeight: .infinity
+                )
         }
     }
 }

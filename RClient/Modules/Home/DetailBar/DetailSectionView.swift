@@ -14,7 +14,8 @@ struct DetailSectionView: View {
     
     var body: some View {
         Text("Detail section")
-            .frame(minWidth: 160)
+            .padding(5)
+
     }
 }
 
