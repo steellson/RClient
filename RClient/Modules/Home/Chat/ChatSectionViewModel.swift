@@ -6,7 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 final class ChatSectionViewModel: ObservableObject {
+    
+//    @Published var messages: [Message] = []
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     
 }

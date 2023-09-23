@@ -16,8 +16,8 @@ struct HomeView: View {
     var body: some View {
         HStack(spacing: 0) {
             
-            // Channels section
-            screenFactory.makeChannelListView()
+            // Servers section
+            screenFactory.makeServersListView()
                 .background(.background)
                 .frame(
                     minWidth: 80,

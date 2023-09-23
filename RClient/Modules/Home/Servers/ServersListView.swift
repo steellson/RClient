@@ -1,5 +1,5 @@
 //
-//  ChanelListView.swift
+//  ServersListView.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 20.08.2023.
@@ -8,17 +8,17 @@
 import SwiftUI
 import Kingfisher
 
-struct ChanelListView: View {
+struct ServersListView: View {
     
-    @ObservedObject var viewModel: ChannelListViewModel
+    @ObservedObject var viewModel: ServersListViewModel
     
     var body: some View {
         VStack {
             LazyVStack {
                 ScrollView {
-                    ForEach(viewModel.channels) { channel in
-                        ChanelCircleView(
-                            image: channel.image ?? KFImage(
+                    ForEach(viewModel.servers) { server in
+                        ServerIconView(
+                            image: server.image ?? KFImage(
                                 URL(string: "https://open.rocket.chat")
                             )
                         )
@@ -43,8 +43,8 @@ struct ChanelListView: View {
     }
 }
 
-struct ChanelListView_Previews: PreviewProvider {
+struct ServersListView_Previews: PreviewProvider {
     static var previews: some View {
-        screenFactory.makeChannelListView()
+        screenFactory.makeServersListView()
     }
 }

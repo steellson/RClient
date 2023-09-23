@@ -1,5 +1,5 @@
 //
-//  ChanelCircleView.swift
+//  ServerIconView.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 20.08.2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct ChanelCircleView: View {
+struct ServerIconView: View {
     
     @State var image: KFImage
     
@@ -25,9 +25,9 @@ struct ChanelCircleView: View {
     }
 }
 
-struct ChannelCircleView_Previews: PreviewProvider {
+struct ServerIconView_Previews: PreviewProvider {
     static var previews: some View {
-        ChanelCircleView(
+        ServerIconView(
             image: KFImage(URL(string: "https://open.rocket.chat"))
         )
     }

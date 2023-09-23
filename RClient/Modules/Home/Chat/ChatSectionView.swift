@@ -11,11 +11,17 @@ struct ChatSectionView: View {
     
     @ObservedObject var viewModel: ChatSectionViewModel
     
-    
     var body: some View {
-        Text("Chat section")
-            .padding(5)
-
+        VStack(alignment: .leading) {
+            Text("CHAT #")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding(10)
+            
+            LazyVStack {
+                
+            }
+        }
     }
 }
 

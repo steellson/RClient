@@ -75,7 +75,10 @@ final class AuthorizationViewModel: ObservableObject {
                         let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: response.data)
                         
                         DispatchQueue.global(qos: .background).async {
-                            self.localStorageService.saveAccessToken(forServer: serverUrl, token: loginResponse.data.authToken)
+                            self.localStorageService.saveAccessToken(
+                                forServer: serverUrl,
+                                token: loginResponse.data.authToken
+                            )
                         }
                         print(loginResponse.data.authToken)
                     } catch let error {
@@ -125,9 +128,9 @@ private extension AuthorizationViewModel {
             $loginPasswordText
         )
         .debounce(for: 0.3, scheduler: DispatchQueue.main)
-        .map { [validationService] emailText, passwordText in
-            (validationService.validate(emailText, method: .username)
-             && validationService.validate(passwordText, method: .password))
+        .map { [unowned self] emailText, passwordText in
+            (self.validationService.validate(emailText, method: .username)
+             && self.validationService.validate(passwordText, method: .password))
         }
         .assign(to: \.isLoginFieldsValid, on: self)
         .store(in: &anyCancellables)

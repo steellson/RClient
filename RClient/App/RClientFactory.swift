@@ -24,7 +24,7 @@ final class ApplicationFactory {
     fileprivate let authorizationViewModel: AuthorizationViewModel
     fileprivate let joinServerViewModel: JoinServerViewModel
     fileprivate let homeScreenViewModel: HomeViewModel
-    fileprivate let channelSectionViewModel: ChannelListViewModel
+    fileprivate let serversSectionViewModel: ServersListViewModel
     fileprivate let navigationSectionViewModel: NavigationSectionViewModel
     fileprivate let chatSectionViewModel: ChatSectionViewModel
     fileprivate let detailSectionViewModel: DetailSectionViewModel
@@ -51,7 +51,7 @@ final class ApplicationFactory {
                                                 moyaService: apiProvider
         )
         homeScreenViewModel = HomeViewModel()
-        channelSectionViewModel = ChannelListViewModel(
+        serversSectionViewModel = ServersListViewModel(
             localStorageService: localStorageService
         )
         navigationSectionViewModel = NavigationSectionViewModel()
@@ -102,7 +102,7 @@ protocol ScreenFactoryProtocol: AnyObject {
     func makeRegistrationScreenView() -> RegistrationView
     func makeHomeScreen() -> HomeView
     
-    func makeChannelListView() -> ChanelListView
+    func makeServersListView() -> ServersListView
     func makeNavigationSectionView() -> NavigationSectionView
     func makeChatSectionView() -> ChatSectionView
     func makeDetailSectionView() -> DetailSectionView
@@ -141,8 +141,8 @@ extension ScreenFactory: ScreenFactoryProtocol {
     
     // Sub
     
-    func makeChannelListView() -> ChanelListView {
-        ChanelListView(viewModel: applicationFactory.channelSectionViewModel)
+    func makeServersListView() -> ServersListView {
+        ServersListView(viewModel: applicationFactory.serversSectionViewModel)
     }
     
     func makeNavigationSectionView() -> NavigationSectionView {
