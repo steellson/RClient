@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ChanelListView: View {
+    
+    @ObservedObject var viewModel: ChannelListViewModel
+    
     var body: some View {
         VStack {
             ChanelCircleView(image: Image("galaxy"))
@@ -30,6 +33,6 @@ struct ChanelListView: View {
 
 struct ChanelListView_Previews: PreviewProvider {
     static var previews: some View {
-        ChanelListView()
+        screenFactory.makeChannelListView()
     }
 }

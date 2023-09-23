@@ -12,10 +12,12 @@ final class LocalStorageManager {
     
     public enum UDKeys: String {
         case serverCreditions
-        case userInfo
+//        case userInfo
     }
     
+    @Published private(set) var serverCreditions: [ServerCreditions] = []
     @Published private(set) var isCredsEmpty: Bool = true
+    
     @Published private(set) var isCurrentUserAuthorized: Bool = false
     
     private let userDefaultsInstance: UserDefaults
@@ -105,15 +107,23 @@ extension LocalStorageManager {
     }
 }
 
-//MARK: - Private Subscriptions Extension
+//MARK: - Subscriptions Extension
 
-private extension LocalStorageManager {
+extension LocalStorageManager {
     
-    func checkForCreds() {
+    private func checkForCreds() {
         userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue)
             .publisher
             .map { ($0 as? [ServerCreditions])?.isEmpty ?? false }
             .assign(to: \.isCredsEmpty, on: self)
+            .store(in: &anyCancellables)
+    }
+    
+    func getCreds() {
+        userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue)
+            .publisher
+            .map { ($0 as? [ServerCreditions]) ?? [ServerCreditions]() }
+            .assign(to: \.serverCreditions, on: self)
             .store(in: &anyCancellables)
     }
 }

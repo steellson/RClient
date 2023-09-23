@@ -9,29 +9,39 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @ObservedObject var viewModel: HomeViewModel
+    
     private let minHeight: CGFloat = 600
     
     var body: some View {
         HStack {
-            ChanelListView()
+            
+            screenFactory.makeChannelListView()
                 .background(.background)
                 .frame(minWidth: 100, minHeight: minHeight)
-
+                .onAppear {
+                    let a = LocalStorageManager(
+                            userDefaultsInstance: UserDefaults.standard,
+                            keyChainService: nil
+                    )
+                    print("CHECK - - - - \(a.serverCreditions)")
+                }
             
             Spacer()
-            NavigationView()
+            
+            screenFactory.makeNavigationSectionView()
                 .border(.gray, width: 0.4)
                 .frame(minWidth: 140, minHeight: minHeight)
                 
             Spacer()
             
-            ChatSectionView()
+            screenFactory.makeChatSectionView()
                 .border(.gray, width: 0.4)
                 .frame(minWidth: 240, minHeight: minHeight)
             
             Spacer()
             
-            DetialBarView()
+            screenFactory.makeDetailSectionView()
                 .frame(minWidth: 160, minHeight: minHeight)
         }
     }
@@ -39,6 +49,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        screenFactory.makeHomeScreen()
     }
 }

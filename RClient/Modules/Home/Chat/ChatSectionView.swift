@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ChatSectionView: View {
+    
+    @ObservedObject var viewModel: ChatSectionViewModel
+    
+    
     var body: some View {
         Text("Chat section")
             .frame(minWidth: 240)
@@ -16,6 +20,6 @@ struct ChatSectionView: View {
 
 struct ChatSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatSectionView()
+        screenFactory.makeChatSectionView()
     }
 }

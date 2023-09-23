@@ -19,9 +19,9 @@
 		3DADF8632A9238BE0039F608 /* RClientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8622A9238BE0039F608 /* RClientUITestsLaunchTests.swift */; };
 		3DADF8742A923B510039F608 /* ChanelCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8732A923B510039F608 /* ChanelCircleView.swift */; };
 		3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8752A923DA70039F608 /* ChanelListView.swift */; };
-		3DADF87A2A92469C0039F608 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8792A92469C0039F608 /* NavigationView.swift */; };
+		3DADF87A2A92469C0039F608 /* NavigationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8792A92469C0039F608 /* NavigationSectionView.swift */; };
 		3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87B2A92472E0039F608 /* ChatSectionView.swift */; };
-		3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87F2A9247E90039F608 /* DetialBarView.swift */; };
+		3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87F2A9247E90039F608 /* DetailSectionView.swift */; };
 		3DADF8832A92509A0039F608 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8822A92509A0039F608 /* User.swift */; };
 		3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88B2A9399620039F608 /* JoinServerView.swift */; };
 		3DADF88E2A939BE30039F608 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88D2A939BE30039F608 /* Resources.swift */; };
@@ -46,6 +46,10 @@
 		3DB39C982AB7104800D7468E /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C972AB7104800D7468E /* Form.swift */; };
 		3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C992AB710BF00D7468E /* AuthServices.swift */; };
 		3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C9B2AB7199700D7468E /* KeyChainService.swift */; };
+		3DE462D42ABF1D1300E78FC1 /* ChannelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D32ABF1D1300E78FC1 /* ChannelListViewModel.swift */; };
+		3DE462D62ABF1D9000E78FC1 /* NavigationSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */; };
+		3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */; };
+		3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,9 +87,9 @@
 		3DADF8622A9238BE0039F608 /* RClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3DADF8732A923B510039F608 /* ChanelCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanelCircleView.swift; sourceTree = "<group>"; };
 		3DADF8752A923DA70039F608 /* ChanelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanelListView.swift; sourceTree = "<group>"; };
-		3DADF8792A92469C0039F608 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		3DADF8792A92469C0039F608 /* NavigationSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSectionView.swift; sourceTree = "<group>"; };
 		3DADF87B2A92472E0039F608 /* ChatSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionView.swift; sourceTree = "<group>"; };
-		3DADF87F2A9247E90039F608 /* DetialBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetialBarView.swift; sourceTree = "<group>"; };
+		3DADF87F2A9247E90039F608 /* DetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionView.swift; sourceTree = "<group>"; };
 		3DADF8822A92509A0039F608 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3DADF88B2A9399620039F608 /* JoinServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerView.swift; sourceTree = "<group>"; };
 		3DADF88D2A939BE30039F608 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
@@ -109,6 +113,10 @@
 		3DB39C972AB7104800D7468E /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		3DB39C992AB710BF00D7468E /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		3DB39C9B2AB7199700D7468E /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
+		3DE462D32ABF1D1300E78FC1 /* ChannelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChannelListViewModel.swift; path = ../../../../../../../../.Trash/RClient/RClient/Modules/Home/Channels/ChannelListViewModel.swift; sourceTree = "<group>"; };
+		3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSectionViewModel.swift; sourceTree = "<group>"; };
+		3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionViewModel.swift; sourceTree = "<group>"; };
+		3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +266,7 @@
 			children = (
 				3DADF8752A923DA70039F608 /* ChanelListView.swift */,
 				3DADF8732A923B510039F608 /* ChanelCircleView.swift */,
+				3DE462D32ABF1D1300E78FC1 /* ChannelListViewModel.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -265,7 +274,8 @@
 		3DADF8782A9246600039F608 /* NavigationView */ = {
 			isa = PBXGroup;
 			children = (
-				3DADF8792A92469C0039F608 /* NavigationView.swift */,
+				3DADF8792A92469C0039F608 /* NavigationSectionView.swift */,
+				3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */,
 			);
 			path = NavigationView;
 			sourceTree = "<group>";
@@ -274,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF87B2A92472E0039F608 /* ChatSectionView.swift */,
+				3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -281,7 +292,8 @@
 		3DADF87E2A9247B70039F608 /* DetailBar */ = {
 			isa = PBXGroup;
 			children = (
-				3DADF87F2A9247E90039F608 /* DetialBarView.swift */,
+				3DADF87F2A9247E90039F608 /* DetailSectionView.swift */,
+				3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */,
 			);
 			path = DetailBar;
 			sourceTree = "<group>";
@@ -485,7 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */,
-				3DADF87A2A92469C0039F608 /* NavigationView.swift in Sources */,
+				3DADF87A2A92469C0039F608 /* NavigationSectionView.swift in Sources */,
 				3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */,
 				3DADF8AA2A976A7E0039F608 /* HomeViewModel.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
@@ -493,8 +505,9 @@
 				3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */,
 				3DADF89D2A965B860039F608 /* LocalStorageManager.swift in Sources */,
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
-				3DADF8802A9247E90039F608 /* DetialBarView.swift in Sources */,
+				3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
+				3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */,
 				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
 				3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */,
@@ -508,6 +521,9 @@
 				3DB39C962AB7101000D7468E /* Response.swift in Sources */,
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ChanelListView.swift in Sources */,
+				3DE462D62ABF1D9000E78FC1 /* NavigationSectionViewModel.swift in Sources */,
+				3DE462D42ABF1D1300E78FC1 /* ChannelListViewModel.swift in Sources */,
+				3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */,
 				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
 				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,
 				3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */,

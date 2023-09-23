@@ -24,6 +24,10 @@ final class ApplicationFactory {
     fileprivate let authorizationViewModel: AuthorizationViewModel
     fileprivate let joinServerViewModel: JoinServerViewModel
     fileprivate let homeScreenViewModel: HomeViewModel
+    fileprivate let channelSectionViewModel: ChannelListViewModel
+    fileprivate let navigationSectionViewModel: NavigationSectionViewModel
+    fileprivate let chatSectionViewModel: ChatSectionViewModel
+    fileprivate let detailSectionViewModel: DetailSectionViewModel
     
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
@@ -47,6 +51,10 @@ final class ApplicationFactory {
                                                 moyaService: apiProvider
         )
         homeScreenViewModel = HomeViewModel()
+        channelSectionViewModel = ChannelListViewModel()
+        navigationSectionViewModel = NavigationSectionViewModel()
+        chatSectionViewModel = ChatSectionViewModel()
+        detailSectionViewModel = DetailSectionViewModel()
         
         setupServerCreditionsContainer()
 //        removeServerCreditionsContainer()
@@ -54,7 +62,7 @@ final class ApplicationFactory {
     }
 }
 
-//MARK: - App manage methods
+//MARK: - Manage storage
 
 private extension ApplicationFactory {
     
@@ -65,6 +73,7 @@ private extension ApplicationFactory {
             print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
         } else {
             userDefaultsInstance.set(container, forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
+            localStorageManager.getCreds()
         }
     }
     
@@ -91,6 +100,11 @@ protocol ScreenFactoryProtocol: AnyObject {
     func makeLoginScreen() -> LoginView
     func makeRegistrationScreenView() -> RegistrationView
     func makeHomeScreen() -> HomeView
+    
+    func makeChannelListView() -> ChanelListView
+    func makeNavigationSectionView() -> NavigationSectionView
+    func makeChatSectionView() -> ChatSectionView
+    func makeDetailSectionView() -> DetailSectionView
 }
 
 final class ScreenFactory {
@@ -105,6 +119,7 @@ extension ScreenFactory: ScreenFactoryProtocol {
         applicationFactory.rClientViewModel
     }
     
+    // Main
     
     func makeJoinServerScreen() -> JoinServerView {
         JoinServerView(viewModel: applicationFactory.joinServerViewModel)
@@ -118,9 +133,27 @@ extension ScreenFactory: ScreenFactoryProtocol {
         RegistrationView(viewModel: applicationFactory.authorizationViewModel)
     }
 
-
     func makeHomeScreen() -> HomeView {
-        HomeView()
+        HomeView(viewModel: applicationFactory.homeScreenViewModel)
+    }
+    
+    
+    // Sub
+    
+    func makeChannelListView() -> ChanelListView {
+        ChanelListView(viewModel: applicationFactory.channelSectionViewModel)
+    }
+    
+    func makeNavigationSectionView() -> NavigationSectionView {
+        NavigationSectionView(viewModel: applicationFactory.navigationSectionViewModel)
+    }
+    
+    func makeChatSectionView() -> ChatSectionView {
+        ChatSectionView(viewModel: applicationFactory.chatSectionViewModel)
+    }
+    
+    func makeDetailSectionView() -> DetailSectionView {
+        DetailSectionView(viewModel: applicationFactory.detailSectionViewModel)
     }
 }
 

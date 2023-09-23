@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
+        
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
@@ -91,8 +89,8 @@ struct LoginView: View {
                         .buttonStyle(.plain)
                         .padding(.top, 30)
                         
-                        Button {
-                            dismiss()
+                        NavigationLink {
+                            screenFactory.makeJoinServerScreen()
                         } label: {
                             Text("Want to change server?")
                                 .underline()
