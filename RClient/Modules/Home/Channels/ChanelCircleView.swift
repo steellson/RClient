@@ -15,7 +15,7 @@ struct ChanelCircleView: View {
     var body: some View {
         image
             .resizable()
-            .scaledToFill()
+            .scaledToFit()
             .frame(maxWidth: 60, maxHeight: 60)
             .clipShape(Circle())
             .overlay {

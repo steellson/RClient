@@ -57,6 +57,7 @@ struct JoinServerView: View {
                 }
                 .padding(.horizontal, 30)
             }
+            .padding()
             .frame(maxHeight: 600)
         }
     }

@@ -15,12 +15,15 @@ struct ChanelListView: View {
     var body: some View {
         VStack {
             LazyVStack {
-                ForEach(viewModel.channels) { channel in
-                    ChanelCircleView(
-                        image: channel.image ?? KFImage(
-                            URL(string: "https://open.rocket.chat")
+                ScrollView {
+                    ForEach(viewModel.channels) { channel in
+                        ChanelCircleView(
+                            image: channel.image ?? KFImage(
+                                URL(string: "https://open.rocket.chat")
+                            )
                         )
-                    )
+                        .shadow(color: .black, radius: 6, x: -5, y: 6)
+                    }
                 }
             }
             

@@ -19,79 +19,82 @@ struct RegistrationView: View {
     
     var body: some View {
         
-        VStack(alignment: .center) {
-            Image("rocketChatLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300, height: 60)
-                .padding(.vertical, 18)
-            
-                Text(R.Strings.registrationTitleLabelText.rawValue)
-                    .font(.title3)
-                    .fontWeight(.regular)
-                    .padding(.vertical, 8)
-            
-            VStack(spacing: 18) {
-                TextField(
-                    R.Strings.registrationScreenUsernameFieldPlaceholder.rawValue,
-                    text: $viewModel.usernameText
-                )
-                .modifier(TextFieldModifier(strokeColor: strokeColor))
+        NavigationStack {
+            VStack(alignment: .center) {
+                Image("rocketChatLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 60)
+                    .padding(.vertical, 18)
                 
-                TextField(
-                    R.Strings.registrationScreenFullNameFieldPlaceholder.rawValue,
-                    text: $viewModel.fullNameText
-                )
-                .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    Text(R.Strings.registrationTitleLabelText.rawValue)
+                        .font(.title3)
+                        .fontWeight(.regular)
+                        .padding(.vertical, 8)
                 
-                TextField(
-                    R.Strings.registrationScreenEmailFieldPlaceholder.rawValue,
-                    text: $viewModel.registrationEmailText
-                )
-                .modifier(TextFieldModifier(strokeColor: strokeColor))
-                
-                SecureField(
-                    R.Strings.registrationScreenPasswordFieldPlaceholder.rawValue,
-                    text: $viewModel.registrationPasswordText
-                )
-                .modifier(TextFieldModifier(strokeColor: strokeColor))
-                
-                SecureField(
-                    R.Strings.registrationScreenReplyFieldPlaceholder.rawValue,
-                    text: $viewModel.replyPasswordText
-                )
-                .modifier(TextFieldModifier(strokeColor: strokeColor))
-                
-                Button("Sign Up") {
-                    viewModel.signUp()
-                    viewModel.isRegistrationAlertShowing.toggle()
-                }
-                .modifier(RCButtonModifier(strokeColor: strokeColor))
-                .disabled(!viewModel.isRegistrationFieldsValid)
-                .alert("Registration completed!",
-                       isPresented: $viewModel.isRegistrationAlertShowing) {
-                    Button("Go") {
-                        dismiss()
+                VStack(spacing: 18) {
+                    TextField(
+                        R.Strings.registrationScreenUsernameFieldPlaceholder.rawValue,
+                        text: $viewModel.usernameText
+                    )
+                    .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    
+                    TextField(
+                        R.Strings.registrationScreenFullNameFieldPlaceholder.rawValue,
+                        text: $viewModel.fullNameText
+                    )
+                    .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    
+                    TextField(
+                        R.Strings.registrationScreenEmailFieldPlaceholder.rawValue,
+                        text: $viewModel.registrationEmailText
+                    )
+                    .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    
+                    SecureField(
+                        R.Strings.registrationScreenPasswordFieldPlaceholder.rawValue,
+                        text: $viewModel.registrationPasswordText
+                    )
+                    .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    
+                    SecureField(
+                        R.Strings.registrationScreenReplyFieldPlaceholder.rawValue,
+                        text: $viewModel.replyPasswordText
+                    )
+                    .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    
+                    Button("Sign Up") {
+                        viewModel.signUp()
+                        viewModel.isRegistrationAlertShowing.toggle()
                     }
-                } message: {
-                    Text("Now you can enter from login page with your creds!")
+                    .modifier(RCButtonModifier(strokeColor: strokeColor))
+                    .disabled(!viewModel.isRegistrationFieldsValid)
+                    .alert("Registration completed!",
+                           isPresented: $viewModel.isRegistrationAlertShowing) {
+                        Button("Go") {
+                            dismiss()
+                        }
+                    } message: {
+                        Text("Now you can enter from login page with your creds!")
+                    }
+                    .padding(.vertical)
                 }
-                .padding(.vertical)
+                .padding(.bottom)
+                
+                Button {
+                    dismiss()
+                } label: {
+                    Text("Go back!")
+                        .underline()
+                        .font(.system(size: 12))
+                        .fontWeight(.light)
+                }
+                .buttonStyle(.plain)
+                .padding(.top)
             }
-            .padding(.bottom)
-            
-            Button {
-                dismiss()
-            } label: {
-                Text("Go back!")
-                    .underline()
-                    .font(.system(size: 12))
-                    .fontWeight(.light)
-            }
-            .buttonStyle(.plain)
-            .padding(.top)
+            .padding(30)
         }
-        .padding(30)
+        
     }
 }
 
