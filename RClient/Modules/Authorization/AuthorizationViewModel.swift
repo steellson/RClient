@@ -28,14 +28,14 @@ final class AuthorizationViewModel: ObservableObject {
     
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     private let validationService: ValidationService
-    private let localStorageManager: LocalStorageManager
+    private let localStorageManager: LocalStorageService
     
     private var anyCancellables: Set<AnyCancellable> = []
     
     init(
         validationService: ValidationService,
         moyaProvider: MoyaProvider<RocketChatAPI>,
-        localStorageManager: LocalStorageManager
+        localStorageManager: LocalStorageService
     ) {
         self.validationService = validationService
         self.moyaProvider = moyaProvider

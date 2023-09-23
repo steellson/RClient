@@ -16,7 +16,7 @@ final class JoinServerViewModel: ObservableObject {
     @Published var isValidUrl: Bool = false
     @Published var alertIsPresented: Bool = false
         
-    private let localStorageManager: LocalStorageManager
+    private let localStorageManager: LocalStorageService
     private let validationService: ValidationService
 
     private let moyaService: MoyaProvider<RocketChatAPI>
@@ -24,7 +24,7 @@ final class JoinServerViewModel: ObservableObject {
     private var anyCancellables: Set<AnyCancellable> = []
 
     init(
-        localStorageManager: LocalStorageManager,
+        localStorageManager: LocalStorageService,
         validationService: ValidationService,
         moyaService: MoyaProvider<RocketChatAPI>
     ) {

@@ -19,13 +19,6 @@ struct HomeView: View {
             screenFactory.makeChannelListView()
                 .background(.background)
                 .frame(minWidth: 100, minHeight: minHeight)
-                .onAppear {
-                    let a = LocalStorageManager(
-                            userDefaultsInstance: UserDefaults.standard,
-                            keyChainService: nil
-                    )
-                    print("CHECK - - - - \(a.serverCreditions)")
-                }
             
             Spacer()
             

@@ -30,7 +30,7 @@
 		3DADF8952A9635B70039F608 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8942A9635B70039F608 /* Moya */; };
 		3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8972A9636A70039F608 /* MoyaService.swift */; };
 		3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */; };
-		3DADF89D2A965B860039F608 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* LocalStorageManager.swift */; };
+		3DADF89D2A965B860039F608 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* LocalStorageService.swift */; };
 		3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89E2A9667EA0039F608 /* UserService.swift */; };
 		3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */; };
 		3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A52A9677F40039F608 /* RClientFactory.swift */; };
@@ -96,7 +96,7 @@
 		3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerViewModel.swift; sourceTree = "<group>"; };
 		3DADF8972A9636A70039F608 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
-		3DADF89C2A965B860039F608 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		3DADF89C2A965B860039F608 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		3DADF89E2A9667EA0039F608 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientAppViewModel.swift; sourceTree = "<group>"; };
 		3DADF8A52A9677F40039F608 /* RClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientFactory.swift; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB39C9B2AB7199700D7468E /* KeyChainService.swift */,
-				3DADF89C2A965B860039F608 /* LocalStorageManager.swift */,
+				3DADF89C2A965B860039F608 /* LocalStorageService.swift */,
 				3DADF8972A9636A70039F608 /* MoyaService.swift */,
 				3DADF89E2A9667EA0039F608 /* UserService.swift */,
 				3DB39C862AB1D51E00D7468E /* ValidationService.swift */,
@@ -503,7 +503,7 @@
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
 				3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */,
-				3DADF89D2A965B860039F608 /* LocalStorageManager.swift in Sources */,
+				3DADF89D2A965B860039F608 /* LocalStorageService.swift in Sources */,
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,

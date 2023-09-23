@@ -19,7 +19,7 @@ extension RocketChatAPI: TargetType {
     public var serverUrl: String {
         (
             UserDefaults.standard
-            .object(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue) as? [ServerCreditions]
+            .object(forKey: LocalStorageService.UDKeys.serverCreditions.rawValue) as? [ServerCreditions]
         )?
             .first?
             .url ?? "https://open.rocket.chat"

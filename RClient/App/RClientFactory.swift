@@ -15,7 +15,7 @@ final class ApplicationFactory {
     
     fileprivate let apiProvider: MoyaProvider<RocketChatAPI>
     fileprivate let keyChainService: KeyChainService
-    fileprivate let localStorageManager: LocalStorageManager
+    fileprivate let localStorageManager: LocalStorageService
     fileprivate let userService: UserService
     fileprivate let validationService: ValidationService
     fileprivate let userDefaultsInstance: UserDefaults = UserDefaults.standard
@@ -32,7 +32,7 @@ final class ApplicationFactory {
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
         keyChainService = KeyChainService()
-        localStorageManager = LocalStorageManager(
+        localStorageManager = LocalStorageService(
             userDefaultsInstance: userDefaultsInstance,
             keyChainService: keyChainService
         )
@@ -69,16 +69,15 @@ private extension ApplicationFactory {
     func setupServerCreditionsContainer() {
         let container = [ServerCreditions]()
         
-        if userDefaultsInstance.object(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue) != nil {
+        if userDefaultsInstance.object(forKey: LocalStorageService.UDKeys.serverCreditions.rawValue) != nil {
             print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
         } else {
-            userDefaultsInstance.set(container, forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
-            localStorageManager.getCreds()
+            userDefaultsInstance.set(container, forKey: LocalStorageService.UDKeys.serverCreditions.rawValue)
         }
     }
     
     func removeServerCreditionsContainer() {
-        userDefaultsInstance.removeObject(forKey: LocalStorageManager.UDKeys.serverCreditions.rawValue)
+        userDefaultsInstance.removeObject(forKey: LocalStorageService.UDKeys.serverCreditions.rawValue)
     }
     
     func removeKeyChainRecord(forServer url: String) {

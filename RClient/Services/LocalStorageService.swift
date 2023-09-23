@@ -1,29 +1,22 @@
 //
-//  LocalStorageManager.swift
+//  LocalStorageService.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 23.08.2023.
 //
 
 import Foundation
-import Combine
 
-final class LocalStorageManager {
+final class LocalStorageService {
     
     public enum UDKeys: String {
         case serverCreditions
 //        case userInfo
     }
     
-    @Published private(set) var serverCreditions: [ServerCreditions] = []
-    @Published private(set) var isCredsEmpty: Bool = true
-    
-    @Published private(set) var isCurrentUserAuthorized: Bool = false
-    
     private let userDefaultsInstance: UserDefaults
     private var keyChainService: KeyChainService?
     
-    private var anyCancellables = Set<AnyCancellable>()
     
     init(
         userDefaultsInstance: UserDefaults,
@@ -31,9 +24,7 @@ final class LocalStorageManager {
     ) {
         self.userDefaultsInstance = userDefaultsInstance
         self.keyChainService = keyChainService
-        
-        checkForCreds()
-        
+                
         #warning("debug")
         print("*** ALL CREDS:\n\(getAllServerCreds().compactMap { $0 }) ***\n")
     }
@@ -42,7 +33,7 @@ final class LocalStorageManager {
 
 //MARK: - Server creds access
 
-extension LocalStorageManager {
+extension LocalStorageService {
     
     func getAllServerCreds() -> [ServerCreditions] {
         if let credsData = userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue) as? Data {
@@ -78,9 +69,13 @@ extension LocalStorageManager {
 
 //MARK: - KeyChain access
 
-extension LocalStorageManager {
+extension LocalStorageService {
     
-    func getAccessToken(for serverUrl: String) -> String? {
+    func getAccessToken(for serverUrl: String?) -> String? {
+        guard let serverUrl = serverUrl else {
+            print("ERROR: URL doesn't exits"); return nil
+        }
+        
         do {
             guard let token = try keyChainService?.getCreditions(forServer: serverUrl) else {
                 print("ERROR: Cant find a server for current url"); return "Internal error!"
@@ -104,26 +99,5 @@ extension LocalStorageManager {
         } catch let error {
             print(error.localizedDescription)
         }
-    }
-}
-
-//MARK: - Subscriptions Extension
-
-extension LocalStorageManager {
-    
-    private func checkForCreds() {
-        userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue)
-            .publisher
-            .map { ($0 as? [ServerCreditions])?.isEmpty ?? false }
-            .assign(to: \.isCredsEmpty, on: self)
-            .store(in: &anyCancellables)
-    }
-    
-    func getCreds() {
-        userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue)
-            .publisher
-            .map { ($0 as? [ServerCreditions]) ?? [ServerCreditions]() }
-            .assign(to: \.serverCreditions, on: self)
-            .store(in: &anyCancellables)
     }
 }

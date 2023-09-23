@@ -6,40 +6,28 @@
 //
 
 import Foundation
-import Combine
 
 final class UserService {
+
+    var isUserOnboarded: Bool {
+        !localStorageManager.getAllServerCreds().isEmpty
+    }
     
-    @Published var isUserOnboarded: Bool = false
-    @Published var isUserAuthorized: Bool = false
+    var isUserAuthorized: Bool {
+        (localStorageManager.getAccessToken(for: serverCreditions.first?.url) != nil)
+    }
         
-    private let localStorageManager: LocalStorageManager
+    private var serverCreditions: [ServerCreditions] {
+        localStorageManager.getAllServerCreds()
+    }
     
-    private var cancellables = Set<AnyCancellable>()
+    private let localStorageManager: LocalStorageService
+    
     
     init(
-        localStorageManager: LocalStorageManager
+        localStorageManager: LocalStorageService
     ) {
         self.localStorageManager = localStorageManager
 
-        localStorageManager.$isCredsEmpty
-            .removeDuplicates()
-            .map { !$0 }
-            .assign(to: \.isUserOnboarded, on: self)
-            .store(in: &cancellables)
-        
-
-        guard let lastCreditions = localStorageManager.getAllServerCreds().first else {
-            print("ERROR: Current url is not found"); return
-        }
-        
-        localStorageManager.getAccessToken(for: lastCreditions.url)
-            .publisher
-            .map {
-                print("****************** \($0)")
-                return $0.count != 0
-            }
-            .assign(to: \.isUserAuthorized, on: self)
-            .store(in: &cancellables)
     }
 }
