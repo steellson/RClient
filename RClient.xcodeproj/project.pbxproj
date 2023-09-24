@@ -46,13 +46,13 @@
 		3DB39C982AB7104800D7468E /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C972AB7104800D7468E /* Forms.swift */; };
 		3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C992AB710BF00D7468E /* AuthServices.swift */; };
 		3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C9B2AB7199700D7468E /* KeyChainService.swift */; };
-		3DE462D42ABF1D1300E78FC1 /* ServersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D32ABF1D1300E78FC1 /* ServersListViewModel.swift */; };
 		3DE462D62ABF1D9000E78FC1 /* NavigationSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */; };
 		3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */; };
 		3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */; };
 		3DE462DC2ABF281E00E78FC1 /* ServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */; };
 		3DE462DF2ABF289400E78FC1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DE462DE2ABF289400E78FC1 /* Kingfisher */; };
 		3DE462E12ABF7F1100E78FC1 /* ChannelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */; };
+		3DE462E32AC0902500E78FC1 /* ServersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,12 +116,12 @@
 		3DB39C972AB7104800D7468E /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
 		3DB39C992AB710BF00D7468E /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		3DB39C9B2AB7199700D7468E /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
-		3DE462D32ABF1D1300E78FC1 /* ServersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServersListViewModel.swift; path = ../../../../../../../../.Trash/RClient/RClient/Modules/Home/Channels/ServersListViewModel.swift; sourceTree = "<group>"; };
 		3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerItem.swift; sourceTree = "<group>"; };
 		3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelItem.swift; sourceTree = "<group>"; };
+		3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +272,7 @@
 			children = (
 				3DADF8752A923DA70039F608 /* ServersListView.swift */,
 				3DADF8732A923B510039F608 /* ServerIconView.swift */,
-				3DE462D32ABF1D1300E78FC1 /* ServersListViewModel.swift */,
+				3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */,
 			);
 			path = Servers;
 			sourceTree = "<group>";
@@ -519,6 +519,7 @@
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
 				3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */,
 				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,
+				3DE462E32AC0902500E78FC1 /* ServersListViewModel.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
 				3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */,
 				3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */,
@@ -534,7 +535,6 @@
 				3DE462DC2ABF281E00E78FC1 /* ServerItem.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ServersListView.swift in Sources */,
 				3DE462D62ABF1D9000E78FC1 /* NavigationSectionViewModel.swift in Sources */,
-				3DE462D42ABF1D1300E78FC1 /* ServersListViewModel.swift in Sources */,
 				3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */,
 				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
 				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,

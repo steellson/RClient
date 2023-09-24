@@ -11,5 +11,5 @@ import Kingfisher
 struct ServerItem: Identifiable {
     let id: String = UUID().uuidString
     let name: String
-    let image: KFImage?
+    let image: KFImage
 }

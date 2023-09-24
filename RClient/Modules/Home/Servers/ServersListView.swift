@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ServersListView: View {
     
@@ -17,12 +16,13 @@ struct ServersListView: View {
             LazyVStack {
                 ScrollView {
                     ForEach(viewModel.servers) { server in
-                        ServerIconView(
-                            image: server.image ?? KFImage(
-                                URL(string: "https://open.rocket.chat")
+                        ServerIconView(image: server.image)
+                            .shadow(
+                                color: .black,
+                                radius: 6,
+                                x: -5,
+                                y: 6
                             )
-                        )
-                        .shadow(color: .black, radius: 6, x: -5, y: 6)
                     }
                 }
             }
