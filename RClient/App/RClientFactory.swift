@@ -36,10 +36,16 @@ final class ApplicationFactory {
             userDefaultsInstance: userDefaultsInstance,
             keyChainService: keyChainService
         )
-        userService = UserService(localStorageService: localStorageService)
+        userService = UserService(
+            moyaProvider: apiProvider,
+            localStorageService: localStorageService
+        )
         validationService = ValidationService()
         
-        rClientViewModel = RClientAppViewModel(userService: userService)
+        rClientViewModel = RClientAppViewModel(
+            userService: userService,
+            localStorageService: localStorageService
+        )
         authorizationViewModel =  AuthorizationViewModel(
             validationService: validationService,
             moyaProvider: apiProvider,
@@ -54,13 +60,25 @@ final class ApplicationFactory {
         serversSectionViewModel = ServersListViewModel(
             localStorageService: localStorageService
         )
-        navigationSectionViewModel = NavigationSectionViewModel()
+        navigationSectionViewModel = NavigationSectionViewModel(
+            localStorageService: localStorageService
+        )
         chatSectionViewModel = ChatSectionViewModel()
         detailSectionViewModel = DetailSectionViewModel()
         
+        
+        // Config
         setupServerCreditionsContainer()
-//        removeServerCreditionsContainer()
-//        removeKeyChainRecord(forServer: "https://open.rocket.chat")
+        setupUserInfoContainer()
+        
+        // Clear stored data
+//        removeStoredContainers()
+//        removeKeyChainRecord(
+//            forServer: localStorageService
+//                            .getAllServerCreds()
+//                            .first?
+//                            .url ?? "https://open.rocket.chat"
+//        )
     }
 }
 
@@ -78,8 +96,19 @@ private extension ApplicationFactory {
         }
     }
     
-    func removeServerCreditionsContainer() {
+    func setupUserInfoContainer() {
+        let container = [User]()
+        
+        if userDefaultsInstance.object(forKey: LocalStorageService.UDKeys.userInfo.rawValue) != nil {
+            print(R.SystemDebugError.userInfoContainerExists.rawValue)
+        } else {
+            userDefaultsInstance.set(container, forKey: LocalStorageService.UDKeys.userInfo.rawValue)
+        }
+    }
+    
+    func removeStoredContainers() {
         userDefaultsInstance.removeObject(forKey: LocalStorageService.UDKeys.serverCreditions.rawValue)
+        userDefaultsInstance.removeObject(forKey: LocalStorageService.UDKeys.userInfo.rawValue)
     }
     
     func removeKeyChainRecord(forServer url: String) {

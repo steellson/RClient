@@ -21,6 +21,8 @@ struct ChatSectionView: View {
             LazyVStack {
                 
             }
+            
+            Spacer()
         }
     }
 }

@@ -13,13 +13,3 @@ struct ServerCreditions: Codable, Stored {
     var nameOfServer: String?
 }
 
-
-struct DataClass: Codable {
-    let userID, authToken: String
-    let me: User
-
-    enum CodingKeys: String, CodingKey {
-        case userID = "userId"
-        case authToken, me
-    }
-}

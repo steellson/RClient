@@ -14,14 +14,14 @@ struct RClientApp: App {
             
     var body: some Scene {
         WindowGroup {
-            if viewModel.isUserOnboarded {
-                if viewModel.isUserAuthorized {
-                    screenFactory.makeHomeScreen()
+            if !viewModel.isUserAuthorized {
+                if !viewModel.isUserOnboarded {
+                    screenFactory.makeJoinServerScreen()
                 } else {
                     screenFactory.makeLoginScreen()
                 }
             } else {
-                screenFactory.makeJoinServerScreen()
+                screenFactory.makeHomeScreen()
             }
         }
     }

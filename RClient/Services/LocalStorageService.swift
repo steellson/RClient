@@ -11,7 +11,7 @@ final class LocalStorageService {
     
     public enum UDKeys: String {
         case serverCreditions
-//        case userInfo
+        case userInfo
     }
     
     private let userDefaultsInstance: UserDefaults
@@ -25,13 +25,14 @@ final class LocalStorageService {
         self.userDefaultsInstance = userDefaultsInstance
         self.keyChainService = keyChainService
                 
-        #warning("debug")
-        print("*** ALL CREDS:\n\(getAllServerCreds().compactMap { $0 }) ***\n")
+        #warning("Stored items debug print")
+        print("*** ALL CREDS:\(getAllServerCreds().compactMap { $0 }) ***")
+        print("*** USER INFO:\(getUserInfo().compactMap { $0 }) ***")
     }
     
 }
 
-//MARK: - Server creds access
+//MARK: - UserDefaults access
 
 extension LocalStorageService {
     
@@ -46,15 +47,25 @@ extension LocalStorageService {
         }
     }
     
+    func getUserInfo() -> [User] {
+        if let userInfoData = userDefaultsInstance.object(forKey: UDKeys.userInfo.rawValue) as? Data {
+            guard let userInfo = try? JSONDecoder().decode([User].self, from: userInfoData) else {
+                print("DEBUG: Cant get user info from data"); return []
+            }
+            return userInfo
+        } else {
+            return []
+        }
+    }
+    
     func save(serverCreditions: ServerCreditions) {
         var creds = getAllServerCreds()
+        
         if creds.isEmpty {
-
             creds.append(serverCreditions)
             let encodedCreds = try? JSONEncoder().encode(creds)
             userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
         } else {
-
             creds.forEach { cred in
                 if cred.url != serverCreditions.url {
                     let encodedCreds = try? JSONEncoder().encode(creds)
@@ -65,21 +76,46 @@ extension LocalStorageService {
             }
         }
     }
+    
+    func save(userInfo: User) {
+        var info = getUserInfo()
+        
+        if info.isEmpty {
+            info.append(userInfo)
+            let encodedUserInfo = try? JSONEncoder().encode(info)
+            userDefaultsInstance.set(encodedUserInfo, forKey: UDKeys.userInfo.rawValue)
+            
+            print(getUserInfo())
+        } else {
+
+            info.forEach { user in
+                if user.email != userInfo.email {
+                    let encodedUserInfo = try? JSONEncoder().encode(info)
+                    userDefaultsInstance.set(encodedUserInfo, forKey: UDKeys.userInfo.rawValue)
+                    
+                    print(getUserInfo())
+                } else {
+                    print("ERROR: Email already exists!")
+                }
+            }
+        }
+    }
 }
 
 //MARK: - KeyChain access
 
 extension LocalStorageService {
     
-    func getAccessToken(for serverUrl: String?) -> String? {
+    func getAccessToken(forServer serverUrl: String?) -> String? {
         guard let serverUrl = serverUrl else {
             print("ERROR: URL doesn't exits"); return nil
         }
         
         do {
             guard let token = try keyChainService?.getCreditions(forServer: serverUrl) else {
-                print("ERROR: Cant find a server for current url"); return "Internal error!"
+                print("ERROR: Cant find a server for current url!"); return "Internal error!"
             }
+            
             let decodedToken = String(data: token, encoding: .utf8)
             print("*** KeyChain creds: \(String(describing: decodedToken)) ***\n")
             return decodedToken ?? nil
@@ -94,7 +130,10 @@ extension LocalStorageService {
             print("ERROR: Cant encode token to data"); return
         }
         do {
-            try keyChainService?.saveCreditions(serverUrl: serverUrl, token: tokenData)
+            try keyChainService?.saveCreditions(
+                serverUrl: serverUrl,
+                token: tokenData
+            )
             print("*** TOKEN SAVED! *** \n")
         } catch let error {
             print(error.localizedDescription)

@@ -51,7 +51,7 @@ final class AuthorizationViewModel: ObservableObject {
             print("ERROR: Current url is not found"); return
         }
         login(
-            with: UserLoginForm(user: loginEmailText, password: loginPasswordText),
+            with: UserLoginForm(user: loginEmailText,password: loginPasswordText),
             serverUrl: lastCreditions.url
         )
     }
@@ -69,11 +69,30 @@ final class AuthorizationViewModel: ObservableObject {
         moyaProvider.request(.login(user: user), completion: { [unowned self] result in
             switch result {
             case .success(let response):
-                
                 if response.statusCode == 200 {
+                    
                     do {
                         let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: response.data)
                         
+                        // Save user info
+                        self.localStorageService.save(userInfo: User(
+                            id: loginResponse.data.userID,
+                            services: loginResponse.data.me.services,
+                            emails: loginResponse.data.me.emails,
+                            roles: loginResponse.data.me.roles,
+                            status: loginResponse.status,
+                            active: loginResponse.data.me.active,
+                            updatedAt: loginResponse.data.me.updatedAt,
+                            name: loginResponse.data.me.name,
+                            username: loginResponse.data.me.username,
+                            statusConnection: loginResponse.data.me.statusConnection,
+                            utcOffset: loginResponse.data.me.utcOffset,
+                            email: loginResponse.data.me.email,
+                            settings: loginResponse.data.me.settings,
+                            avatarURL: loginResponse.data.me.avatarURL
+                        ))
+                        
+                        // Save security token
                         DispatchQueue.global(qos: .background).async {
                             self.localStorageService.saveAccessToken(
                                 forServer: serverUrl,

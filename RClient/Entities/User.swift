@@ -30,18 +30,16 @@ struct User: Codable, Stored {
 }
 
 
-struct ResponseUser: Codable {
-    let id, type, status: String
-    let active: Bool
-    let name, username: String
-    let rooms: [String]
+// MARK: - U
+struct U: Codable {
+    let id, username: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case type, status, active, name, username
-        case rooms = "__rooms"
+        case username
     }
 }
+
 
 struct Profile: Codable {
 }

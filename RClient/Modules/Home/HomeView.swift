@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @ObservedObject var viewModel: HomeViewModel
     
-    private let minHeight: CGFloat = 400
+    private let minHeight: CGFloat = 200
     
     var body: some View {
         HStack(spacing: 0) {
@@ -50,7 +50,7 @@ struct HomeView: View {
             screenFactory.makeDetailSectionView()
                 .frame(
                     minWidth: 100,
-                    maxWidth: .infinity,
+                    maxWidth: 100,
                     minHeight: minHeight,
                     maxHeight: .infinity
                 )

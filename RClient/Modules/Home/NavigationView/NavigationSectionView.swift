@@ -13,8 +13,36 @@ struct NavigationSectionView: View {
     
     
     var body: some View {
-        Text("Navigation bar")
-            .padding(5)
+        VStack(alignment: .leading) {
+            Text("Channels")
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding()
+            
+            Divider()
+            
+            LazyVStack {
+                ScrollView {
+                    ForEach(viewModel.channels) { channel in
+                        HStack {
+                            Image(
+                                systemName: channel.iconName ?? "bubble.left"
+                            )
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 20, height: 20)
+                            
+                            Text(channel.name)
+                                .font(.footnote)
+                                .fontWeight(.regular)
+                                .frame(width: .infinity)
+                        }
+                    }
+                }
+            }
+            
+            Spacer()
+        }
     }
 }
 

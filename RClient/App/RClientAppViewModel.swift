@@ -6,23 +6,25 @@
 //
 
 import Foundation
-import Combine
 
 final class RClientAppViewModel: ObservableObject {
     
     var isUserOnboarded: Bool {
-        userService.isUserOnboarded
+        userService.isClientOnboarded
     }
     
     var isUserAuthorized: Bool {
-        userService.isUserAuthorized
+        !localStorageService.getUserInfo().isEmpty
     }
     
     private let userService: UserService
+    private let localStorageService: LocalStorageService
         
     init(
-        userService: UserService
+        userService: UserService,
+        localStorageService: LocalStorageService
     ) {
         self.userService = userService
+        self.localStorageService = localStorageService
     }
 }
