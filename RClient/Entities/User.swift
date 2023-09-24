@@ -31,8 +31,9 @@ struct User: Codable, Stored {
 
 
 // MARK: - U
+
 struct U: Codable {
-    let id, username: String
+    let id, username: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

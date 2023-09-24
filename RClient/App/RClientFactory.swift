@@ -61,7 +61,9 @@ final class ApplicationFactory {
             localStorageService: localStorageService
         )
         navigationSectionViewModel = NavigationSectionViewModel(
-            localStorageService: localStorageService
+            userService: userService,
+            localStorageService: localStorageService,
+            moyaProvider: apiProvider
         )
         chatSectionViewModel = ChatSectionViewModel()
         detailSectionViewModel = DetailSectionViewModel()

@@ -21,27 +21,29 @@ struct NavigationSectionView: View {
             
             Divider()
             
-            LazyVStack {
-                ScrollView {
+            ScrollView {
+                LazyVStack {
                     ForEach(viewModel.channels) { channel in
                         HStack {
                             Image(
                                 systemName: channel.iconName ?? "bubble.left"
                             )
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 20, height: 20)
-                            
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 20, height: 20)
+
                             Text(channel.name)
-                                .font(.footnote)
+                                .font(.system(size: 18, weight: .regular))
                                 .fontWeight(.regular)
-                                .frame(width: .infinity)
+
+                            Spacer()
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(.horizontal, 10)
+
                     }
                 }
             }
-            
-            Spacer()
         }
     }
 }

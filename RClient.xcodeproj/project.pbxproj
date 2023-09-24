@@ -53,6 +53,9 @@
 		3DE462DF2ABF289400E78FC1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DE462DE2ABF289400E78FC1 /* Kingfisher */; };
 		3DE462E12ABF7F1100E78FC1 /* ChannelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */; };
 		3DE462E32AC0902500E78FC1 /* ServersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */; };
+		3DE462E52AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */; };
+		3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E62AC0B3FC00E78FC1 /* Message.swift */; };
+		3DE462E92AC0B43000E78FC1 /* Other(temp).swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E82AC0B43000E78FC1 /* Other(temp).swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerItem.swift; sourceTree = "<group>"; };
 		3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelItem.swift; sourceTree = "<group>"; };
 		3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersListViewModel.swift; sourceTree = "<group>"; };
+		3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encoded+DecodedHelpers.swift"; sourceTree = "<group>"; };
+		3DE462E62AC0B3FC00E78FC1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3DE462E82AC0B43000E78FC1 /* Other(temp).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other(temp).swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +321,9 @@
 				3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */,
 				3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */,
 				3DB39C932AB70FE500D7468E /* Settings.swift */,
+				3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */,
+				3DE462E62AC0B3FC00E78FC1 /* Message.swift */,
+				3DE462E82AC0B43000E78FC1 /* Other(temp).swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -518,10 +527,12 @@
 				3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
 				3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */,
+				3DE462E92AC0B43000E78FC1 /* Other(temp).swift in Sources */,
 				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,
 				3DE462E32AC0902500E78FC1 /* ServersListViewModel.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
 				3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */,
+				3DE462E52AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift in Sources */,
 				3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */,
 				3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */,
 				3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */,
@@ -542,6 +553,7 @@
 				3DB39C912AB6EEBC00D7468E /* Stored.swift in Sources */,
 				3DADF8742A923B510039F608 /* ServerIconView.swift in Sources */,
 				3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */,
+				3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */,
 				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
 			);

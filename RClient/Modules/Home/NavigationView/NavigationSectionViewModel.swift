@@ -6,34 +6,69 @@
 //
 
 import Foundation
+import Moya
 
 final class NavigationSectionViewModel: ObservableObject {
     
     @Published var channels: [ChannelItem] = []
     
+    private let userService: UserService
     private let localStorageService: LocalStorageService
+    private let moyaProvider: MoyaProvider<RocketChatAPI>
     
     init(
-        localStorageService: LocalStorageService
+        userService: UserService,
+        localStorageService: LocalStorageService,
+        moyaProvider: MoyaProvider<RocketChatAPI>
     ) {
+        self.moyaProvider = moyaProvider
         self.localStorageService = localStorageService
+        self.userService = userService
         
         fetchChannels()
     }
     
     private func fetchChannels() {
-        let userInfo = localStorageService.getUserInfo()
-        guard !userInfo.isEmpty else {
-            print("NavigationSection: Fetched creds is empty!"); return
+        guard let currentUserId = localStorageService.getUserInfo().map({ $0 }).first?.id else {
+            print("CurrentUserID cannot be found"); return
         }
-        userInfo.forEach { user in
-            channels.append(
-                ChannelItem(
-                    id: "",
-                    name: "",
-                    iconName: ""
-                )
-            )
+        guard let currentServerURL = self.localStorageService.getAllServerCreds().first?.url else {
+            print("CurrentServerURL is not found"); return
         }
+        guard let token = self.localStorageService.getAccessToken(forServer: currentServerURL) else {
+            print("Token not found!"); return
+        }
+        
+        moyaProvider.request(.getChannelList(token: token, userID: currentUserId), completion: { [weak self] result in
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    do {
+                        let channelList = try JSONDecoder().decode(ChannelsResponse.self, from: response.data)
+                        guard !channelList.channels.isEmpty else {
+                            print("NavigationSection: Fetched channels is empty!"); return
+                        }
+                        channelList.channels.forEach { channel in
+                            self?.channels.append(
+                                ChannelItem(
+                                    id: channel.id,
+                                    name: channel.name,
+                                    iconName: "eyes"
+                                )
+                            )
+                        }
+                        
+                    } catch let error {
+                        print("Cant decode channels: \(error)")
+                    }
+                    
+                } else {
+                    print("Fetching user status code: \(response.statusCode)")
+                }
+                
+            case .failure(let error):
+                print("Fetching user error: \(error.localizedDescription)")
+            }
+        })
     }
 }

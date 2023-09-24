@@ -12,10 +12,11 @@ enum RocketChatAPI{
     
     // Auth
     case login(user: UserLoginForm)
-    case me(token: String)
+    case loginWithToken(resume: String)
     case signUp(form: UserRegistrationForm)
     
     // Channels
+    case getChannelList(token: String, userID: String)
 }
 
 extension RocketChatAPI: TargetType {
@@ -33,34 +34,44 @@ extension RocketChatAPI: TargetType {
     
     public var path: String {
         switch self {
-        case .login: return "/login"
-        case .me: return "/me"
+        case .login, .loginWithToken: return "/login"
         case .signUp: return "/users.register"
+            
+        case .getChannelList: return "/channels.list"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login, .signUp: return .post
-        case .me: return .get
+        case .login, .loginWithToken, .signUp: return .post
+        case .getChannelList: return .get
         }
     }
     
     public var task: Moya.Task {
         switch self {
         case .login(let user): return .requestJSONEncodable(user)
-        case .me(let token): return .requestJSONEncodable(Me(resume: token))
+        case .loginWithToken(let token): return .requestJSONEncodable(token)
         case .signUp(let form): return .requestJSONEncodable(form)
+            
+        case .getChannelList: return .requestPlain
         }
     }
     
     public var headers: [String : String]? {
         switch self {
-        case .login, .me: return [
+        case .login, .loginWithToken: return [
             "Content-Type": "application/json"
             
         ]
+
         case .signUp: return [
+            "Content-Type": "application/json"
+        ]
+            
+        case .getChannelList(let token, let userID): return [
+            "X-Auth-Token": "\(token)",
+            "X-User-Id": "\(userID)",
             "Content-Type": "application/json"
         ]
         }

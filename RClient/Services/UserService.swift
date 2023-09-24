@@ -40,7 +40,7 @@ final class UserService {
             print("ERROR: Cant find a previous token"); return
         }
         
-        moyaProvider.request(.me(token: prevToken)) { [unowned self] result in
+        moyaProvider.request(.loginWithToken(resume: prevToken)) { [unowned self] result in
             switch result {
             case .success(let response):
                 do {
