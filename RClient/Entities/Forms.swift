@@ -12,7 +12,7 @@ struct UserLoginForm: Codable {
     let password: String
 }
 
-struct UserLoginWithTokenForm: Codable {
+struct Me: Codable {
     let resume: String
 }
 

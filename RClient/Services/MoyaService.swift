@@ -12,7 +12,7 @@ enum RocketChatAPI{
     
     // Auth
     case login(user: UserLoginForm)
-    case loginWithToken(token: String)
+    case me(token: String)
     case signUp(form: UserRegistrationForm)
     
     // Channels
@@ -33,28 +33,30 @@ extension RocketChatAPI: TargetType {
     
     public var path: String {
         switch self {
-        case .login, .loginWithToken: return "/login"
+        case .login: return "/login"
+        case .me: return "/me"
         case .signUp: return "/users.register"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login, .loginWithToken, .signUp: return .post
+        case .login, .signUp: return .post
+        case .me: return .get
         }
     }
     
     public var task: Moya.Task {
         switch self {
         case .login(let user): return .requestJSONEncodable(user)
-        case .loginWithToken(let token): return .requestJSONEncodable(UserLoginWithTokenForm(resume: token))
+        case .me(let token): return .requestJSONEncodable(Me(resume: token))
         case .signUp(let form): return .requestJSONEncodable(form)
         }
     }
     
     public var headers: [String : String]? {
         switch self {
-        case .login, .loginWithToken: return [
+        case .login, .me: return [
             "Content-Type": "application/json"
             
         ]

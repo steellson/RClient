@@ -40,7 +40,7 @@ final class UserService {
             print("ERROR: Cant find a previous token"); return
         }
         
-        moyaProvider.request(.loginWithToken(token: prevToken)) { [unowned self] result in
+        moyaProvider.request(.me(token: prevToken)) { [unowned self] result in
             switch result {
             case .success(let response):
                 do {
@@ -82,8 +82,4 @@ final class UserService {
     private func onboardingCheck() {
         self.isClientOnboarded = !localStorageService.getAllServerCreds().isEmpty
     }
-    
-//    private func userAuthorizationCheck() {
-//        self.isUserAuthorized = !localStorageService.getUserInfo().isEmpty
-//    }
 }
