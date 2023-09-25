@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-enum RocketChatAPI{
+enum RocketChatAPI {
     
     // Auth
     case login(user: UserLoginForm)
@@ -16,7 +16,8 @@ enum RocketChatAPI{
     case signUp(form: UserRegistrationForm)
     
     // Channels
-    case getChannelList(token: String, userID: String)
+    case getJoinedChannelsList(token: String, userID: String)
+    case getChannelMessages(token: String, userID: String, roomId: String)
 }
 
 extension RocketChatAPI: TargetType {
@@ -37,14 +38,15 @@ extension RocketChatAPI: TargetType {
         case .login, .loginWithToken: return "/login"
         case .signUp: return "/users.register"
             
-        case .getChannelList: return "/channels.list"
+        case .getJoinedChannelsList: return "/channels.list.joined"
+        case .getChannelMessages: return "/channels.messages"
         }
     }
     
     public var method: Moya.Method {
         switch self {
         case .login, .loginWithToken, .signUp: return .post
-        case .getChannelList: return .get
+        case .getJoinedChannelsList, .getChannelMessages: return .get
         }
     }
     
@@ -54,7 +56,8 @@ extension RocketChatAPI: TargetType {
         case .loginWithToken(let token): return .requestJSONEncodable(token)
         case .signUp(let form): return .requestJSONEncodable(form)
             
-        case .getChannelList: return .requestPlain
+        case .getJoinedChannelsList: return .requestPlain
+        case .getChannelMessages(let creds): return .requestParameters(parameters: ["roomId": creds.roomId], encoding: URLEncoding.default)
         }
     }
     
@@ -69,7 +72,13 @@ extension RocketChatAPI: TargetType {
             "Content-Type": "application/json"
         ]
             
-        case .getChannelList(let token, let userID): return [
+        case .getJoinedChannelsList(let token, let userID): return [
+            "X-Auth-Token": "\(token)",
+            "X-User-Id": "\(userID)",
+            "Content-Type": "application/json"
+        ]
+            
+        case .getChannelMessages(let token, let userID, _): return [
             "X-Auth-Token": "\(token)",
             "X-User-Id": "\(userID)",
             "Content-Type": "application/json"

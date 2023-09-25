@@ -19,7 +19,9 @@ struct ChatSectionView: View {
                 .padding(10)
             
             LazyVStack {
-                
+                ForEach(viewModel.messages) { message in
+                    Text(message.msg)
+                }
             }
             
             Spacer()

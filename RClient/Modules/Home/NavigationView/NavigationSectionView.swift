@@ -11,38 +11,24 @@ struct NavigationSectionView: View {
     
     @ObservedObject var viewModel: NavigationSectionViewModel
     
-    
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             Text("Channels")
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding()
             
             Divider()
+                .frame(height: 5)
             
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.channels) { channel in
-                        HStack {
-                            Image(
-                                systemName: channel.iconName ?? "bubble.left"
-                            )
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 20, height: 20)
-
-                            Text(channel.name)
-                                .font(.system(size: 18, weight: .regular))
-                                .fontWeight(.regular)
-
-                            Spacer()
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding(.horizontal, 10)
-
+            List(viewModel.channels) { channel in
+                NavigationRowView(channel: channel)
+                    .onTapGesture {
+                        viewModel.selectedChat = channel
                     }
-                }
+                    .background(.clear)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.horizontal, 10)
             }
         }
     }

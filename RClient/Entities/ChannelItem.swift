@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct ChannelItem: Identifiable {
+struct ChannelItem: Identifiable, Hashable {
     let id: String
     let name: String
-    let iconName: String?
+    var iconName: String?
 }
 
 struct Channel: Codable {
     let id, name: String
     let t: T
     let msgs: Int
-    let u: U
+    let u: U?
     let customFields: CustomFields?
     let ts: String
     let ro: Bool?

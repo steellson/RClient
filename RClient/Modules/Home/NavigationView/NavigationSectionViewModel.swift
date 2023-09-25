@@ -11,11 +11,12 @@ import Moya
 final class NavigationSectionViewModel: ObservableObject {
     
     @Published var channels: [ChannelItem] = []
+    @Published var selectedChat: ChannelItem? 
     
     private let userService: UserService
     private let localStorageService: LocalStorageService
     private let moyaProvider: MoyaProvider<RocketChatAPI>
-    
+        
     init(
         userService: UserService,
         localStorageService: LocalStorageService,
@@ -39,7 +40,7 @@ final class NavigationSectionViewModel: ObservableObject {
             print("Token not found!"); return
         }
         
-        moyaProvider.request(.getChannelList(token: token, userID: currentUserId), completion: { [weak self] result in
+        moyaProvider.request(.getJoinedChannelsList(token: token, userID: currentUserId), completion: { [weak self] result in
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {

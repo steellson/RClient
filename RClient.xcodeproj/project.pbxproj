@@ -56,6 +56,7 @@
 		3DE462E52AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */; };
 		3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E62AC0B3FC00E78FC1 /* Message.swift */; };
 		3DE462E92AC0B43000E78FC1 /* Other(temp).swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E82AC0B43000E78FC1 /* Other(temp).swift */; };
+		3DE462EB2AC0D14C00E78FC1 /* NavigationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462EA2AC0D14C00E78FC1 /* NavigationRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encoded+DecodedHelpers.swift"; sourceTree = "<group>"; };
 		3DE462E62AC0B3FC00E78FC1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3DE462E82AC0B43000E78FC1 /* Other(temp).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other(temp).swift"; sourceTree = "<group>"; };
+		3DE462EA2AC0D14C00E78FC1 /* NavigationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				3DADF8792A92469C0039F608 /* NavigationSectionView.swift */,
+				3DE462EA2AC0D14C00E78FC1 /* NavigationRowView.swift */,
 				3DE462D52ABF1D9000E78FC1 /* NavigationSectionViewModel.swift */,
 			);
 			path = NavigationView;
@@ -526,6 +529,7 @@
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */,
 				3DADF8472A9238BD0039F608 /* HomeView.swift in Sources */,
+				3DE462EB2AC0D14C00E78FC1 /* NavigationRowView.swift in Sources */,
 				3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */,
 				3DE462E92AC0B43000E78FC1 /* Other(temp).swift in Sources */,
 				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,

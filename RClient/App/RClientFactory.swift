@@ -56,7 +56,6 @@ final class ApplicationFactory {
                                                 validationService: validationService,
                                                 moyaService: apiProvider
         )
-        homeScreenViewModel = HomeViewModel()
         serversSectionViewModel = ServersListViewModel(
             localStorageService: localStorageService
         )
@@ -65,8 +64,16 @@ final class ApplicationFactory {
             localStorageService: localStorageService,
             moyaProvider: apiProvider
         )
-        chatSectionViewModel = ChatSectionViewModel()
+        chatSectionViewModel = ChatSectionViewModel(
+            localStorageService: localStorageService,
+            moyaProvider: apiProvider,
+            userService: userService
+        )
         detailSectionViewModel = DetailSectionViewModel()
+        homeScreenViewModel = HomeViewModel(
+            navigationSectionViewModel: navigationSectionViewModel,
+            chatSectionViewModel: chatSectionViewModel
+        )
         
         
         // Config

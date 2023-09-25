@@ -7,6 +7,106 @@
 
 import Foundation
 
+struct Message: Codable, Identifiable {
+    let id: String
+    let t: T?
+    let rid: Rid
+    let ts: String
+    let msg: String
+    let u: U
+    let groupable: Bool?
+    let updatedAt: String
+    let urls: [URLElement]?
+    let mentions: [U]?
+    let channels: [JSONAny]?
+    let md: [Md]?
+    let tmid: String?
+    let tshow: Bool?
+    let replies: [String]?
+    let tcount: Int?
+    let tlm: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case t, rid, ts, msg, u, groupable
+        case updatedAt = "_updatedAt"
+        case urls, mentions, channels, md, tmid, tshow, replies, tcount, tlm
+    }
+}
+
+struct Rid: Codable {
+    
+}
+
+struct UpdatedAt: Codable {
+    let date: Int
+
+    enum CodingKeys: String, CodingKey {
+        case date = "$date"
+    }
+}
+
+struct EditedBy: Codable {
+    let id, username: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case username
+    }
+}
+
+enum MdType: String, Codable {
+    case lineBreak = "LINE_BREAK"
+    case paragraph = "PARAGRAPH"
+}
+
+struct ValueElement: Codable {
+    let type: ValueType
+    let value: ValueUnion
+}
+
+enum ValueUnion: Codable {
+    case string(String)
+    case valueValueClass(ValueValueClass)
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        if let x = try? container.decode(ValueValueClass.self) {
+            self = .valueValueClass(x)
+            return
+        }
+        throw DecodingError.typeMismatch(ValueUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for ValueUnion"))
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .string(let x):
+            try container.encode(x)
+        case .valueValueClass(let x):
+            try container.encode(x)
+        }
+    }
+}
+
+// MARK: - ValueValueClass
+struct ValueValueClass: Codable {
+    let src: Src?
+    let label: [Src]?
+    let type: ValueType?
+    let value: String?
+}
+
+// MARK: - Src
+struct Src: Codable {
+    let type: ValueType
+    let value: String
+}
+
 struct LastMessage: Codable {
     let id: String
     let t: String?

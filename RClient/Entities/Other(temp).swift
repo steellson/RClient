@@ -58,13 +58,11 @@ struct File: Codable {
     }
 }
 
-// MARK: - Md
 struct Md: Codable {
     let type: DescriptionMdType
     let value: [MdValue]?
 }
 
-// MARK: - MdValue
 struct MdValue: Codable {
     let type: ValueType
     let value: ValueUnion?
@@ -72,42 +70,6 @@ struct MdValue: Codable {
     let unicode, shortCode: String?
 }
 
-enum ValueUnion: Codable {
-    case purpleValue(PurpleValue)
-    case srcElementArray([SrcElement])
-    case string(String)
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode([SrcElement].self) {
-            self = .srcElementArray(x)
-            return
-        }
-        if let x = try? container.decode(String.self) {
-            self = .string(x)
-            return
-        }
-        if let x = try? container.decode(PurpleValue.self) {
-            self = .purpleValue(x)
-            return
-        }
-        throw DecodingError.typeMismatch(ValueUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for ValueUnion"))
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .purpleValue(let x):
-            try container.encode(x)
-        case .srcElementArray(let x):
-            try container.encode(x)
-        case .string(let x):
-            try container.encode(x)
-        }
-    }
-}
-
-// MARK: - PurpleValue
 struct PurpleValue: Codable {
     let type: ValueType?
     let value: String?
@@ -179,4 +141,6 @@ enum SysMes: Codable {
 
 enum T: String, Codable {
     case c = "c"
+    case uj = "uj"
+    case ul = "ul"
 }

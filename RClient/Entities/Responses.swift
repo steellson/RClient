@@ -54,3 +54,12 @@ struct ChannelsResponse: Codable {
     let count, offset, total: Int
     let success: Bool
 }
+
+
+//MARK: - Messages
+
+struct MessagesResponse: Codable {
+    let messages: [Message]
+    let count, offset, total: Int
+    let success: Bool
+}
