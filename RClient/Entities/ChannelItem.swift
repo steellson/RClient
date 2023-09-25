@@ -13,37 +13,69 @@ struct ChannelItem: Identifiable, Hashable {
     var iconName: String?
 }
 
+
 struct Channel: Codable {
-    let id, name: String
-    let t: T
-    let msgs: Int
-    let u: U?
-    let customFields: CustomFields?
-    let ts: String
-    let ro: Bool?
-    let updatedAt: String
-    let lm: String?
-    let usersCount: Int
-    let lastMessage: LastMessage?
+    let id: String
     let fname: String?
-    let channelDefault: Bool?
-    let muted: [String]?
+    let customFields: CustomFields?
+    let description: String?
     let broadcast, encrypted: Bool?
-    let sysMes: SysMes?
-    let jitsiTimeout, topic: String?
+    let name, t: String
+    let msgs, usersCount: Int
+    let u: ChannelU?
+    let ts: String
+    let ro, channelDefault: Bool
+    let sysMes: [String]?
+    let updatedAt, lm, announcement: String
+    let muted: [String]?
+    let teamID: String?
+    let teamDefault, reactWhenReadOnly: Bool?
+    let lastMessage: LastMessage
+    let usernames: [JSONAny]?
+    let topic, jitsiTimeout: String?
     let joinCodeRequired: Bool?
-    let avatarETag, avatarOrigin: String?
+    let streamingOptions: StreamingOptions?
+    let announcementDetails: CustomFields?
+    let archived: Bool?
+    let unmuted: [String]?
+    let featured: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case name, t, msgs, u, customFields, ts, ro
-        case updatedAt = "_updatedAt"
-        case lm, usersCount, lastMessage, fname
+        case fname, customFields, description, broadcast, encrypted, name, t, msgs, usersCount, u, ts, ro
         case channelDefault = "default"
-        case muted, broadcast, encrypted, sysMes, jitsiTimeout, topic, joinCodeRequired, avatarETag, avatarOrigin
+        case sysMes
+        case updatedAt = "_updatedAt"
+        case lm, announcement, muted
+        case teamID = "teamId"
+        case teamDefault, reactWhenReadOnly, lastMessage, usernames, topic, jitsiTimeout, joinCodeRequired, streamingOptions, announcementDetails, archived, unmuted, featured
     }
 }
 
 struct CustomFields: Codable {
 }
 
+struct UElement: Codable {
+    let id, name, username: String
+    let type: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name, username, type
+    }
+}
+
+struct StreamingOptions: Codable {
+    let url: String
+    let isAudioOnly: Bool
+    let message, type: String
+}
+
+struct ChannelU: Codable {
+    let id, username: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case username
+    }
+}

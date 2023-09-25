@@ -25,9 +25,8 @@ final class LocalStorageService {
         self.userDefaultsInstance = userDefaultsInstance
         self.keyChainService = keyChainService
                 
-        #warning("Stored items debug print")
         print("*** ALL CREDS:\(getAllServerCreds().compactMap { $0 }) ***")
-        print("*** USER INFO:\(getUserInfo().compactMap { $0 }) ***")
+//        print("*** USER INFO:\(getUserInfo().compactMap { $0 }) ***")
     }
     
 }

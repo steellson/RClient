@@ -12,23 +12,28 @@ struct ChatSectionView: View {
     @ObservedObject var viewModel: ChatSectionViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(spacing: 0) {
             Text("CHAT #")
                 .font(.title2)
                 .fontWeight(.semibold)
-                .padding(10)
+                .padding()
+            
+            Divider()
             
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: 10) {
+                LazyVStack(spacing: 10) {
                     ForEach(viewModel.messages) { message in
                         ChatMessageView(message: message)
-                            .background(.clear)
+                            .frame(maxWidth: 260)
+                            .background()
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
             .background()
-            .frame(alignment: .leading)
+            
         }
+        .padding(10)
     }
 }
 

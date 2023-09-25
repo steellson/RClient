@@ -41,7 +41,6 @@ struct U: Codable {
     }
 }
 
-
 struct Profile: Codable {
 }
 

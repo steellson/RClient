@@ -95,4 +95,11 @@ final class ChatSectionViewModel: ObservableObject {
             }
         }
     }
+    
+    func isMyMessageCheck(message: Message) -> Bool {
+        guard let currentUsername = localStorageService.getUserInfo().map({ $0 }).first?.username else {
+            print("CurrentUsername cannot be found"); return false
+        }
+        return message.u.username != currentUsername
+    }
 }

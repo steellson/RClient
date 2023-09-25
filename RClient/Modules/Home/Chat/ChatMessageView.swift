@@ -11,33 +11,45 @@ struct ChatMessageView: View {
     
     let message: Message
     
+    var isMyMessage: Bool = true
+    
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: isMyMessage
+               ? .leading
+               : .trailing,
+               spacing: 10
+        ) {
             Text("\(message.u.username ?? "unnamed"):")
-                .font(.title2)
+                .font(.title3)
                 .fontDesign(.monospaced)
                 .fontWeight(.bold)
             
             Text(message.msg)
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .fontWeight(.medium)
             
             HStack {
                 Spacer()
-                                
+                
                 Text(timestampToTime(fromString: message.ts))
                     .font(.system(size: 14))
                     .fontWeight(.light)
                     .multilineTextAlignment(.leading)
             }
             .frame(maxWidth: .infinity)
-            .padding()
+            .padding([.bottom, .trailing], 4)
+            
             
         }
-        .padding()
+        .padding(10)
+        .background(Color(.darkGray))
         .cornerRadius(20)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity,
+               alignment: isMyMessage
+               ? .leading
+               : .trailing
+        )
     }
     
     

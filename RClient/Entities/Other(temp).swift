@@ -21,7 +21,7 @@ enum DescriptionMdType: String, Codable {
 }
 
 struct SrcElement: Codable {
-    let type: ValueType
+    let type: String
     let value: String
 }
 
@@ -59,23 +59,22 @@ struct File: Codable {
 }
 
 struct Md: Codable {
-    let type: DescriptionMdType
+    let type: String
     let value: [MdValue]?
 }
 
 struct MdValue: Codable {
-    let type: ValueType
+    let type: String
     let value: ValueUnion?
-    let number: Int?
     let unicode, shortCode: String?
 }
 
 struct PurpleValue: Codable {
-    let type: ValueType?
-    let value: String?
     let src: SrcElement?
-    let label: Label?
+    let label: [SrcElement]?
+    let type, value: String?
 }
+
 
 enum Label: Codable {
     case srcElement(SrcElement)
@@ -105,10 +104,9 @@ enum Label: Codable {
     }
 }
 
-// MARK: - URLElement
 struct URLElement: Codable {
     let url: String
-    let meta: CustomFields?
+    let meta: CustomFields
 }
 
 enum SysMes: Codable {

@@ -72,17 +72,22 @@ struct ValueElement: Codable {
 }
 
 enum ValueUnion: Codable {
+    case purpleValue(PurpleValue)
+    case srcElementArray([SrcElement])
     case string(String)
-    case valueValueClass(ValueValueClass)
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
+        if let x = try? container.decode([SrcElement].self) {
+            self = .srcElementArray(x)
+            return
+        }
         if let x = try? container.decode(String.self) {
             self = .string(x)
             return
         }
-        if let x = try? container.decode(ValueValueClass.self) {
-            self = .valueValueClass(x)
+        if let x = try? container.decode(PurpleValue.self) {
+            self = .purpleValue(x)
             return
         }
         throw DecodingError.typeMismatch(ValueUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for ValueUnion"))
@@ -91,13 +96,16 @@ enum ValueUnion: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .string(let x):
+        case .purpleValue(let x):
             try container.encode(x)
-        case .valueValueClass(let x):
+        case .srcElementArray(let x):
+            try container.encode(x)
+        case .string(let x):
             try container.encode(x)
         }
     }
 }
+
 
 struct ValueValueClass: Codable {
     let src: Src?
@@ -118,25 +126,20 @@ struct LastMessage: Codable {
     let groupable: Bool?
     let blocks: [Block]?
     let ts: String
-    let u: File
+    let u: UElement
     let rid, updatedAt: String
-    let urls: [URLElement]?
-    let mentions: [File]
+    let urls: [URLElement]
+    let mentions: [UElement]
     let channels: [JSONAny]
     let md: [Md]?
     let tmid: String?
     let tshow: Bool?
-    let file: File?
-    let files: [File]?
-    let attachments: [Attachment]?
-    let sandstormSessionID: JSONNull?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case t, msg, groupable, blocks, ts, u, rid
         case updatedAt = "_updatedAt"
-        case urls, mentions, channels, md, tmid, tshow, file, files, attachments
-        case sandstormSessionID = "sandstormSessionId"
+        case urls, mentions, channels, md, tmid, tshow
     }
 }
 
