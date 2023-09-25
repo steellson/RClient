@@ -18,13 +18,16 @@ struct ChatSectionView: View {
                 .fontWeight(.semibold)
                 .padding(10)
             
-            LazyVStack {
-                ForEach(viewModel.messages) { message in
-                    Text(message.msg)
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 10) {
+                    ForEach(viewModel.messages) { message in
+                        ChatMessageView(message: message)
+                            .background(.clear)
+                    }
                 }
             }
-            
-            Spacer()
+            .background()
+            .frame(alignment: .leading)
         }
     }
 }

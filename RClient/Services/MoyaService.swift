@@ -17,7 +17,7 @@ enum RocketChatAPI {
     
     // Channels
     case getJoinedChannelsList(token: String, userID: String)
-    case getChannelMessages(token: String, userID: String, roomId: String)
+    case getChannelMessages(MessageCreditions)
 }
 
 extension RocketChatAPI: TargetType {
@@ -78,9 +78,9 @@ extension RocketChatAPI: TargetType {
             "Content-Type": "application/json"
         ]
             
-        case .getChannelMessages(let token, let userID, _): return [
-            "X-Auth-Token": "\(token)",
-            "X-User-Id": "\(userID)",
+        case .getChannelMessages(let creds): return [
+            "X-Auth-Token": "\(creds.token)",
+            "X-User-Id": "\(creds.userID)",
             "Content-Type": "application/json"
         ]
         }

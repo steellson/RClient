@@ -47,13 +47,14 @@ struct HomeView: View {
                 )
               
             // Detail section
-            screenFactory.makeDetailSectionView()
-                .frame(
-                    minWidth: 100,
-                    maxWidth: 100,
-                    minHeight: minHeight,
-                    maxHeight: .infinity
-                )
+//            screenFactory.makeDetailSectionView()
+//                .border(.gray, width: 0.4)
+//                .frame(
+//                    minWidth: 100,
+//                    maxWidth: 100,
+//                    minHeight: minHeight,
+//                    maxHeight: .infinity
+//                )
         }
     }
 }

@@ -34,6 +34,12 @@ struct Message: Codable, Identifiable {
     }
 }
 
+struct MessageCreditions: Codable {
+    let token: String
+    let userID: String
+    let roomId: String
+}
+
 struct Rid: Codable {
     
 }
@@ -93,7 +99,6 @@ enum ValueUnion: Codable {
     }
 }
 
-// MARK: - ValueValueClass
 struct ValueValueClass: Codable {
     let src: Src?
     let label: [Src]?
@@ -101,7 +106,6 @@ struct ValueValueClass: Codable {
     let value: String?
 }
 
-// MARK: - Src
 struct Src: Codable {
     let type: ValueType
     let value: String

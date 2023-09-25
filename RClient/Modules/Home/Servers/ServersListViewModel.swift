@@ -13,6 +13,7 @@ final class ServersListViewModel: ObservableObject {
     @Published var servers: [ServerItem] = []
     
     private let serverLogoPath = "/assets/favicon.svg"
+    private var imageCache = ImageCache(name: "ServerLogo")
     
     private let localStorageService: LocalStorageService
     
@@ -33,7 +34,7 @@ final class ServersListViewModel: ObservableObject {
             servers.append(
                 ServerItem(
                     name: cred.nameOfServer ?? "",
-                    image: KFImage(URL(string: "\(cred.url)\(serverLogoPath)"))
+                    image: KFImage(URL(string: "\(cred.url)\(serverLogoPath)")).targetCache(imageCache)
                 )
             )
         }
