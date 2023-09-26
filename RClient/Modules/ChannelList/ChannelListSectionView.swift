@@ -1,5 +1,5 @@
 //
-//  NavigationSectionView.swift
+//  ChannelSectionListView.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 20.08.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct NavigationSectionView: View {
+struct ChannelSectionListView: View {
     
-    @ObservedObject var viewModel: NavigationSectionViewModel
+    @ObservedObject var viewModel: ChannelSectionViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -19,23 +19,26 @@ struct NavigationSectionView: View {
                 .padding()
             
             Divider()
-                .frame(height: 5)
             
             List(viewModel.channels) { channel in
-                NavigationRowView(channel: channel)
-                    .onTapGesture {
-                        viewModel.selectedChat = channel
-                    }
+                ChannelRowView(channel: channel)
                     .background(.clear)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.horizontal, 10)
+                    .onTapGesture {
+                        if viewModel.selectedChat != channel {
+                            viewModel.selectedChat = nil
+                            viewModel.selectedChat = channel
+                        }
+                    }
             }
         }
+
     }
 }
 
-struct NavigationSectionView_Previews: PreviewProvider {
+struct ChannelSectionListView_Previews: PreviewProvider {
     static var previews: some View {
-        screenFactory.makeNavigationSectionView()
+        screenFactory.makeChannelListSectionView()
     }
 }

@@ -20,6 +20,8 @@ final class ChatSectionViewModel: ObservableObject {
     }
     @Published var messages: [Message] = []
     
+    @Published var searchText: String = ""
+    
     private let localStorageService: LocalStorageService
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     private let userService: UserService
@@ -46,6 +48,8 @@ final class ChatSectionViewModel: ObservableObject {
         }
         
         let messageCreditions = MessageCreditions(token: token, userID: currentUserId, roomId: roomId)
+        
+        self.messages = []
         
         moyaProvider.request(.getChannelMessages(messageCreditions)) { [weak self] result in
             switch result {

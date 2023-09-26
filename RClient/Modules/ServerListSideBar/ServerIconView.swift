@@ -18,10 +18,6 @@ struct ServerIconView: View {
             .scaledToFit()
             .frame(maxWidth: 60, maxHeight: 60)
             .clipShape(Circle())
-            .overlay {
-                Circle()
-                    .stroke(.gray, lineWidth: 0.4)
-            }
     }
 }
 

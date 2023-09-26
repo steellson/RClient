@@ -1,5 +1,5 @@
 //
-//  NavigationRowView.swift
+//  ChannelRowView.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 24.09.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationRowView: View {
+struct ChannelRowView: View {
     
     let channel: ChannelItem
     
@@ -31,8 +31,8 @@ struct NavigationRowView: View {
     }
 }
 
-struct NavigationRowView_Previews: PreviewProvider {
+struct ChannelRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationRowView(channel: ChannelItem(id: "sd", name: "sdsdsd"))
+        ChannelRowView(channel: ChannelItem(id: "sd", name: "sdsdsd"))
     }
 }

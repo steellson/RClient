@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-        
+    
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.openWindow) var openWindow
+    
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
@@ -42,6 +45,15 @@ struct LoginView: View {
                             .font(.title3)
                             .fontWeight(.regular)
                         
+                        if viewModel.currentUrl != "" {
+                            Text(
+                                "For URL: \(viewModel.currentUrl)"
+                            )
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                            .opacity(0.3)
+                        }
+                        
                         VStack {
                             TextField(
                                 R.Strings.loginScreenEmailFieldPlaceholder.rawValue,
@@ -66,9 +78,9 @@ struct LoginView: View {
                         .alert(
                             "Login successfull!",
                             isPresented: $viewModel.isLoginAlertShowing) {
-                                
-                                NavigationLink("Tap to continue") {
-                                    screenFactory.makeHomeScreen()
+                                Button("Tap to continue") {
+                                    dismiss()
+                                    openWindow.callAsFunction(id: "RootView")
                                 }
                                 .background(.clear)
                             } message: {
@@ -107,6 +119,8 @@ struct LoginView: View {
             .navigationBarBackButtonHidden()
         }
         .padding(.vertical, 50)
+        
+        
     }
 }
 

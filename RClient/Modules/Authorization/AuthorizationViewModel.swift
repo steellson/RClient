@@ -11,6 +11,8 @@ import Moya
 
 final class AuthorizationViewModel: ObservableObject {
     
+    @Published var currentUrl: String = ""
+    
     @Published var loginEmailText: String = ""
     @Published var loginPasswordText: String = ""
     
@@ -47,12 +49,12 @@ final class AuthorizationViewModel: ObservableObject {
     
     
     func signIn() {
-        guard let lastCreditions = localStorageService.getAllServerCreds().first else {
+        guard let currentUrl = localStorageService.getAllServerCreds().first?.url else {
             print("ERROR: Current url is not found"); return
         }
         login(
             with: UserLoginForm(user: loginEmailText,password: loginPasswordText),
-            serverUrl: lastCreditions.url
+            serverUrl: currentUrl
         )
     }
     
@@ -64,7 +66,7 @@ final class AuthorizationViewModel: ObservableObject {
             name: fullNameText
         ))
     }
-    
+
     private func login(with user: UserLoginForm, serverUrl: String) {
         moyaProvider.request(.login(user: user), completion: { [unowned self] result in
             switch result {

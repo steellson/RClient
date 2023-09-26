@@ -1,5 +1,5 @@
 //
-//  ServersListView.swift
+//  ServerListSideBarView.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 20.08.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ServersListView: View {
+struct ServerListSideBarView: View {
     
-    @ObservedObject var viewModel: ServersListViewModel
+    @ObservedObject var viewModel: ServerListSideBarViewModel
     
     var body: some View {
         VStack {
@@ -17,34 +17,37 @@ struct ServersListView: View {
                 ScrollView {
                     ForEach(viewModel.servers) { server in
                         ServerIconView(image: server.image)
-                            .shadow(
-                                color: .black,
-                                radius: 6,
-                                x: -5,
-                                y: 6
-                            )
                     }
                 }
             }
             
             Spacer()
-            
+        }
+        .safeAreaInset(edge: .bottom, content: {
             Button {
                 print("Add chanel")
             } label: {
                 Text("+")
+                    .font(.system(size: 28))
+                    .foregroundColor(.accentColor)
             }
             .buttonStyle(.borderless)
-            .frame(maxWidth: 40, maxHeight: 40)
+            .frame(maxWidth: 60, maxHeight: 60)
             .background(.quaternary)
             .clipShape(Circle())
-        }
+            .shadow(
+                color: .black.opacity(0.5),
+                radius: 0.8,
+                x: -2,
+                y: 2
+            )
+        })
         .padding(.vertical, 10)
     }
 }
 
-struct ServersListView_Previews: PreviewProvider {
+struct ServerListSideBarView_Previews: PreviewProvider {
     static var previews: some View {
-        screenFactory.makeServersListView()
+        screenFactory.makeServerListSideBarView()
     }
 }

@@ -13,10 +13,14 @@ struct ChatSectionView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("CHAT #")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .padding()
+            HStack {
+                Text("CHAT #")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .padding()
+                
+                Spacer()
+            }
             
             Divider()
             
@@ -29,11 +33,12 @@ struct ChatSectionView: View {
                     }
                 }
             }
+            .padding(10)
             .frame(maxWidth: .infinity)
             .background()
             
         }
-        .padding(10)
+
     }
 }
 

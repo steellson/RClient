@@ -8,7 +8,7 @@
 import Foundation
 
 final class RClientAppViewModel: ObservableObject {
-    
+        
     var isUserOnboarded: Bool {
         userService.isClientOnboarded
     }
@@ -16,6 +16,9 @@ final class RClientAppViewModel: ObservableObject {
     var isUserAuthorized: Bool {
         !localStorageService.getUserInfo().isEmpty
     }
+    
+    private(set) var minHeight: CGFloat = 300
+
     
     private let userService: UserService
     private let localStorageService: LocalStorageService

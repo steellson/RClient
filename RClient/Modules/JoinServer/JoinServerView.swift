@@ -9,6 +9,9 @@ import SwiftUI
 
 struct JoinServerView: View {
     
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismiss) var dismiss
+    
     @ObservedObject var viewModel: JoinServerViewModel
     
     private var strokeColor: Color {
@@ -47,8 +50,9 @@ struct JoinServerView: View {
                     .alert(
                         "Server added!",
                         isPresented: $viewModel.alertIsPresented) {
-                            NavigationLink("Go authorize!") {
-                                screenFactory.makeLoginScreen()
+                            Button("Go authorize!") {
+                                dismiss()
+                                openWindow(id: "LoginView")
                             }
                         } message: {
                             Text("You could change it later")

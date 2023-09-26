@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  RootViewModel.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 24.08.2023.
@@ -8,15 +8,17 @@
 import Foundation
 import Combine
 
-final class HomeViewModel: ObservableObject {
+final class RootViewModel: ObservableObject {
+    
+    @Published var searchText: String = ""
         
-    private let navigationSectionViewModel: NavigationSectionViewModel
+    private let navigationSectionViewModel: ChannelSectionViewModel
     private let chatSectionViewModel: ChatSectionViewModel
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        navigationSectionViewModel: NavigationSectionViewModel,
+        navigationSectionViewModel: ChannelSectionViewModel,
         chatSectionViewModel: ChatSectionViewModel
     ) {
         self.navigationSectionViewModel = navigationSectionViewModel
@@ -26,6 +28,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func setChatSubscribe() {
+        cancellables = []
         navigationSectionViewModel.$selectedChat
             .removeDuplicates()
             .map { $0 }

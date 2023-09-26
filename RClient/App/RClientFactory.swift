@@ -23,11 +23,12 @@ final class ApplicationFactory {
     fileprivate let rClientViewModel: RClientAppViewModel
     fileprivate let authorizationViewModel: AuthorizationViewModel
     fileprivate let joinServerViewModel: JoinServerViewModel
-    fileprivate let homeScreenViewModel: HomeViewModel
-    fileprivate let serversSectionViewModel: ServersListViewModel
-    fileprivate let navigationSectionViewModel: NavigationSectionViewModel
+    fileprivate let serverListSideBarViewModel: ServerListSideBarViewModel
+    fileprivate let channelSectionViewModel: ChannelSectionViewModel
     fileprivate let chatSectionViewModel: ChatSectionViewModel
     fileprivate let detailSectionViewModel: DetailSectionViewModel
+    
+    fileprivate let rootViewModel: RootViewModel
     
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
@@ -56,10 +57,10 @@ final class ApplicationFactory {
                                                 validationService: validationService,
                                                 moyaService: apiProvider
         )
-        serversSectionViewModel = ServersListViewModel(
+        serverListSideBarViewModel = ServerListSideBarViewModel(
             localStorageService: localStorageService
         )
-        navigationSectionViewModel = NavigationSectionViewModel(
+        channelSectionViewModel = ChannelSectionViewModel(
             userService: userService,
             localStorageService: localStorageService,
             moyaProvider: apiProvider
@@ -70,8 +71,8 @@ final class ApplicationFactory {
             userService: userService
         )
         detailSectionViewModel = DetailSectionViewModel()
-        homeScreenViewModel = HomeViewModel(
-            navigationSectionViewModel: navigationSectionViewModel,
+        rootViewModel = RootViewModel(
+            navigationSectionViewModel: channelSectionViewModel,
             chatSectionViewModel: chatSectionViewModel
         )
         
@@ -134,14 +135,14 @@ private extension ApplicationFactory {
 
 protocol ScreenFactoryProtocol: AnyObject {
     var rClientViewModel: RClientAppViewModel { get }
+    func makeRootView() -> RootView
     
     func makeJoinServerScreen() -> JoinServerView
     func makeLoginScreen() -> LoginView
     func makeRegistrationScreenView() -> RegistrationView
-    func makeHomeScreen() -> HomeView
     
-    func makeServersListView() -> ServersListView
-    func makeNavigationSectionView() -> NavigationSectionView
+    func makeServerListSideBarView() -> ServerListSideBarView
+    func makeChannelListSectionView() -> ChannelSectionListView
     func makeChatSectionView() -> ChatSectionView
     func makeDetailSectionView() -> DetailSectionView
 }
@@ -153,12 +154,16 @@ final class ScreenFactory {
 }
 
 extension ScreenFactory: ScreenFactoryProtocol {
-    
+
     var rClientViewModel: RClientAppViewModel {
         applicationFactory.rClientViewModel
     }
     
-    // Main
+    func makeRootView() -> RootView {
+        RootView(viewModel: applicationFactory.rootViewModel)
+    }
+    
+    // Onboarding / Auth
     
     func makeJoinServerScreen() -> JoinServerView {
         JoinServerView(viewModel: applicationFactory.joinServerViewModel)
@@ -171,20 +176,16 @@ extension ScreenFactory: ScreenFactoryProtocol {
     func makeRegistrationScreenView() -> RegistrationView {
         RegistrationView(viewModel: applicationFactory.authorizationViewModel)
     }
-
-    func makeHomeScreen() -> HomeView {
-        HomeView(viewModel: applicationFactory.homeScreenViewModel)
+    
+    
+    // Main
+    
+    func makeServerListSideBarView() -> ServerListSideBarView {
+        ServerListSideBarView(viewModel: applicationFactory.serverListSideBarViewModel)
     }
     
-    
-    // Sub
-    
-    func makeServersListView() -> ServersListView {
-        ServersListView(viewModel: applicationFactory.serversSectionViewModel)
-    }
-    
-    func makeNavigationSectionView() -> NavigationSectionView {
-        NavigationSectionView(viewModel: applicationFactory.navigationSectionViewModel)
+    func makeChannelListSectionView() -> ChannelSectionListView {
+        ChannelSectionListView(viewModel: applicationFactory.channelSectionViewModel)
     }
     
     func makeChatSectionView() -> ChatSectionView {

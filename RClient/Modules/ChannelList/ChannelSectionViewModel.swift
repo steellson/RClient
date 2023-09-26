@@ -8,10 +8,12 @@
 import Foundation
 import Moya
 
-final class NavigationSectionViewModel: ObservableObject {
+final class ChannelSectionViewModel: ObservableObject {
     
     @Published var channels: [ChannelItem] = []
-    @Published var selectedChat: ChannelItem? 
+    @Published var selectedChat: ChannelItem?
+    
+    @Published var searchText: String = ""
     
     private let userService: UserService
     private let localStorageService: LocalStorageService

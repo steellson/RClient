@@ -1,5 +1,5 @@
 //
-//  ServersListViewModel.swift
+//  ServerListSideBarViewModel.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 24.09.2023.
@@ -8,7 +8,7 @@
 import Foundation
 import Kingfisher
 
-final class ServersListViewModel: ObservableObject {
+final class ServerListSideBarViewModel: ObservableObject {
     
     @Published var servers: [ServerItem] = []
     
