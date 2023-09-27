@@ -10,18 +10,19 @@ import Combine
 
 final class RootViewModel: ObservableObject {
     
-    @Published var searchText: String = ""
-        
-    private let navigationSectionViewModel: ChannelSectionViewModel
-    private let chatSectionViewModel: ChatSectionViewModel
+    let serverListSideBarViewModel: ServerListSideBarViewModel
+    let channelListSectionViewModel: ChannelSectionViewModel
+    let chatSectionViewModel: ChatSectionViewModel
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        navigationSectionViewModel: ChannelSectionViewModel,
+        serverListSideBarViewModel: ServerListSideBarViewModel,
+        channelListSectionViewModel: ChannelSectionViewModel,
         chatSectionViewModel: ChatSectionViewModel
     ) {
-        self.navigationSectionViewModel = navigationSectionViewModel
+        self.serverListSideBarViewModel = serverListSideBarViewModel
+        self.channelListSectionViewModel = channelListSectionViewModel
         self.chatSectionViewModel = chatSectionViewModel
         
         setChatSubscribe()
@@ -29,7 +30,7 @@ final class RootViewModel: ObservableObject {
     
     func setChatSubscribe() {
         cancellables = []
-        navigationSectionViewModel.$selectedChat
+        channelListSectionViewModel.$selectedChannel
             .removeDuplicates()
             .map { $0 }
             .assign(to: \.chat, on: chatSectionViewModel)

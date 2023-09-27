@@ -62,26 +62,24 @@ struct ChatMessageView: View {
     }
 }
 
-struct ChatMessageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatMessageView(message: Message(
-            id: "id202",
-            t: nil,
-            rid: Rid(),
-            ts: "8T18:22:03",
-            msg: "Hello",
-            u: U(id: "id2222", username: "huevich"),
-            groupable: nil,
-            updatedAt: "22:22",
-            urls: nil,
-            mentions: nil,
-            channels: nil,
-            md: nil,
-            tmid: nil,
-            tshow: nil,
-            replies: nil,
-            tcount: nil,
-            tlm: nil
-        ))
-    }
+#Preview {
+    ChatMessageView(message: Message(
+        id: "id202",
+        t: nil,
+        rid: Rid(),
+        ts: "8T18:22:03",
+        msg: "Hello",
+        u: U(id: "id2222", username: "huevich"),
+        groupable: nil,
+        updatedAt: "22:22",
+        urls: nil,
+        mentions: nil,
+        channels: nil,
+        md: nil,
+        tmid: nil,
+        tshow: nil,
+        replies: nil,
+        tcount: nil,
+        tlm: nil
+    ))
 }

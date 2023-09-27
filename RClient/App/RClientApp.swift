@@ -10,43 +10,46 @@ import SwiftUI
 @main
 struct RClientApp: App {
         
-    @ObservedObject private var viewModel = screenFactory.rClientViewModel
+    @ObservedObject private var viewModel = ViewModelFactoryInstance.makeRClientViewModel()
     
     var body: some Scene {
         
         WindowGroup {
             if !viewModel.isUserOnboarded {
-                screenFactory.makeJoinServerScreen()
+                JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
+                
             } else if !viewModel.isUserAuthorized {
-                screenFactory.makeLoginScreen()
+                LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
+                
             } else {
-                screenFactory.makeRootView()
+                RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
+                
             }
         }
         .defaultPosition(.center)
-        .defaultSize(width: 600, height: 300)
+        .defaultSize(width: 700, height: 400)
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
         .windowToolbarStyle(.unified(showsTitle: false))
         .commands {
             CommandMenu("Channel") {
                 Button("Add new channel") {
-
+                    print("Should creating join server window")
                 }
                 .keyboardShortcut("n", modifiers: .command)
             }
         }
         
         Window("JoinServer", id: "JoinServerView") {
-            screenFactory.makeJoinServerScreen()
+            JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
         }
         
         Window("Auth", id: "LoginView") {
-            screenFactory.makeLoginScreen()
+            LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
         }
         
         Window("Root", id: "RootView") {
-            screenFactory.makeRootView()
+            RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
         }
     }
 }

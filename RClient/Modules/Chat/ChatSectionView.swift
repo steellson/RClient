@@ -42,8 +42,6 @@ struct ChatSectionView: View {
     }
 }
 
-struct ChatSectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeChatSectionView()
-    }
+#Preview {
+    ChatSectionView(viewModel: ViewModelFactoryInstance.makeChatSectionViewModel())
 }

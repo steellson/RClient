@@ -10,7 +10,7 @@ import Kingfisher
 
 struct ServerIconView: View {
     
-    @State var image: KFImage
+    let image: KFImage
     
     var body: some View {
         image
@@ -21,10 +21,8 @@ struct ServerIconView: View {
     }
 }
 
-struct ServerIconView_Previews: PreviewProvider {
-    static var previews: some View {
-        ServerIconView(
-            image: KFImage(URL(string: "https://open.rocket.chat"))
-        )
-    }
+#Preview {
+    ServerIconView(
+        image: KFImage(URL(string: "https://open.rocket.chat"))
+    )
 }

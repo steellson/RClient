@@ -14,24 +14,22 @@ struct RootView: View {
     var body: some View {
         
         NavigationSplitView {
-            screenFactory.makeServerListSideBarView()
+            ServerListSideBarView(viewModel: viewModel.serverListSideBarViewModel)
                 .navigationSplitViewColumnWidth(86)
             
         } content: {
-            screenFactory.makeChannelListSectionView()
+            ChannelSectionListView(viewModel: viewModel.channelListSectionViewModel)
                 .frame(minWidth: 260, minHeight: 320)
             
         } detail: {
-            screenFactory.makeChatSectionView()
+            ChatSectionView(viewModel: viewModel.chatSectionViewModel)
                 .frame(minWidth: 380, minHeight: 320)
 
         }
-
     }
+    
 }
 
-struct RootView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeRootView()
-    }
+#Preview {
+    RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
 }

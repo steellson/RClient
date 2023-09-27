@@ -67,8 +67,6 @@ struct JoinServerView: View {
     }
 }
 
-struct JoinServerView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeJoinServerScreen()
-    }
+#Preview {
+    JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
 }

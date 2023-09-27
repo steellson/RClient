@@ -22,23 +22,32 @@ struct ChannelSectionListView: View {
             
             List(viewModel.channels) { channel in
                 ChannelRowView(channel: channel)
+                    .tag(
+                        ChannelItem(
+                            id: channel.id,
+                            name: channel.name,
+                            iconName: channel.iconName
+                        )
+                    )
                     .background(.clear)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding(.horizontal, 10)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .leading
+                    )
                     .onTapGesture {
-                        if viewModel.selectedChat != channel {
-                            viewModel.selectedChat = nil
-                            viewModel.selectedChat = channel
+                        if viewModel.selectedChannel != channel {
+                            viewModel.selectedChannel = nil
+                            viewModel.selectedChannel = channel
                         }
                     }
             }
+            .listStyle(.sidebar)
         }
 
     }
 }
 
-struct ChannelSectionListView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeChannelListSectionView()
-    }
+#Preview {
+    ChannelSectionListView(viewModel: ViewModelFactoryInstance.makeChannelListSectionViewModel())
 }

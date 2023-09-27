@@ -18,9 +18,8 @@ final class ChatSectionViewModel: ObservableObject {
             self.fetchMessages(withRoomID: newValue.id)
         }
     }
-    @Published var messages: [Message] = []
     
-    @Published var searchText: String = ""
+    @Published var messages: [Message] = []
     
     private let localStorageService: LocalStorageService
     private let moyaProvider: MoyaProvider<RocketChatAPI>

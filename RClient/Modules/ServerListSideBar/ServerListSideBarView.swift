@@ -17,6 +17,7 @@ struct ServerListSideBarView: View {
                 ScrollView {
                     ForEach(viewModel.servers) { server in
                         ServerIconView(image: server.image)
+                            .tag(ServerItem(name: server.name, image: server.image))
                     }
                 }
             }
@@ -46,8 +47,6 @@ struct ServerListSideBarView: View {
     }
 }
 
-struct ServerListSideBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeServerListSideBarView()
-    }
+#Preview {
+    ServerListSideBarView(viewModel: ViewModelFactoryInstance.makeServerListSideBarViewModel())
 }

@@ -72,7 +72,8 @@ final class ApplicationFactory {
         )
         detailSectionViewModel = DetailSectionViewModel()
         rootViewModel = RootViewModel(
-            navigationSectionViewModel: channelSectionViewModel,
+            serverListSideBarViewModel: serverListSideBarViewModel,
+            channelListSectionViewModel: channelSectionViewModel,
             chatSectionViewModel: chatSectionViewModel
         )
         
@@ -131,73 +132,69 @@ private extension ApplicationFactory {
 }
 
 
-//MARK: - Screen builder
+//MARK: - ViewModel builder
 
-protocol ScreenFactoryProtocol: AnyObject {
-    var rClientViewModel: RClientAppViewModel { get }
-    func makeRootView() -> RootView
+protocol ViewModelFactoryProtocol: AnyObject {
+    func makeRClientViewModel() -> RClientAppViewModel
+    func makeRootViewModel() -> RootViewModel
     
-    func makeJoinServerScreen() -> JoinServerView
-    func makeLoginScreen() -> LoginView
-    func makeRegistrationScreenView() -> RegistrationView
+    func makeJoinServerViewModel() -> JoinServerViewModel
+    func makeAuthorizationViewModel() -> AuthorizationViewModel
     
-    func makeServerListSideBarView() -> ServerListSideBarView
-    func makeChannelListSectionView() -> ChannelSectionListView
-    func makeChatSectionView() -> ChatSectionView
-    func makeDetailSectionView() -> DetailSectionView
+    func makeServerListSideBarViewModel() -> ServerListSideBarViewModel
+    func makeChannelListSectionViewModel() -> ChannelSectionViewModel
+    func makeChatSectionViewModel() -> ChatSectionViewModel
+    func makeDetailSectionViewModel() -> DetailSectionViewModel
 }
 
-final class ScreenFactory {
+final class ViewModelFactory {
     
     fileprivate let applicationFactory = ApplicationFactory()
     fileprivate init() {}
 }
 
-extension ScreenFactory: ScreenFactoryProtocol {
-
-    var rClientViewModel: RClientAppViewModel {
+extension ViewModelFactory: ViewModelFactoryProtocol {
+    
+    // Root
+    func makeRClientViewModel() -> RClientAppViewModel {
         applicationFactory.rClientViewModel
     }
     
-    func makeRootView() -> RootView {
-        RootView(viewModel: applicationFactory.rootViewModel)
+    func makeRootViewModel() -> RootViewModel {
+        applicationFactory.rootViewModel
     }
     
-    // Onboarding / Auth
-    
-    func makeJoinServerScreen() -> JoinServerView {
-        JoinServerView(viewModel: applicationFactory.joinServerViewModel)
+    // Join server
+    func makeJoinServerViewModel() -> JoinServerViewModel {
+        applicationFactory.joinServerViewModel
     }
     
-    func makeLoginScreen() -> LoginView {
-        LoginView(viewModel: applicationFactory.authorizationViewModel)
+    // Authorization
+    func makeAuthorizationViewModel() -> AuthorizationViewModel {
+        applicationFactory.authorizationViewModel
     }
     
-    func makeRegistrationScreenView() -> RegistrationView {
-        RegistrationView(viewModel: applicationFactory.authorizationViewModel)
+    // Sections
+    func makeServerListSideBarViewModel() -> ServerListSideBarViewModel {
+        applicationFactory.serverListSideBarViewModel
     }
     
-    
-    // Main
-    
-    func makeServerListSideBarView() -> ServerListSideBarView {
-        ServerListSideBarView(viewModel: applicationFactory.serverListSideBarViewModel)
+    func makeChannelListSectionViewModel() -> ChannelSectionViewModel {
+        applicationFactory.channelSectionViewModel
     }
     
-    func makeChannelListSectionView() -> ChannelSectionListView {
-        ChannelSectionListView(viewModel: applicationFactory.channelSectionViewModel)
+    func makeChatSectionViewModel() -> ChatSectionViewModel {
+        applicationFactory.chatSectionViewModel
     }
     
-    func makeChatSectionView() -> ChatSectionView {
-        ChatSectionView(viewModel: applicationFactory.chatSectionViewModel)
+    // Detail
+    func makeDetailSectionViewModel() -> DetailSectionViewModel {
+        applicationFactory.detailSectionViewModel
     }
-    
-    func makeDetailSectionView() -> DetailSectionView {
-        DetailSectionView(viewModel: applicationFactory.detailSectionViewModel)
-    }
+   
 }
 
 
 //MARK: - Global Initialization
 
-let screenFactory: ScreenFactoryProtocol = ScreenFactory()
+let ViewModelFactoryInstance: ViewModelFactoryProtocol = ViewModelFactory()

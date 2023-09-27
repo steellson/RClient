@@ -100,8 +100,6 @@ struct RegistrationView: View {
     }
 }
 
-struct RegistrationView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeRegistrationScreenView()
-    }
+#Preview {
+    RegistrationView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
 }

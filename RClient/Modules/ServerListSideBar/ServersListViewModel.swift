@@ -11,6 +11,7 @@ import Kingfisher
 final class ServerListSideBarViewModel: ObservableObject {
     
     @Published var servers: [ServerItem] = []
+    @Published var selectedServer: ServerItem? = nil
     
     private let serverLogoPath = "/assets/favicon.svg"
     private var imageCache = ImageCache(name: "ServerLogo")

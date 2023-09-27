@@ -11,7 +11,7 @@ import Moya
 final class ChannelSectionViewModel: ObservableObject {
     
     @Published var channels: [ChannelItem] = []
-    @Published var selectedChat: ChannelItem?
+    @Published var selectedChannel: ChannelItem?
     
     @Published var searchText: String = ""
     

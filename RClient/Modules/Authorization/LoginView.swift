@@ -91,7 +91,7 @@ struct LoginView: View {
                         Spacer()
                         
                         NavigationLink {
-                            screenFactory.makeRegistrationScreenView()
+                            RegistrationView(viewModel: viewModel)
                         } label: {
                             Text("Need registration?")
                                 .underline()
@@ -102,7 +102,7 @@ struct LoginView: View {
                         .padding(.top, 30)
                         
                         NavigationLink {
-                            screenFactory.makeJoinServerScreen()
+                            JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
                         } label: {
                             Text("Want to change server?")
                                 .underline()
@@ -124,8 +124,6 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeLoginScreen()
-    }
+#Preview {
+    LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
 }

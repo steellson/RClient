@@ -19,8 +19,6 @@ struct DetailSectionView: View {
     }
 }
 
-struct DetailSectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        screenFactory.makeDetailSectionView()
-    }
+#Preview {
+    DetailSectionView(viewModel: ViewModelFactoryInstance.makeDetailSectionViewModel())
 }

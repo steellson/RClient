@@ -13,26 +13,28 @@ struct ChannelRowView: View {
     
     var body: some View {
         
-        HStack {
-            Image(
-                systemName: channel.iconName ?? "bubble.left"
-            )
-            .resizable()
-            .scaledToFill()
-            .frame(width: 20, height: 20)
+        VStack(alignment: .leading, spacing: 3) {
+            HStack {
+                Image(
+                    systemName: channel.iconName ?? "bubble.left"
+                )
+                .resizable()
+                .scaledToFill()
+                .frame(width: 20, height: 20)
+                .padding(8)
+                
+                VStack(alignment: .leading) {
+                    Text(channel.name)
+                        .font(.system(size: 18, weight: .regular))
+                        .fontWeight(.regular)
+                }
+            }
             
-            Text(channel.name)
-                .font(.system(size: 18, weight: .regular))
-                .fontWeight(.regular)
-            
-            Spacer()
+            Divider()
         }
-        Divider()
     }
 }
 
-struct ChannelRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChannelRowView(channel: ChannelItem(id: "sd", name: "sdsdsd"))
-    }
+#Preview {
+    ChannelRowView(channel: ChannelItem(id: "sd", name: "sdsdsd"))
 }
