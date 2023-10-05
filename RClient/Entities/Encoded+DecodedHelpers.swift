@@ -12,9 +12,9 @@ class JSONNull: Codable, Hashable {
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
-
-    public var hashValue: Int {
-        return 0
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self) // or 0
     }
 
     public init() {}

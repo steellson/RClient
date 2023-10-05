@@ -23,14 +23,17 @@ final class ServerListSideBarViewModel: ObservableObject {
     ) {
         self.localStorageService = localStorageService
         
-        fetchServers()
     }
     
-    private func fetchServers() {
+  
+    func fetchServers() {
         let creds = localStorageService.getAllServerCreds()
         guard !creds.isEmpty else {
             print("ServersSection: Fetched creds is empty!"); return
         }
+        
+        servers = []
+        
         creds.forEach { cred in
             servers.append(
                 ServerItem(

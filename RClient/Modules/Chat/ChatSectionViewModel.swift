@@ -9,16 +9,7 @@ import Foundation
 import Moya
 
 final class ChatSectionViewModel: ObservableObject {
-    
-    @Published var chat: ChannelItem? {
-        willSet {
-            guard let newValue = newValue else {
-                print("No chats settupped yet"); return
-            }
-            self.fetchMessages(withRoomID: newValue.id)
-        }
-    }
-    
+            
     @Published var messages: [Message] = []
     
     private let localStorageService: LocalStorageService
@@ -33,10 +24,11 @@ final class ChatSectionViewModel: ObservableObject {
         self.localStorageService = localStorageService
         self.moyaProvider = moyaProvider
         self.userService = userService
+        
     }
-    
+
     func fetchMessages(withRoomID roomId: String) {
-        guard let currentUserId = localStorageService.getUserInfo().map({ $0 }).first?.id else {
+        guard let currentUserId = localStorageService.getUserInfo().first?.id else {
             print("CurrentUserID cannot be found"); return
         }
         guard let currentServerURL = self.localStorageService.getAllServerCreds().first?.url else {
@@ -100,7 +92,7 @@ final class ChatSectionViewModel: ObservableObject {
     }
     
     func isMyMessageCheck(message: Message) -> Bool {
-        guard let currentUsername = localStorageService.getUserInfo().map({ $0 }).first?.username else {
+        guard let currentUsername = localStorageService.getUserInfo().first?.username else {
             print("CurrentUsername cannot be found"); return false
         }
         return message.u.username != currentUsername

@@ -8,7 +8,6 @@
 import SwiftUI
 
 // Remove TextField system blue selection
-
 extension NSTextField {
     open override var focusRingType: NSFocusRingType {
         get { .none }

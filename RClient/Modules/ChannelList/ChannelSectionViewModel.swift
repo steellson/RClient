@@ -11,14 +11,14 @@ import Moya
 final class ChannelSectionViewModel: ObservableObject {
     
     @Published var channels: [ChannelItem] = []
-    @Published var selectedChannel: ChannelItem?
+    @Published var selectedChannel: ChannelItem? = nil
     
     @Published var searchText: String = ""
     
     private let userService: UserService
     private let localStorageService: LocalStorageService
     private let moyaProvider: MoyaProvider<RocketChatAPI>
-        
+            
     init(
         userService: UserService,
         localStorageService: LocalStorageService,
@@ -27,12 +27,11 @@ final class ChannelSectionViewModel: ObservableObject {
         self.moyaProvider = moyaProvider
         self.localStorageService = localStorageService
         self.userService = userService
-        
-        fetchChannels()
+
     }
     
-    private func fetchChannels() {
-        guard let currentUserId = localStorageService.getUserInfo().map({ $0 }).first?.id else {
+    func fetchChannels() {
+        guard let currentUserId = localStorageService.getUserInfo().first?.id else {
             print("CurrentUserID cannot be found"); return
         }
         guard let currentServerURL = self.localStorageService.getAllServerCreds().first?.url else {
@@ -41,6 +40,8 @@ final class ChannelSectionViewModel: ObservableObject {
         guard let token = self.localStorageService.getAccessToken(forServer: currentServerURL) else {
             print("Token not found!"); return
         }
+        
+        channels = []
         
         moyaProvider.request(.getJoinedChannelsList(token: token, userID: currentUserId), completion: { [weak self] result in
             switch result {

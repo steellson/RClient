@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
-    @Environment(\.openWindow) var openWindow
     
     @ObservedObject var viewModel: AuthorizationViewModel
     
@@ -75,17 +74,15 @@ struct LoginView: View {
                         }
                         .modifier(RCButtonModifier(strokeColor: strokeColor))
                         .disabled(!viewModel.isLoginFieldsValid)
-                        .alert(
-                            "Login successfull!",
-                            isPresented: $viewModel.isLoginAlertShowing) {
-                                Button("Tap to continue") {
-                                    dismiss()
-                                    openWindow.callAsFunction(id: "RootView")
-                                }
-                                .background(.clear)
-                            } message: {
-                                Text("Let's start it :)")
-                            }
+//                        .alert("Login successfull!",
+//                               isPresented: $viewModel.isLoginAlertShowing) {
+//                            Button("Tap to continue") {
+//                                dismiss()
+//                            }
+//                            .background(.clear)
+//                        } message: {
+//                            Text("Let's start it :)")
+//                        }
                         
                         
                         Spacer()

@@ -10,7 +10,6 @@ import SwiftUI
 struct RegistrationView: View {
     
     @Environment(\.dismiss) var dismiss
-    @Environment(\.openWindow) var openWindow
     
     @ObservedObject var viewModel: AuthorizationViewModel
     
@@ -74,7 +73,6 @@ struct RegistrationView: View {
                            isPresented: $viewModel.isRegistrationAlertShowing) {
                         Button("Go") {
                             dismiss()
-                            openWindow.callAsFunction(id: "RootView")
                         }
                     } message: {
                         Text("Now you can enter from login page with your creds!")

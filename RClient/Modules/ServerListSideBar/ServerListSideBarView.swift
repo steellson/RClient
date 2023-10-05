@@ -16,8 +16,14 @@ struct ServerListSideBarView: View {
             LazyVStack {
                 ScrollView {
                     ForEach(viewModel.servers) { server in
-                        ServerIconView(image: server.image)
-                            .tag(ServerItem(name: server.name, image: server.image))
+                        Button(action: {
+                            viewModel.selectedServer = nil
+                            viewModel.selectedServer = server
+                        }, label: {
+                            ServerIconView(image: server.image)
+                        })
+                        .tag(server)
+                        .buttonStyle(.plain)
                     }
                 }
             }

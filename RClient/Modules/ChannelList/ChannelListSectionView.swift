@@ -22,29 +22,19 @@ struct ChannelSectionListView: View {
             
             List(viewModel.channels) { channel in
                 ChannelRowView(channel: channel)
-                    .tag(
-                        ChannelItem(
-                            id: channel.id,
-                            name: channel.name,
-                            iconName: channel.iconName
-                        )
-                    )
                     .background(.clear)
                     .frame(
                         maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: .leading
+                        maxHeight: .infinity
                     )
+                    .tag(channel)
                     .onTapGesture {
-                        if viewModel.selectedChannel != channel {
-                            viewModel.selectedChannel = nil
-                            viewModel.selectedChannel = channel
-                        }
+                        viewModel.selectedChannel = nil
+                        viewModel.selectedChannel = channel
                     }
             }
             .listStyle(.sidebar)
         }
-
     }
 }
 

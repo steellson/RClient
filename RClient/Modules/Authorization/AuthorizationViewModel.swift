@@ -31,17 +31,20 @@ final class AuthorizationViewModel: ObservableObject {
     private let moyaProvider: MoyaProvider<RocketChatAPI>
     private let validationService: ValidationService
     private let localStorageService: LocalStorageService
+    private let navigationStateService: NavigationStateService
     
     private var anyCancellables: Set<AnyCancellable> = []
     
     init(
         validationService: ValidationService,
         moyaProvider: MoyaProvider<RocketChatAPI>,
-        localStorageService: LocalStorageService
+        localStorageService: LocalStorageService,
+        navigationStateService: NavigationStateService
     ) {
         self.validationService = validationService
         self.moyaProvider = moyaProvider
         self.localStorageService = localStorageService
+        self.navigationStateService = navigationStateService
         
         validateLoginFields()
         validateRegistrationFields()
@@ -56,6 +59,7 @@ final class AuthorizationViewModel: ObservableObject {
             with: UserLoginForm(user: loginEmailText,password: loginPasswordText),
             serverUrl: currentUrl
         )
+        navigationStateService.globalState = .root
     }
     
     func signUp() {
@@ -65,6 +69,7 @@ final class AuthorizationViewModel: ObservableObject {
             username: usernameText,
             name: fullNameText
         ))
+        navigationStateService.globalState = .login
     }
 
     private func login(with user: UserLoginForm, serverUrl: String) {

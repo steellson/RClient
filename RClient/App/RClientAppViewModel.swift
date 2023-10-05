@@ -6,28 +6,42 @@
 //
 
 import Foundation
+import Combine
 
 final class RClientAppViewModel: ObservableObject {
         
-    var isUserOnboarded: Bool {
-        userService.isClientOnboarded
-    }
+    @Published var isUserOnboarded: Bool = false
     
-    var isUserAuthorized: Bool {
-        !localStorageService.getUserInfo().isEmpty
-    }
-    
-    private(set) var minHeight: CGFloat = 300
-
+    @Published var isUserAuthorized: Bool  = false
     
     private let userService: UserService
     private let localStorageService: LocalStorageService
-        
+    private let navigationStateService: NavigationStateService
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     init(
         userService: UserService,
-        localStorageService: LocalStorageService
+        localStorageService: LocalStorageService,
+        navigationStateService: NavigationStateService
     ) {
         self.userService = userService
         self.localStorageService = localStorageService
+        self.navigationStateService = navigationStateService
+        
+        isUserOnboarded = userService.isClientOnboarded
+        isUserAuthorized = !localStorageService.getUserInfo().isEmpty
+        
+        Publishers.CombineLatest($isUserOnboarded, $isUserAuthorized)
+            .sink { [unowned self] isOnboarded, isAuthorized in
+                if isOnboarded && isAuthorized {
+                    self.navigationStateService.globalState = .root
+                } else if isOnboarded && !isAuthorized {
+                    self.navigationStateService.globalState = .login
+                } else {
+                    self.navigationStateService.globalState = .joinServer
+                }
+            }
+            .store(in: &cancellables)
     }
 }

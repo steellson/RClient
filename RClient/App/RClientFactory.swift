@@ -14,6 +14,7 @@ import Moya
 final class ApplicationFactory {
     
     fileprivate let apiProvider: MoyaProvider<RocketChatAPI>
+    fileprivate let navigationStateService: NavigationStateService
     fileprivate let keyChainService: KeyChainService
     fileprivate let localStorageService: LocalStorageService
     fileprivate let userService: UserService
@@ -26,12 +27,14 @@ final class ApplicationFactory {
     fileprivate let serverListSideBarViewModel: ServerListSideBarViewModel
     fileprivate let channelSectionViewModel: ChannelSectionViewModel
     fileprivate let chatSectionViewModel: ChatSectionViewModel
+    fileprivate let chatToolbarViewModel: ChatToolbarViewModel
     fileprivate let detailSectionViewModel: DetailSectionViewModel
     
     fileprivate let rootViewModel: RootViewModel
     
     init() {
         apiProvider = MoyaProvider<RocketChatAPI>()
+        navigationStateService = NavigationStateService()
         keyChainService = KeyChainService()
         localStorageService = LocalStorageService(
             userDefaultsInstance: userDefaultsInstance,
@@ -45,17 +48,20 @@ final class ApplicationFactory {
         
         rClientViewModel = RClientAppViewModel(
             userService: userService,
-            localStorageService: localStorageService
+            localStorageService: localStorageService,
+            navigationStateService: navigationStateService
         )
         authorizationViewModel =  AuthorizationViewModel(
             validationService: validationService,
             moyaProvider: apiProvider,
-            localStorageService: localStorageService
+            localStorageService: localStorageService,
+            navigationStateService: navigationStateService
         )
         joinServerViewModel = JoinServerViewModel(
                                                 localStorageService: localStorageService,
                                                 validationService: validationService,
-                                                moyaService: apiProvider
+                                                moyaService: apiProvider,
+                                                navigationStateService: navigationStateService
         )
         serverListSideBarViewModel = ServerListSideBarViewModel(
             localStorageService: localStorageService
@@ -70,8 +76,10 @@ final class ApplicationFactory {
             moyaProvider: apiProvider,
             userService: userService
         )
+        chatToolbarViewModel = ChatToolbarViewModel()
         detailSectionViewModel = DetailSectionViewModel()
         rootViewModel = RootViewModel(
+            navigationStateService: navigationStateService,
             serverListSideBarViewModel: serverListSideBarViewModel,
             channelListSectionViewModel: channelSectionViewModel,
             chatSectionViewModel: chatSectionViewModel
@@ -144,6 +152,7 @@ protocol ViewModelFactoryProtocol: AnyObject {
     func makeServerListSideBarViewModel() -> ServerListSideBarViewModel
     func makeChannelListSectionViewModel() -> ChannelSectionViewModel
     func makeChatSectionViewModel() -> ChatSectionViewModel
+    func makeChatToolbarViewModel() -> ChatToolbarViewModel
     func makeDetailSectionViewModel() -> DetailSectionViewModel
 }
 
@@ -185,6 +194,10 @@ extension ViewModelFactory: ViewModelFactoryProtocol {
     
     func makeChatSectionViewModel() -> ChatSectionViewModel {
         applicationFactory.chatSectionViewModel
+    }
+    
+    func makeChatToolbarViewModel() -> ChatToolbarViewModel {
+        applicationFactory.chatToolbarViewModel
     }
     
     // Detail

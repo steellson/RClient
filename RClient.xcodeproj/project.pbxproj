@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D38A26F2AC8344400EC637D /* NavigationStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A26E2AC8344400EC637D /* NavigationStateService.swift */; };
+		3D38A2742ACC538F00EC637D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2732ACC538F00EC637D /* SettingsView.swift */; };
+		3D38A2762ACDB4FC00EC637D /* ChannelEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2752ACDB4FC00EC637D /* ChannelEmptyView.swift */; };
+		3D38A27B2ACF264B00EC637D /* ChatToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A27A2ACF264B00EC637D /* ChatToolbarView.swift */; };
+		3D38A27E2ACF26CE00EC637D /* ChatToolbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A27D2ACF26CE00EC637D /* ChatToolbarViewModel.swift */; };
 		3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444652A9CD13700A26D83 /* Color+Extension.swift */; };
 		3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */; };
 		3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */; };
@@ -78,6 +83,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D38A26E2AC8344400EC637D /* NavigationStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStateService.swift; sourceTree = "<group>"; };
+		3D38A2732ACC538F00EC637D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3D38A2752ACDB4FC00EC637D /* ChannelEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEmptyView.swift; sourceTree = "<group>"; };
+		3D38A27A2ACF264B00EC637D /* ChatToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatToolbarView.swift; sourceTree = "<group>"; };
+		3D38A27D2ACF26CE00EC637D /* ChatToolbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatToolbarViewModel.swift; sourceTree = "<group>"; };
 		3D4444652A9CD13700A26D83 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		3D44446F2AA20F5300A26D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +172,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D38A2772ACF1F8B00EC637D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3D38A2732ACC538F00EC637D /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		3D38A27C2ACF26B700EC637D /* ChatToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				3D38A27A2ACF264B00EC637D /* ChatToolbarView.swift */,
+				3D38A27D2ACF26CE00EC637D /* ChatToolbarViewModel.swift */,
+			);
+			path = ChatToolbar;
+			sourceTree = "<group>";
+		};
 		3D4444642A9CD03600A26D83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +221,9 @@
 		3DADF8432A9238BD0039F608 /* RClient */ = {
 			isa = PBXGroup;
 			children = (
+				3D44446F2AA20F5300A26D83 /* Info.plist */,
 				3DADF84D2A9238BE0039F608 /* RClient.entitlements */,
 				3DB39C852AB197F100D7468E /* RClientDebug.entitlements */,
-				3D44446F2AA20F5300A26D83 /* Info.plist */,
 				3DADF86F2A92396B0039F608 /* App */,
 				3DADF8812A9250540039F608 /* Entities */,
 				3D4444642A9CD03600A26D83 /* Extensions */,
@@ -264,6 +291,7 @@
 				3DADF8782A9246600039F608 /* ChannelList */,
 				3DADF87D2A92474E0039F608 /* Chat */,
 				3DADF87E2A9247B70039F608 /* DetailBar */,
+				3D38A2772ACF1F8B00EC637D /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -282,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				3DE462EA2AC0D14C00E78FC1 /* ChannelRowView.swift */,
+				3D38A2752ACDB4FC00EC637D /* ChannelEmptyView.swift */,
 				3DB5742E2AC3674800E11087 /* ChannelListSectionView.swift */,
 				3DE462D52ABF1D9000E78FC1 /* ChannelSectionViewModel.swift */,
 			);
@@ -294,6 +323,7 @@
 				3DADF87B2A92472E0039F608 /* ChatSectionView.swift */,
 				3DE462EC2AC18C5100E78FC1 /* ChatMessageView.swift */,
 				3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */,
+				3D38A27C2ACF26B700EC637D /* ChatToolbar */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -340,6 +370,7 @@
 				3DB39C9B2AB7199700D7468E /* KeyChainService.swift */,
 				3DADF89C2A965B860039F608 /* LocalStorageService.swift */,
 				3DADF8972A9636A70039F608 /* MoyaService.swift */,
+				3D38A26E2AC8344400EC637D /* NavigationStateService.swift */,
 				3DADF89E2A9667EA0039F608 /* UserService.swift */,
 				3DB39C862AB1D51E00D7468E /* ValidationService.swift */,
 			);
@@ -451,7 +482,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					3DADF8402A9238BD0039F608 = {
 						CreatedOnToolsVersion = 14.3;
@@ -522,8 +553,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */,
+				3D38A2742ACC538F00EC637D /* SettingsView.swift in Sources */,
 				3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */,
 				3DADF8AA2A976A7E0039F608 /* RootViewModel.swift in Sources */,
+				3D38A2762ACDB4FC00EC637D /* ChannelEmptyView.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
 				3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */,
@@ -555,6 +588,8 @@
 				3DADF8762A923DA70039F608 /* ServerListSideBarView.swift in Sources */,
 				3DE462D62ABF1D9000E78FC1 /* ChannelSectionViewModel.swift in Sources */,
 				3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */,
+				3D38A27E2ACF26CE00EC637D /* ChatToolbarViewModel.swift in Sources */,
+				3D38A27B2ACF264B00EC637D /* ChatToolbarView.swift in Sources */,
 				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
 				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,
 				3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */,
@@ -562,6 +597,7 @@
 				3DADF8742A923B510039F608 /* ServerIconView.swift in Sources */,
 				3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */,
 				3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */,
+				3D38A26F2AC8344400EC637D /* NavigationStateService.swift in Sources */,
 				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
 			);
@@ -604,6 +640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -633,9 +670,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -650,6 +689,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -664,6 +704,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -693,9 +734,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -704,6 +747,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -723,6 +767,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RClient/App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -737,8 +782,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steellson.dirtyGramm.RClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -751,6 +799,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RClient/App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -765,8 +814,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steellson.dirtyGramm.RClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -777,6 +829,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -796,6 +849,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -814,6 +868,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -831,6 +886,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4PCW4NA85G;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;

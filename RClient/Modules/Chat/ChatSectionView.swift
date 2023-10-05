@@ -25,7 +25,7 @@ struct ChatSectionView: View {
             Divider()
             
             ScrollView {
-                LazyVStack(spacing: 10) {
+                LazyVStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.messages) { message in
                         ChatMessageView(message: message)
                             .frame(maxWidth: 260)
@@ -33,12 +33,30 @@ struct ChatSectionView: View {
                     }
                 }
             }
-            .padding(10)
+            .padding(.horizontal, 10)
             .frame(maxWidth: .infinity)
             .background()
             
+            HStack {
+                ChatToolbarView(viewModel: ViewModelFactoryInstance.makeChatToolbarViewModel())
+                
+                Spacer()
+            }
+            .background()
         }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
 
+                }, label: {
+                    Image(systemName: "rectangle.righthalf.inset.filled")
+                })
+            }
+        }
+//        .inspector(isPresented: $viewModel.isInspectorHidden) {
+//            Group {
+//            }
+//        }
     }
 }
 

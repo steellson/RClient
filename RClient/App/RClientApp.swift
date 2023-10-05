@@ -15,16 +15,7 @@ struct RClientApp: App {
     var body: some Scene {
         
         WindowGroup {
-            if !viewModel.isUserOnboarded {
-                JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
-                
-            } else if !viewModel.isUserAuthorized {
-                LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
-                
-            } else {
-                RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
-                
-            }
+            RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
         }
         .defaultPosition(.center)
         .defaultSize(width: 700, height: 400)
@@ -39,17 +30,18 @@ struct RClientApp: App {
                 .keyboardShortcut("n", modifiers: .command)
             }
         }
+
         
-        Window("JoinServer", id: "JoinServerView") {
-            JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
-        }
-        
-        Window("Auth", id: "LoginView") {
-            LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
-        }
-        
-        Window("Root", id: "RootView") {
-            RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
-        }
+//        Window("JoinServer", id: "JoinServerView") {
+//            JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
+//        }
+//        
+//        Window("Auth", id: "LoginView") {
+//            LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
+//        }
+//        
+//        Window("Root", id: "RootView") {
+//            RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
+//        }
     }
 }
