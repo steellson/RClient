@@ -60,6 +60,6 @@ struct ChannelsResponse: Codable {
 
 struct MessagesResponse: Codable {
     let messages: [Message]
-    let count, offset, total: Int
+    let count, offset, total: Int?
     let success: Bool
 }

@@ -7,14 +7,8 @@
 
 import Foundation
 
-struct ChannelItem: Identifiable, Hashable {
-    let id: String
-    let name: String
-    var iconName: String?
-}
-
-
-struct Channel: Codable {
+struct Channel: Codable, Hashable, Identifiable {
+    
     let id: String
     let fname: String?
     let customFields: CustomFields?
@@ -30,7 +24,7 @@ struct Channel: Codable {
     let muted: [String]?
     let teamID: String?
     let teamDefault, reactWhenReadOnly: Bool?
-    let lastMessage: LastMessage
+    let lastMessage: LastMessage?
     let usernames: [JSONAny]?
     let topic, jitsiTimeout: String?
     let joinCodeRequired: Bool?
@@ -49,6 +43,14 @@ struct Channel: Codable {
         case lm, announcement, muted
         case teamID = "teamId"
         case teamDefault, reactWhenReadOnly, lastMessage, usernames, topic, jitsiTimeout, joinCodeRequired, streamingOptions, announcementDetails, archived, unmuted, featured
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Channel, rhs: Channel) -> Bool {
+        lhs.id == rhs.id
     }
 }
 

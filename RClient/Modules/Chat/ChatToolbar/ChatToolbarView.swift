@@ -21,7 +21,7 @@ struct ChatToolbarView: View {
                 .frame(width: 18, height: 18)
             
             TextField(
-                "Enter message ...",
+                R.Strings.chatTextFieldPlaceholder.rawValue,
                 text: $viewModel.message
             )
             .modifier(TextFieldModifier(strokeColor: .gray))

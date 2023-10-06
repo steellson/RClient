@@ -30,5 +30,7 @@ public enum R {
         case registrationScreenEmailFieldPlaceholder = "Enter valid email"
         case registrationScreenPasswordFieldPlaceholder = "Enter strong password"
         case registrationScreenReplyFieldPlaceholder = "Enter password again"
+        
+        case chatTextFieldPlaceholder = "Enter message ..."
     }
 }

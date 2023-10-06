@@ -11,6 +11,10 @@ struct ChatMessageView: View {
     
     let message: Message
     
+    private var formatterdTimestamp: String {
+        TimeStampFormatter.instance.timestampToTime(fromString: message.ts)
+    }
+    
     var isMyMessage: Bool = true
     
     var body: some View {
@@ -32,7 +36,7 @@ struct ChatMessageView: View {
             HStack {
                 Spacer()
                 
-                Text(timestampToTime(fromString: message.ts))
+                Text(formatterdTimestamp)
                     .font(.system(size: 14))
                     .fontWeight(.light)
                     .multilineTextAlignment(.leading)
@@ -51,21 +55,12 @@ struct ChatMessageView: View {
                : .trailing
         )
     }
-    
-    
-    //MARK: - Helpers
-    
-    func timestampToTime(fromString string: String) -> String {
-        let fullTimeString = String(string.split(separator: "T")[1])
-        let timeString = String(fullTimeString.split(separator: ".")[0])
-        return timeString
-    }
 }
 
 #Preview {
     ChatMessageView(message: Message(
         id: "id202",
-        t: nil,
+//        t: nil,
         rid: Rid(),
         ts: "8T18:22:03",
         msg: "Hello",

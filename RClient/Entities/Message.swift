@@ -9,7 +9,7 @@ import Foundation
 
 struct Message: Codable, Identifiable {
     let id: String
-    let t: T?
+//    let t: T?
     let rid: Rid
     let ts: String
     let msg: String
@@ -28,7 +28,7 @@ struct Message: Codable, Identifiable {
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case t, rid, ts, msg, u, groupable
+        case rid, ts, msg, u, groupable // need add t
         case updatedAt = "_updatedAt"
         case urls, mentions, channels, md, tmid, tshow, replies, tcount, tlm
     }

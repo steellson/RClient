@@ -13,7 +13,7 @@ final class RootViewModel: ObservableObject {
     @Published var state: GlobalState? = nil
     
     @Published var selectedServer: ServerItem? = nil
-    @Published var selectedChannel: ChannelItem? = nil
+    @Published var selectedChannel: Channel? = nil
         
     let serverListSideBarViewModel: ServerListSideBarViewModel
     let channelListSectionViewModel: ChannelSectionViewModel
@@ -45,7 +45,6 @@ final class RootViewModel: ObservableObject {
         channelListSectionViewModel.$selectedChannel
             .sink(receiveValue: { channel in
                 guard let selectedChannel = channel else { return }
-                print(channel)
                 chatSectionViewModel.fetchMessages(withRoomID: selectedChannel.id)
             })
             .store(in: &cancellables)

@@ -12,6 +12,8 @@
 		3D38A2762ACDB4FC00EC637D /* ChannelEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2752ACDB4FC00EC637D /* ChannelEmptyView.swift */; };
 		3D38A27B2ACF264B00EC637D /* ChatToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A27A2ACF264B00EC637D /* ChatToolbarView.swift */; };
 		3D38A27E2ACF26CE00EC637D /* ChatToolbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A27D2ACF26CE00EC637D /* ChatToolbarViewModel.swift */; };
+		3D38A2802AD052C500EC637D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A27F2AD052C500EC637D /* Channel.swift */; };
+		3D38A2832AD0593200EC637D /* TimeStampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2822AD0593200EC637D /* TimeStampFormatter.swift */; };
 		3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444652A9CD13700A26D83 /* Color+Extension.swift */; };
 		3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */; };
 		3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */; };
@@ -55,7 +57,6 @@
 		3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */; };
 		3DE462DC2ABF281E00E78FC1 /* ServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */; };
 		3DE462DF2ABF289400E78FC1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DE462DE2ABF289400E78FC1 /* Kingfisher */; };
-		3DE462E12ABF7F1100E78FC1 /* ChannelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */; };
 		3DE462E32AC0902500E78FC1 /* ServersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */; };
 		3DE462E52AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */; };
 		3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E62AC0B3FC00E78FC1 /* Message.swift */; };
@@ -88,6 +89,8 @@
 		3D38A2752ACDB4FC00EC637D /* ChannelEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEmptyView.swift; sourceTree = "<group>"; };
 		3D38A27A2ACF264B00EC637D /* ChatToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatToolbarView.swift; sourceTree = "<group>"; };
 		3D38A27D2ACF26CE00EC637D /* ChatToolbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatToolbarViewModel.swift; sourceTree = "<group>"; };
+		3D38A27F2AD052C500EC637D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		3D38A2822AD0593200EC637D /* TimeStampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStampFormatter.swift; sourceTree = "<group>"; };
 		3D4444652A9CD13700A26D83 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		3D44446F2AA20F5300A26D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -134,7 +137,6 @@
 		3DE462D72ABF1DC900E78FC1 /* ChatSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462D92ABF1E0200E78FC1 /* DetailSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionViewModel.swift; sourceTree = "<group>"; };
 		3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerItem.swift; sourceTree = "<group>"; };
-		3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelItem.swift; sourceTree = "<group>"; };
 		3DE462E22AC0902500E78FC1 /* ServersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersListViewModel.swift; sourceTree = "<group>"; };
 		3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encoded+DecodedHelpers.swift"; sourceTree = "<group>"; };
 		3DE462E62AC0B3FC00E78FC1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 			path = ChatToolbar;
 			sourceTree = "<group>";
 		};
+		3D38A2812AD0591800EC637D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3D38A2822AD0593200EC637D /* TimeStampFormatter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		3D4444642A9CD03600A26D83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +237,7 @@
 				3DADF86F2A92396B0039F608 /* App */,
 				3DADF8812A9250540039F608 /* Entities */,
 				3D4444642A9CD03600A26D83 /* Extensions */,
+				3D38A2812AD0591800EC637D /* Helpers */,
 				3DADF8712A9239DC0039F608 /* Modules */,
 				3DB39C882AB361AB00D7468E /* Modifiers */,
 				3DADF8702A9239730039F608 /* Resources */,
@@ -341,7 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB39C992AB710BF00D7468E /* AuthServices.swift */,
-				3DE462E02ABF7F1100E78FC1 /* ChannelItem.swift */,
+				3D38A27F2AD052C500EC637D /* Channel.swift */,
 				3DB39C972AB7104800D7468E /* Forms.swift */,
 				3DADF8822A92509A0039F608 /* User.swift */,
 				3DB39C952AB7101000D7468E /* Responses.swift */,
@@ -556,10 +567,12 @@
 				3D38A2742ACC538F00EC637D /* SettingsView.swift in Sources */,
 				3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */,
 				3DADF8AA2A976A7E0039F608 /* RootViewModel.swift in Sources */,
+				3D38A2802AD052C500EC637D /* Channel.swift in Sources */,
 				3D38A2762ACDB4FC00EC637D /* ChannelEmptyView.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
 				3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */,
 				3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */,
+				3D38A2832AD0593200EC637D /* TimeStampFormatter.swift in Sources */,
 				3DADF89D2A965B860039F608 /* LocalStorageService.swift in Sources */,
 				3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */,
 				3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */,
@@ -580,7 +593,6 @@
 				3DB39C982AB7104800D7468E /* Forms.swift in Sources */,
 				3DB5742F2AC3674800E11087 /* ChannelListSectionView.swift in Sources */,
 				3DADF8A82A9769FC0039F608 /* LoginView.swift in Sources */,
-				3DE462E12ABF7F1100E78FC1 /* ChannelItem.swift in Sources */,
 				3DB39C942AB70FE500D7468E /* Settings.swift in Sources */,
 				3DB39C962AB7101000D7468E /* Responses.swift in Sources */,
 				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,

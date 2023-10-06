@@ -10,8 +10,8 @@ import Moya
 
 final class ChannelSectionViewModel: ObservableObject {
     
-    @Published var channels: [ChannelItem] = []
-    @Published var selectedChannel: ChannelItem? = nil
+    @Published var channels: [Channel] = []
+    @Published var selectedChannel: Channel? = nil
     
     @Published var searchText: String = ""
     
@@ -52,15 +52,7 @@ final class ChannelSectionViewModel: ObservableObject {
                         guard !channelList.channels.isEmpty else {
                             print("NavigationSection: Fetched channels is empty!"); return
                         }
-                        channelList.channels.forEach { channel in
-                            self?.channels.append(
-                                ChannelItem(
-                                    id: channel.id,
-                                    name: channel.name,
-                                    iconName: "eyes"
-                                )
-                            )
-                        }
+                        self?.channels = channelList.channels
                         
                     } catch let error {
                         print("Cant decode channels: \(error)")

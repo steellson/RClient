@@ -51,31 +51,7 @@ final class ChatSectionViewModel: ObservableObject {
                         guard !messages.messages.isEmpty else {
                             print("ChatSection: Fetched messages is empty!"); return
                         }
-                        messages.messages
-                            .sorted { $0.ts < $1.ts }
-                            .forEach { message in
-                                self?.messages.append(
-                                    Message(
-                                        id: message.id,
-                                        t: message.t,
-                                        rid: message.rid,
-                                        ts: message.ts,
-                                        msg: message.msg,
-                                        u: message.u,
-                                        groupable: message.groupable,
-                                        updatedAt: message.updatedAt,
-                                        urls: message.urls,
-                                        mentions: message.mentions,
-                                        channels: message.channels,
-                                        md: message.md,
-                                        tmid: message.tmid,
-                                        tshow: message.tshow,
-                                        replies: message.replies,
-                                        tcount: message.tcount,
-                                        tlm: message.tlm
-                                    )
-                                )
-                            }
+                        self?.messages = messages.messages.sorted { $0.ts < $1.ts }
                         
                     } catch let error {
                         print("Cant decode messages: \(error)")
