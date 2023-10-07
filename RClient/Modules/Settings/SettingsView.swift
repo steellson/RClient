@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @ObservedObject var viewModel: SettingsViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack() {
+            Spacer()
+            
+            Text("Settings will be soon")
+                .font(.title)
+                .fontWeight(.semibold)
+                .frame(width: 300, height: 100)
+            
+            Text("🚀🚀🚀")
+                .font(.title)
+
+            Spacer()
+        }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(viewModel: ViewModelFactoryInstance.makeSettingsViewModel())
 }

@@ -14,7 +14,7 @@ struct RootView: View {
     var body: some View {
         
         switch viewModel.state {
-        case .joinServer:
+        case .joinWelcomeServer:
             JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
         case .login:
             LoginView(viewModel:             ViewModelFactoryInstance.makeAuthorizationViewModel())
@@ -36,7 +36,7 @@ struct RootView: View {
                 viewModel.update()
             }
         case .settings:
-            SettingsView()
+            SettingsView(viewModel: viewModel.settingsViewModel)
         case .none:
             EmptyView()
         }

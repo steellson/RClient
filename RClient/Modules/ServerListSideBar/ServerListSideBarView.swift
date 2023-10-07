@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ServerListSideBarView: View {
     
+    @Environment(\.openWindow) var openWindow
+    
     @ObservedObject var viewModel: ServerListSideBarViewModel
     
     var body: some View {
@@ -30,23 +32,27 @@ struct ServerListSideBarView: View {
             Spacer()
         }
         .safeAreaInset(edge: .bottom, content: {
-            Button {
-                print("Add chanel")
-            } label: {
-                Text("+")
-                    .font(.system(size: 28))
-                    .foregroundColor(.accentColor)
+            VStack {
+                Button {
+                    openWindow(id: "addServer")
+                } label: {
+                    Text("+")
+                        .font(.system(size: 28))
+                        .foregroundColor(.gray)
+                }
+                .modifier(ServerListToolbarButtonModifier())
+                
+                Button {
+                    openWindow(id: "settings")
+                } label: {
+                    Image(systemName: "gear")
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                }
+                .modifier(ServerListToolbarButtonModifier())
             }
-            .buttonStyle(.borderless)
-            .frame(maxWidth: 60, maxHeight: 60)
-            .background(.quaternary)
-            .clipShape(Circle())
-            .shadow(
-                color: .black.opacity(0.5),
-                radius: 0.8,
-                x: -2,
-                y: 2
-            )
+
         })
         .padding(.vertical, 10)
     }

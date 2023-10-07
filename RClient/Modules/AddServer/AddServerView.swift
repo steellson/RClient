@@ -1,50 +1,48 @@
 //
-//  JoinServerView.swift
+//  AddServerView.swift
 //  RClient
 //
-//  Created by Andrew Steellson on 21.08.2023.
+//  Created by Andrew Steellson on 07.10.2023.
 //
 
 import SwiftUI
 
-struct JoinServerView: View {
+struct AddServerView: View {
     
-//    @Environment(\.openWindow) var openWindow
-//    @Environment(\.dismiss) var dismiss
-    
-    @ObservedObject var viewModel: JoinServerViewModel
-    
-    private var strokeColor: Color {
-        viewModel.isValidUrl ? .white : .rocketRed
-    }
+    @ObservedObject var viewModel: AddServerViewModel
     
     var body: some View {
-        
         NavigationStack {
             VStack(alignment: .center) {
                 Image("rocketChatLogoLarge")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 360, height: 100)
+                    .frame(width: 300, height: 80)
                 
                 VStack(alignment: .leading) {
                     Text(
-                        R.Strings.joinServerFieldPreviewText.rawValue
+                        "Rocket.Chat server info:"
                     )
                     .foregroundColor(.white)
                     .font(.title2)
                     .fontWeight(.semibold)
                     
                     TextField(
-                        R.Strings.rocketChatOpenServerUrl.rawValue,
+                        "Enter name of server",
                         text: $viewModel.serverUrl
                     )
-                    .modifier(TextFieldModifier(strokeColor: strokeColor))
+                    .modifier(TextFieldModifier(strokeColor: .gray))
                     
-                    Button("Connect") {
-                        viewModel.saveServerItem()
+                    TextField(
+                        "http://",
+                        text: $viewModel.serverUrl
+                    )
+                    .modifier(TextFieldModifier(strokeColor: .gray))
+                    
+                    Button("Add new one") {
+                        
                     }
-                    .modifier(RCButtonModifier(strokeColor: strokeColor))
+                    .modifier(RCButtonModifier(strokeColor: .gray))
                     .disabled(!viewModel.isValidUrl)
                 }
                 .padding(.horizontal, 30)
@@ -56,5 +54,5 @@ struct JoinServerView: View {
 }
 
 #Preview {
-    JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
+    AddServerView(viewModel: ViewModelFactoryInstance.makeAddServerViewModel())
 }

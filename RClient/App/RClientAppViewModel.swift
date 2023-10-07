@@ -39,7 +39,7 @@ final class RClientAppViewModel: ObservableObject {
                 } else if isOnboarded && !isAuthorized {
                     self.navigationStateService.globalState = .login
                 } else {
-                    self.navigationStateService.globalState = .joinServer
+                    self.navigationStateService.globalState = .joinWelcomeServer
                 }
             }
             .store(in: &cancellables)

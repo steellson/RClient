@@ -6,21 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
 enum GlobalState {
-    case joinServer
+    case joinWelcomeServer
     case login
     case root
+//    case addServer
     case settings
 }
 
 final class NavigationStateService: ObservableObject {
-    
+        
     @Published var globalState: GlobalState? = nil
         
-
-    func goToSettings() {
-        
-    }
 }

@@ -18,9 +18,8 @@ struct RClientApp: App {
             RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
         }
         .defaultPosition(.center)
-        .defaultSize(width: 700, height: 400)
+        .defaultSize(width: 800, height: 400)
         .windowResizability(.contentSize)
-        .windowStyle(.hiddenTitleBar)
         .windowToolbarStyle(.unified(showsTitle: false))
         .commands {
             CommandMenu("Channel") {
@@ -30,18 +29,15 @@ struct RClientApp: App {
                 .keyboardShortcut("n", modifiers: .command)
             }
         }
-
         
-//        Window("JoinServer", id: "JoinServerView") {
-//            JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
-//        }
-//        
-//        Window("Auth", id: "LoginView") {
-//            LoginView(viewModel: ViewModelFactoryInstance.makeAuthorizationViewModel())
-//        }
-//        
-//        Window("Root", id: "RootView") {
-//            RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
-//        }
+        Window("Add server", id: "addServer") {
+            AddServerView(viewModel: ViewModelFactoryInstance.makeAddServerViewModel())
+        }
+        .defaultSize(width: 200, height: 100)
+        
+        Window("Settings", id: "settings") {
+            SettingsView(viewModel: ViewModelFactoryInstance.makeSettingsViewModel())
+        }
+        .defaultSize(width: 240, height: 400)
     }
 }

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
+        
     @ObservedObject var viewModel: AuthorizationViewModel
     
     private var strokeColor: Color {
@@ -70,20 +68,9 @@ struct LoginView: View {
                         
                         Button("Login") {
                             viewModel.signIn()
-//                            viewModel.isLoginAlertShowing.toggle()
                         }
                         .modifier(RCButtonModifier(strokeColor: strokeColor))
                         .disabled(!viewModel.isLoginFieldsValid)
-//                        .alert("Login successfull!",
-//                               isPresented: $viewModel.isLoginAlertShowing) {
-//                            Button("Tap to continue") {
-//                                dismiss()
-//                            }
-//                            .background(.clear)
-//                        } message: {
-//                            Text("Let's start it :)")
-//                        }
-                        
                         
                         Spacer()
                         

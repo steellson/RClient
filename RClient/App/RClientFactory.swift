@@ -29,6 +29,8 @@ final class ApplicationFactory {
     fileprivate let chatSectionViewModel: ChatSectionViewModel
     fileprivate let chatToolbarViewModel: ChatToolbarViewModel
     fileprivate let detailSectionViewModel: DetailSectionViewModel
+    fileprivate let addServerViewModel: AddServerViewModel
+    fileprivate let settingsViewModel: SettingsViewModel
     
     fileprivate let rootViewModel: RootViewModel
     
@@ -78,12 +80,18 @@ final class ApplicationFactory {
         )
         chatToolbarViewModel = ChatToolbarViewModel()
         detailSectionViewModel = DetailSectionViewModel()
+        addServerViewModel = AddServerViewModel(
+            localStorageService: localStorageService
+        )
+        settingsViewModel = SettingsViewModel()
         rootViewModel = RootViewModel(
             navigationStateService: navigationStateService,
             localStorageService: localStorageService,
             serverListSideBarViewModel: serverListSideBarViewModel,
             channelListSectionViewModel: channelSectionViewModel,
-            chatSectionViewModel: chatSectionViewModel
+            chatSectionViewModel: chatSectionViewModel,
+            addServerViewModel: addServerViewModel,
+            settingsViewModel: settingsViewModel
         )
         
         
@@ -155,6 +163,9 @@ protocol ViewModelFactoryProtocol: AnyObject {
     func makeChatSectionViewModel() -> ChatSectionViewModel
     func makeChatToolbarViewModel() -> ChatToolbarViewModel
     func makeDetailSectionViewModel() -> DetailSectionViewModel
+    
+    func makeAddServerViewModel() -> AddServerViewModel
+    func makeSettingsViewModel() -> SettingsViewModel
 }
 
 final class ViewModelFactory {
@@ -201,11 +212,21 @@ extension ViewModelFactory: ViewModelFactoryProtocol {
         applicationFactory.chatToolbarViewModel
     }
     
+    
     // Detail
     func makeDetailSectionViewModel() -> DetailSectionViewModel {
         applicationFactory.detailSectionViewModel
     }
+    
    
+    // Additional
+    func makeAddServerViewModel() -> AddServerViewModel {
+        applicationFactory.addServerViewModel
+    }
+    
+    func makeSettingsViewModel() -> SettingsViewModel {
+        applicationFactory.settingsViewModel
+    }
 }
 
 

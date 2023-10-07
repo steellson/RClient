@@ -14,7 +14,7 @@ final class ServerListSideBarViewModel: ObservableObject {
     @Published var selectedServer: ServerItem? = nil
     
     private let serverLogoPath = "/assets/favicon.svg"
-    private var imageCache = ImageCache(name: "ServerLogo")
+//    private var imageCache = ImageCache(name: "ServerLogo")
     
     private let localStorageService: LocalStorageService
         
