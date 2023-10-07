@@ -42,7 +42,11 @@ final class RootViewModel: ObservableObject {
             .store(in: &cancellables)
         
         serverListSideBarViewModel.$selectedServer
-            .assign(to: \.selectedServer, on: self)
+            .removeDuplicates()
+            .sink { [weak self] server in
+                guard let url = server?.url else { return }
+                self?.channelListSectionViewModel.fetchChannels(forServer: url)
+            }
             .store(in: &cancellables)
         
         channelListSectionViewModel.$selectedChannel
@@ -50,14 +54,6 @@ final class RootViewModel: ObservableObject {
                 guard let selectedChannel = channel else { return }
                 chatSectionViewModel.fetchMessages(withRoomID: selectedChannel.id)
             })
-            .store(in: &cancellables)
-        
-        serverListSideBarViewModel.$selectedServer
-            .removeDuplicates()
-            .sink { [weak self] server in
-                guard let url = server?.url else { return }
-                self?.channelListSectionViewModel.fetchChannels(forServer: url)
-            }
             .store(in: &cancellables)
     }
     
