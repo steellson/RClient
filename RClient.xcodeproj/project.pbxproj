@@ -16,7 +16,6 @@
 		3D38A2832AD0593200EC637D /* TimeStampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2822AD0593200EC637D /* TimeStampFormatter.swift */; };
 		3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444652A9CD13700A26D83 /* Color+Extension.swift */; };
 		3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */; };
-		3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */; };
 		3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8442A9238BD0039F608 /* RClientApp.swift */; };
 		3DADF8492A9238BE0039F608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DADF8482A9238BE0039F608 /* Assets.xcassets */; };
 		3DADF84C2A9238BE0039F608 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DADF84B2A9238BE0039F608 /* Preview Assets.xcassets */; };
@@ -94,7 +93,6 @@
 		3D4444652A9CD13700A26D83 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		3D44446F2AA20F5300A26D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCreditions.swift; sourceTree = "<group>"; };
 		3DADF8412A9238BD0039F608 /* RClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DADF8442A9238BD0039F608 /* RClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientApp.swift; sourceTree = "<group>"; };
 		3DADF8482A9238BE0039F608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -356,7 +354,6 @@
 				3DB39C972AB7104800D7468E /* Forms.swift */,
 				3DADF8822A92509A0039F608 /* User.swift */,
 				3DB39C952AB7101000D7468E /* Responses.swift */,
-				3D4444702AB10ADA00A26D83 /* ServerCreditions.swift */,
 				3DE462DB2ABF281E00E78FC1 /* ServerItem.swift */,
 				3DB39C932AB70FE500D7468E /* Settings.swift */,
 				3DE462E42AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift */,
@@ -602,7 +599,6 @@
 				3DE462DA2ABF1E0200E78FC1 /* DetailSectionViewModel.swift in Sources */,
 				3D38A27E2ACF26CE00EC637D /* ChatToolbarViewModel.swift in Sources */,
 				3D38A27B2ACF264B00EC637D /* ChatToolbarView.swift in Sources */,
-				3D4444712AB10ADA00A26D83 /* ServerCreditions.swift in Sources */,
 				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,
 				3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */,
 				3DB39C912AB6EEBC00D7468E /* Stored.swift in Sources */,

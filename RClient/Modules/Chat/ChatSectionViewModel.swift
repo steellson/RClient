@@ -31,7 +31,7 @@ final class ChatSectionViewModel: ObservableObject {
         guard let currentUserId = localStorageService.getUserInfo().first?.id else {
             print("CurrentUserID cannot be found"); return
         }
-        guard let currentServerURL = self.localStorageService.getAllServerCreds().first?.url else {
+        guard let currentServerURL = self.localStorageService.getAllServerItems().first?.url else {
             print("CurrentServerURL is not found"); return
         }
         guard let token = self.localStorageService.getAccessToken(forServer: currentServerURL) else {

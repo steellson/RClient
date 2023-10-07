@@ -52,7 +52,7 @@ final class AuthorizationViewModel: ObservableObject {
     
     
     func signIn() {
-        guard let currentUrl = localStorageService.getAllServerCreds().first?.url else {
+        guard let currentUrl = localStorageService.getAllServerItems().first?.url else {
             print("ERROR: Current url is not found"); return
         }
         login(

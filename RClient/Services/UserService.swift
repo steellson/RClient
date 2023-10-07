@@ -14,8 +14,8 @@ final class UserService {
 
     var isClientOnboarded: Bool = false
             
-    private var serverCreditions: [ServerCreditions] {
-        localStorageService.getAllServerCreds()
+    private var serverItems: [ServerItem] {
+        localStorageService.getAllServerItems()
     }
     
     private let moyaProvider: MoyaProvider<RocketChatAPI>
@@ -33,10 +33,10 @@ final class UserService {
     }
     
     func fetchUser(completion: ((User) -> Void)?) {
-        guard let lastCredsURL = serverCreditions.first?.url else {
-            print("ERROR: Last crend is not exists"); return
+        guard let lastServerURL = serverItems.first?.url else {
+            print("ERROR: Last server item is not exists"); return
         }
-        guard let prevToken = localStorageService.getAccessToken(forServer: lastCredsURL) else {
+        guard let prevToken = localStorageService.getAccessToken(forServer: lastServerURL) else {
             print("ERROR: Cant find a previous token"); return
         }
         
@@ -80,6 +80,6 @@ final class UserService {
     }
     
     private func onboardingCheck() {
-        self.isClientOnboarded = !localStorageService.getAllServerCreds().isEmpty
+        self.isClientOnboarded = !localStorageService.getAllServerItems().isEmpty
     }
 }

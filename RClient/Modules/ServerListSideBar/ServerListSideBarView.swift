@@ -20,9 +20,8 @@ struct ServerListSideBarView: View {
                             viewModel.selectedServer = nil
                             viewModel.selectedServer = server
                         }, label: {
-                            ServerIconView(image: server.image)
+                            ServerIconView(imageURL: server.imageUrl)
                         })
-                        .tag(server)
                         .buttonStyle(.plain)
                     }
                 }

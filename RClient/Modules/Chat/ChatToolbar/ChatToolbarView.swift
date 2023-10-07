@@ -24,15 +24,23 @@ struct ChatToolbarView: View {
                 R.Strings.chatTextFieldPlaceholder.rawValue,
                 text: $viewModel.message
             )
-            .modifier(TextFieldModifier(strokeColor: .gray))
+                .font(.title2)
+                .fontWeight(.medium)
+                .foregroundStyle(.gray)
+                .autocorrectionDisabled()
+                .lineSpacing(2)
+                .padding(EdgeInsets(top: 1, leading: 6, bottom: 1, trailing: 6))
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 10)
             
             Image(systemName: "paperplane")
                 .resizable()
                 .clipped()
                 .foregroundStyle(.gray)
                 .frame(width: 18, height: 18)
+            
         }
-        .padding(10)
+        .padding(.horizontal, 10)
     }
 }
 

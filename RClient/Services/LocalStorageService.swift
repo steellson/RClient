@@ -10,7 +10,7 @@ import Foundation
 final class LocalStorageService {
     
     public enum UDKeys: String {
-        case serverCreditions
+        case serverItems
         case userInfo
     }
     
@@ -25,7 +25,7 @@ final class LocalStorageService {
         self.userDefaultsInstance = userDefaultsInstance
         self.keyChainService = keyChainService
                 
-        print("*** ALL CREDS:\(getAllServerCreds().compactMap { $0 }) ***")
+        print("*** ServerItems:\(getAllServerItems().compactMap { $0 }) ***")
 //        print("*** USER INFO:\(getUserInfo().compactMap { $0 }) ***")
     }
     
@@ -35,12 +35,12 @@ final class LocalStorageService {
 
 extension LocalStorageService {
     
-    func getAllServerCreds() -> [ServerCreditions] {
-        if let credsData = userDefaultsInstance.object(forKey: UDKeys.serverCreditions.rawValue) as? Data {
-            guard let creds = try? JSONDecoder().decode([ServerCreditions].self, from: credsData) else {
-                print("DEBUG: Cant get creds from data"); return []
+    func getAllServerItems() -> [ServerItem] {
+        if let itemsData = userDefaultsInstance.object(forKey: UDKeys.serverItems.rawValue) as? Data {
+            guard let serverItems = try? JSONDecoder().decode([ServerItem].self, from: itemsData) else {
+                print("DEBUG: Cant get server items from data"); return []
             }
-            return creds
+            return serverItems
         } else {
             return []
         }
@@ -57,18 +57,19 @@ extension LocalStorageService {
         }
     }
     
-    func save(serverCreditions: ServerCreditions) {
-        var creds = getAllServerCreds()
+    func save(serverItem: ServerItem) {
         
-        if creds.isEmpty {
-            creds.append(serverCreditions)
-            let encodedCreds = try? JSONEncoder().encode(creds)
-            userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
+        var serverItems = getAllServerItems()
+        
+        if serverItems.isEmpty {
+            serverItems.append(serverItem)
+            let encodedServerItems = try? JSONEncoder().encode(serverItems)
+            userDefaultsInstance.set(encodedServerItems, forKey: UDKeys.serverItems.rawValue)
         } else {
-            creds.forEach { cred in
-                if cred.url != serverCreditions.url {
-                    let encodedCreds = try? JSONEncoder().encode(creds)
-                    userDefaultsInstance.set(encodedCreds, forKey: UDKeys.serverCreditions.rawValue)
+            serverItems.forEach { server in
+                if server.url != serverItem.url {
+                    let encodedServerItem = try? JSONEncoder().encode(serverItems)
+                    userDefaultsInstance.set(encodedServerItem, forKey: UDKeys.serverItems.rawValue)
                 } else {
                     print("ERROR: URL already exists!")
                 }

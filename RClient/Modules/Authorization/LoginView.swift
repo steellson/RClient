@@ -70,7 +70,7 @@ struct LoginView: View {
                         
                         Button("Login") {
                             viewModel.signIn()
-                            viewModel.isLoginAlertShowing.toggle()
+//                            viewModel.isLoginAlertShowing.toggle()
                         }
                         .modifier(RCButtonModifier(strokeColor: strokeColor))
                         .disabled(!viewModel.isLoginFieldsValid)

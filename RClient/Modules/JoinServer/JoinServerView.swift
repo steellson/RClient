@@ -42,7 +42,7 @@ struct JoinServerView: View {
                     .modifier(TextFieldModifier(strokeColor: strokeColor))
                     
                     Button("Connect") {
-                        viewModel.setupServerCreditions()
+                        viewModel.saveServerItem()
                         viewModel.alertIsPresented.toggle()
                     }
                     .modifier(RCButtonModifier(strokeColor: strokeColor))

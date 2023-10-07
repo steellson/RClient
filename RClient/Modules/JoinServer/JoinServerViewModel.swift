@@ -38,9 +38,9 @@ final class JoinServerViewModel: ObservableObject {
     }
     
     
-    func setupServerCreditions() {
+    func saveServerItem() {
         localStorageService.save(
-            serverCreditions: ServerCreditions(url: serverUrl)
+            serverItem: ServerItem(id: UUID().uuidString, name: "", url: serverUrl)
         )
         navigationStateService.globalState = .login
     }

@@ -10,10 +10,10 @@ import Kingfisher
 
 struct ServerIconView: View {
     
-    let image: KFImage
+    let imageURL: String
     
     var body: some View {
-        image
+        KFImage(URL(string: imageURL))
             .resizable()
             .scaledToFit()
             .frame(maxWidth: 60, maxHeight: 60)
@@ -22,7 +22,5 @@ struct ServerIconView: View {
 }
 
 #Preview {
-    ServerIconView(
-        image: KFImage(URL(string: "https://open.rocket.chat"))
-    )
+    ServerIconView(imageURL: "https://open.rocket.chat")
 }

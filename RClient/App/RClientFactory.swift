@@ -80,6 +80,7 @@ final class ApplicationFactory {
         detailSectionViewModel = DetailSectionViewModel()
         rootViewModel = RootViewModel(
             navigationStateService: navigationStateService,
+            localStorageService: localStorageService,
             serverListSideBarViewModel: serverListSideBarViewModel,
             channelListSectionViewModel: channelSectionViewModel,
             chatSectionViewModel: chatSectionViewModel
@@ -87,14 +88,14 @@ final class ApplicationFactory {
         
         
         // Config
-        setupServerCreditionsContainer()
+        setupServerItemsContainer()
         setupUserInfoContainer()
         
         // Clear stored data
 //        removeStoredContainers()
 //        removeKeyChainRecord(
 //            forServer: localStorageService
-//                            .getAllServerCreds()
+//                            .getAllServerItems()
 //                            .first?
 //                            .url ?? "https://open.rocket.chat"
 //        )
@@ -105,13 +106,13 @@ final class ApplicationFactory {
 
 private extension ApplicationFactory {
     
-    func setupServerCreditionsContainer() {
-        let container = [ServerCreditions]()
+    func setupServerItemsContainer() {
+        let container = [ServerItem]()
         
-        if userDefaultsInstance.object(forKey: LocalStorageService.UDKeys.serverCreditions.rawValue) != nil {
-            print(R.SystemDebugError.serverCreditionsContainerExists.rawValue)
+        if userDefaultsInstance.object(forKey: LocalStorageService.UDKeys.serverItems.rawValue) != nil {
+            print(R.SystemDebugError.serverItemsContainerExists.rawValue)
         } else {
-            userDefaultsInstance.set(container, forKey: LocalStorageService.UDKeys.serverCreditions.rawValue)
+            userDefaultsInstance.set(container, forKey: LocalStorageService.UDKeys.serverItems.rawValue)
         }
     }
     
@@ -126,7 +127,7 @@ private extension ApplicationFactory {
     }
     
     func removeStoredContainers() {
-        userDefaultsInstance.removeObject(forKey: LocalStorageService.UDKeys.serverCreditions.rawValue)
+        userDefaultsInstance.removeObject(forKey: LocalStorageService.UDKeys.serverItems.rawValue)
         userDefaultsInstance.removeObject(forKey: LocalStorageService.UDKeys.userInfo.rawValue)
     }
     

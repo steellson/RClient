@@ -17,31 +17,24 @@ final class ServerListSideBarViewModel: ObservableObject {
     private var imageCache = ImageCache(name: "ServerLogo")
     
     private let localStorageService: LocalStorageService
-    
+        
     init(
         localStorageService: LocalStorageService
     ) {
         self.localStorageService = localStorageService
-        
+
     }
     
   
     func fetchServers() {
-        let creds = localStorageService.getAllServerCreds()
-        guard !creds.isEmpty else {
-            print("ServersSection: Fetched creds is empty!"); return
-        }
-        
         servers = []
         
-        creds.forEach { cred in
-            servers.append(
-                ServerItem(
-                    name: cred.nameOfServer ?? "",
-                    image: KFImage(URL(string: "\(cred.url)\(serverLogoPath)")).targetCache(imageCache)
-                )
-            )
+        let serverItems = localStorageService.getAllServerItems()
+        guard !serverItems.isEmpty else {
+            print("ServersSection: Fetched server items is empty!"); return
         }
+        
+        servers = serverItems
     }
     
 }

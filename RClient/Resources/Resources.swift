@@ -10,7 +10,7 @@ import Foundation
 public enum R {
     
     enum SystemDebugError: String {
-        case serverCreditionsContainerExists = "UserDefaults: ** Server creditions container already configured **"
+        case serverItemsContainerExists = "UserDefaults: ** Server items container already configured **"
         case userInfoContainerExists = "UserDefaults: ** Initial user configured **"
     }
     

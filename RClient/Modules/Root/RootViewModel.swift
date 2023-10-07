@@ -20,16 +20,19 @@ final class RootViewModel: ObservableObject {
     let chatSectionViewModel: ChatSectionViewModel
     
     private let navigationStateService: NavigationStateService
+    private let localStorageService: LocalStorageService
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
         navigationStateService: NavigationStateService,
+        localStorageService: LocalStorageService,
         serverListSideBarViewModel: ServerListSideBarViewModel,
         channelListSectionViewModel: ChannelSectionViewModel,
         chatSectionViewModel: ChatSectionViewModel
     ) {
         self.navigationStateService = navigationStateService
+        self.localStorageService = localStorageService
         self.serverListSideBarViewModel = serverListSideBarViewModel
         self.channelListSectionViewModel = channelListSectionViewModel
         self.chatSectionViewModel = chatSectionViewModel
@@ -49,10 +52,19 @@ final class RootViewModel: ObservableObject {
             })
             .store(in: &cancellables)
         
+        serverListSideBarViewModel.$selectedServer
+            .removeDuplicates()
+            .sink { [weak self] server in
+                guard let url = server?.url else { return }
+                self?.channelListSectionViewModel.fetchChannels(forServer: url)
+            }
+            .store(in: &cancellables)
     }
     
     func update() {
+        guard let url = localStorageService.getAllServerItems().first?.url else { return }
+        
         serverListSideBarViewModel.fetchServers()
-        channelListSectionViewModel.fetchChannels()
+        channelListSectionViewModel.fetchChannels(forServer: url)
     }
 }
