@@ -6,65 +6,77 @@
 //
 
 import Foundation
-import Moya
+import Combine
 
 final class ChannelSectionViewModel: ObservableObject {
+    
+    @Published var searchText: String = ""
     
     @Published var channels: [Channel] = []
     @Published var selectedChannel: Channel? = nil
     
-    @Published var searchText: String = ""
-    
-    private let userService: UserService
+    private let apiService: APIService
     private let localStorageService: LocalStorageService
-    private let moyaProvider: MoyaProvider<RocketChatAPI>
+    private let userService: UserService
+    private let navigationStateService: NavigationStateService
             
+    private var subscriptions = Set<AnyCancellable>()
+
+    
     init(
-        userService: UserService,
+        apiService: APIService,
         localStorageService: LocalStorageService,
-        moyaProvider: MoyaProvider<RocketChatAPI>
+        userService: UserService,
+        navigationStateService: NavigationStateService
     ) {
-        self.moyaProvider = moyaProvider
+        self.apiService = apiService
         self.localStorageService = localStorageService
         self.userService = userService
-
+        self.navigationStateService = navigationStateService
+        
+        setupNavigationSelectionStateSubscription()
+        setupDataFromSelectionSubsctiption()
     }
     
-    func fetchChannels(forServer url: String) {
-        guard let currentUserId = localStorageService.getUserInfo().first?.id else {
-            print("CurrentUserID cannot be found"); return
-        }
-//        guard let currentServerURL = self.localStorageService.getAllServerItems().first?.url else {
-//            print("CurrentServerURL is not found"); return
-//        }
+    private func fetchChannels(forServer url: String, userID: String) {
         guard let token = self.localStorageService.getAccessToken(forServer: url) else {
             print("Token not found!"); return
         }
-        
         channels = []
-        
-        moyaProvider.request(.getJoinedChannelsList(token: token, userID: currentUserId), completion: { [weak self] result in
+        apiService.fetchChannels(forServer: url, currentUserId: userID, token: token) { [weak self] result in
             switch result {
-            case .success(let response):
-                if response.statusCode == 200 {
-                    do {
-                        let channelList = try JSONDecoder().decode(ChannelsResponse.self, from: response.data)
-                        guard !channelList.channels.isEmpty else {
-                            print("NavigationSection: Fetched channels is empty!"); return
-                        }
-                        self?.channels = channelList.channels
-                        
-                    } catch let error {
-                        print("Cant decode channels: \(error)")
-                    }
-                    
-                } else {
-                    print("Fetching user status code: \(response.statusCode)")
-                }
-                
+            case .success(let channelResponse):
+                self?.channels = channelResponse.channels
             case .failure(let error):
-                print("Fetching user error: \(error.localizedDescription)")
+                print("ERROR: Couldnt fetch channels \(error)")
             }
-        })
+        }
+    }
+}
+
+
+//MARK: - Subscriptions
+
+private extension ChannelSectionViewModel {
+
+    func setupNavigationSelectionStateSubscription() {
+        $selectedChannel
+            .sink { [unowned self] channel in
+                guard let selectedChannel = channel else { return }
+                self.navigationStateService.selectedChannel = selectedChannel
+            }
+            .store(in: &subscriptions)
+    }
+    
+    func setupDataFromSelectionSubsctiption() {
+        Publishers.CombineLatest(
+            navigationStateService.$selectedServer,
+            userService.$user
+        )
+            .sink { server, user in
+                guard let server = server, let user = user else { return }
+                self.fetchChannels(forServer: server.url, userID: user.id)
+            }
+            .store(in: &subscriptions)
     }
 }

@@ -14,10 +14,9 @@ struct LoginResponse: Codable {
     let data: DataClass
 }
 
-
 struct DataClass: Codable {
     let userID, authToken: String
-    let me: User
+    let me: Me
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"

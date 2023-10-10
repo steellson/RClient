@@ -15,7 +15,7 @@ struct RClientApp: App {
     var body: some Scene {
         
         WindowGroup {
-            RootView(viewModel: ViewModelFactoryInstance.makeRootViewModel())
+            RClientContentView(viewModel: viewModel)
         }
         .defaultPosition(.center)
         .defaultSize(width: 800, height: 400)
@@ -29,11 +29,6 @@ struct RClientApp: App {
                 .keyboardShortcut("n", modifiers: .command)
             }
         }
-        
-        Window("Add server", id: "addServer") {
-            AddServerView(viewModel: ViewModelFactoryInstance.makeAddServerViewModel())
-        }
-        .defaultSize(width: 200, height: 100)
         
         Window("Settings", id: "settings") {
             SettingsView(viewModel: ViewModelFactoryInstance.makeSettingsViewModel())

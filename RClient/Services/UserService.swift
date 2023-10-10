@@ -10,76 +10,45 @@ import Moya
 
 final class UserService {
     
-    private var user: User?
-
-    var isClientOnboarded: Bool = false
-            
-    private var serverItems: [ServerItem] {
+    @Published var user: User?
+    
+    private var serverItems: [ServerItem]? {
         localStorageService.getAllServerItems()
     }
+    private var lastServer: ServerItem? {
+        serverItems?.first
+    }
     
-    private let moyaProvider: MoyaProvider<RocketChatAPI>
+    private let apiService: APIService
     private let localStorageService: LocalStorageService
     
     
     init(
-        moyaProvider: MoyaProvider<RocketChatAPI>,
+        apiService: APIService,
         localStorageService: LocalStorageService
     ) {
-        self.moyaProvider = moyaProvider
+        self.apiService = apiService
         self.localStorageService = localStorageService
         
-        onboardingCheck()
+        setupPreviousSession()
     }
     
-    func fetchUser(completion: ((User) -> Void)?) {
-        guard let lastServerURL = serverItems.first?.url else {
-            print("ERROR: Last server item is not exists"); return
+    private func setupPreviousSession() {
+        guard let lastServer = lastServer else {
+            print("Coudnt find last server"); return
         }
-        guard let prevToken = localStorageService.getAccessToken(forServer: lastServerURL) else {
+        guard let prevToken = localStorageService.getAccessToken(forServer: lastServer.url) else {
             print("ERROR: Cant find a previous token"); return
         }
-        
-        moyaProvider.request(.loginWithToken(resume: prevToken)) { [unowned self] result in
+
+        apiService.loginWithToken(prevToken, serverUrl: lastServer.url) { [weak self] result in
             switch result {
-            case .success(let response):
-                do {
-                    let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: response.data)
-                    let user = User(
-                        id: loginResponse.data.userID,
-                        services: loginResponse.data.me.services,
-                        emails: loginResponse.data.me.emails,
-                        roles: loginResponse.data.me.roles,
-                        status: loginResponse.status,
-                        active: loginResponse.data.me.active,
-                        updatedAt: loginResponse.data.me.updatedAt,
-                        name: loginResponse.data.me.name,
-                        username: loginResponse.data.me.username,
-                        statusConnection: loginResponse.data.me.statusConnection,
-                        utcOffset: loginResponse.data.me.utcOffset,
-                        email: loginResponse.data.me.email,
-                        settings: loginResponse.data.me.settings,
-                        avatarURL: loginResponse.data.me.avatarURL
-                    )
-                    
-                    // Send user
-                    if response.statusCode == 200 {
-                        completion?(user)
-                    }
-                    
-                    // Save user info
-                    self.localStorageService.save(userInfo: user)
-                    
-                } catch let error {
-                    print("Cant fetch and save user: \(error.localizedDescription)")
-                }
+            case .success(let user):
+                self?.user = user
+                print("User \(user.email) sucsessfully loggined!")
             case .failure(let error):
-                print("ERROR: \(error.localizedDescription)")
+                print("ERROR: Cant login with previous token \(error)")
             }
         }
-    }
-    
-    private func onboardingCheck() {
-        self.isClientOnboarded = !localStorageService.getAllServerItems().isEmpty
     }
 }

@@ -7,18 +7,22 @@
 
 import Foundation
 import SwiftUI
-import Combine
 
 enum GlobalState {
-    case joinWelcomeServer
     case login
     case root
-//    case addServer
     case settings
+}
+
+enum SelectionState: Hashable {
+    case selectedServer(ServerItem)
+    case selectedChannel(Channel)
 }
 
 final class NavigationStateService: ObservableObject {
         
     @Published var globalState: GlobalState? = nil
-        
+    @Published var selectedServer: ServerItem? = nil
+    @Published var selectedChannel: Channel? = nil
+    
 }

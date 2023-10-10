@@ -9,39 +9,44 @@ import Foundation
 import Combine
 
 final class RClientAppViewModel: ObservableObject {
-        
-    @Published var isUserOnboarded: Bool = false
-    
-    @Published var isUserAuthorized: Bool  = false
+                
+    @Published var globalState: GlobalState? = nil
     
     private let userService: UserService
-    private let localStorageService: LocalStorageService
     private let navigationStateService: NavigationStateService
     
-    private var cancellables = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     
     init(
         userService: UserService,
-        localStorageService: LocalStorageService,
         navigationStateService: NavigationStateService
     ) {
         self.userService = userService
-        self.localStorageService = localStorageService
         self.navigationStateService = navigationStateService
         
-        isUserOnboarded = userService.isClientOnboarded
-        isUserAuthorized = !localStorageService.getUserInfo().isEmpty
         
-        Publishers.CombineLatest($isUserOnboarded, $isUserAuthorized)
-            .sink { [unowned self] isOnboarded, isAuthorized in
-                if isOnboarded && isAuthorized {
-                    self.navigationStateService.globalState = .root
-                } else if isOnboarded && !isAuthorized {
-                    self.navigationStateService.globalState = .login
-                } else {
-                    self.navigationStateService.globalState = .joinWelcomeServer
-                }
+        setupNavigationStateSubscribe()
+        setupCurrentStateSubscribe()
+    }
+}
+
+//MARK: - Subscriptions
+
+private extension RClientAppViewModel {
+    
+    func setupNavigationStateSubscribe() {
+        navigationStateService.$globalState
+            .assign(to: \.globalState, on: self)
+            .store(in: &subscriptions)
+    }
+    
+    func setupCurrentStateSubscribe() {
+        userService.$user
+            .sink { [unowned self] user in
+                self.navigationStateService.globalState = user != nil
+                ? .root
+                : .root
             }
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 final class ValidationService {
     
     enum Methods: String {
-        case urlString = "https://"
+        case urlString = "http"
         case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 //        case password = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
         case password = "^[A-Za-z]\\w{5,16}$"

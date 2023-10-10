@@ -42,16 +42,13 @@ struct LoginView: View {
                             .font(.title3)
                             .fontWeight(.regular)
                         
-                        if viewModel.currentUrl != "" {
-                            Text(
-                                "For URL: \(viewModel.currentUrl)"
-                            )
-                            .font(.subheadline)
-                            .fontWeight(.light)
-                            .opacity(0.3)
-                        }
-                        
                         VStack {
+                            TextField(
+                                R.Strings.rocketChatOpenServerUrl.rawValue,
+                                text: $viewModel.serverUrl
+                            )
+                            .modifier(TextFieldModifier(strokeColor: strokeColor))
+                            
                             TextField(
                                 R.Strings.loginScreenEmailFieldPlaceholder.rawValue,
                                 text: $viewModel.loginEmailText
@@ -67,7 +64,7 @@ struct LoginView: View {
                         .padding(.vertical)
                         
                         Button("Login") {
-                            viewModel.signIn()
+                            viewModel.login()
                         }
                         .modifier(RCButtonModifier(strokeColor: strokeColor))
                         .disabled(!viewModel.isLoginFieldsValid)
@@ -84,16 +81,6 @@ struct LoginView: View {
                         }
                         .buttonStyle(.plain)
                         .padding(.top, 30)
-                        
-                        NavigationLink {
-                            JoinServerView(viewModel: ViewModelFactoryInstance.makeJoinServerViewModel())
-                        } label: {
-                            Text("Want to change server?")
-                                .underline()
-                                .font(.system(size: 12))
-                                .fontWeight(.light)
-                        }
-                        .buttonStyle(.plain)
                     }
                 }
                 .padding()

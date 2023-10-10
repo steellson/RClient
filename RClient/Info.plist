@@ -17,6 +17,8 @@
 				<key>NSTemporaryExceptionMinimumTLSVersion</key>
 				<string>TLSv1.1</string>
 			</dict>
+			<key>http://192.168.0.104:3000</key>
+			<string></string>
 		</dict>
 	</dict>
 </dict>

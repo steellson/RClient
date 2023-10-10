@@ -15,7 +15,7 @@ final class LocalStorageService {
     }
     
     private let userDefaultsInstance: UserDefaults
-    private var keyChainService: KeyChainService?
+    private let keyChainService: KeyChainService?
     
     
     init(
@@ -24,11 +24,7 @@ final class LocalStorageService {
     ) {
         self.userDefaultsInstance = userDefaultsInstance
         self.keyChainService = keyChainService
-                
-        print("*** ServerItems:\(getAllServerItems().compactMap { $0 }) ***")
-//        print("*** USER INFO:\(getUserInfo().compactMap { $0 }) ***")
     }
-    
 }
 
 //MARK: - UserDefaults access
@@ -58,47 +54,19 @@ extension LocalStorageService {
     }
     
     func save(serverItem: ServerItem) {
-        
         var serverItems = getAllServerItems()
+        serverItems.append(serverItem)
         
-        if serverItems.isEmpty {
-            serverItems.append(serverItem)
-            let encodedServerItems = try? JSONEncoder().encode(serverItems)
-            userDefaultsInstance.set(encodedServerItems, forKey: UDKeys.serverItems.rawValue)
-        } else {
-            serverItems.forEach { server in
-                if server.url != serverItem.url {
-                    let encodedServerItem = try? JSONEncoder().encode(serverItems)
-                    userDefaultsInstance.set(encodedServerItem, forKey: UDKeys.serverItems.rawValue)
-                } else {
-                    print("ERROR: URL already exists!")
-                }
-            }
-        }
+        let encodedServerItems = try? JSONEncoder().encode(serverItems)
+        userDefaultsInstance.set(encodedServerItems, forKey: UDKeys.serverItems.rawValue)
     }
     
     func save(userInfo: User) {
         var info = getUserInfo()
+        info.append(userInfo)
         
-        if info.isEmpty {
-            info.append(userInfo)
-            let encodedUserInfo = try? JSONEncoder().encode(info)
-            userDefaultsInstance.set(encodedUserInfo, forKey: UDKeys.userInfo.rawValue)
-            
-            print(getUserInfo())
-        } else {
-
-            info.forEach { user in
-                if user.email != userInfo.email {
-                    let encodedUserInfo = try? JSONEncoder().encode(info)
-                    userDefaultsInstance.set(encodedUserInfo, forKey: UDKeys.userInfo.rawValue)
-                    
-                    print(getUserInfo())
-                } else {
-                    print("ERROR: Email already exists!")
-                }
-            }
-        }
+        let encodedUserInfo = try? JSONEncoder().encode(info)
+        userDefaultsInstance.set(encodedUserInfo, forKey: UDKeys.userInfo.rawValue)
     }
 }
 
@@ -113,14 +81,13 @@ extension LocalStorageService {
         
         do {
             guard let token = try keyChainService?.getCreditions(forServer: serverUrl) else {
-                print("ERROR: Cant find a server for current url!"); return "Internal error!"
+                print("ERROR: Cant find a token of server for current url!"); return "Internal error!"
             }
             
             let decodedToken = String(data: token, encoding: .utf8)
-            print("*** KeyChain creds: \(String(describing: decodedToken)) ***\n")
             return decodedToken ?? nil
         } catch let error {
-            print(error.localizedDescription)
+            print(error)
         }
         return nil
     }
@@ -136,7 +103,7 @@ extension LocalStorageService {
             )
             print("*** TOKEN SAVED! *** \n")
         } catch let error {
-            print(error.localizedDescription)
+            print("ERROR: Cant save token for reason: \(error)")
         }
     }
 }

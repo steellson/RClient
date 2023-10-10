@@ -27,7 +27,6 @@ struct ChannelSectionListView: View {
                         maxWidth: .infinity,
                         maxHeight: .infinity
                     )
-                    .tag(channel)
                     .onTapGesture {
                         viewModel.selectedChannel = nil
                         viewModel.selectedChannel = channel

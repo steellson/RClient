@@ -42,4 +42,5 @@ struct Preferences: Codable {
         case convertASCIIEmoji = "convertAsciiEmoji"
         case autoImageLoad, saveMobileBandwidth, collapseMediaByDefault, hideUsernames, roomsListExhibitionMode, mergeChannels, sendOnEnter, viewMode, emailNotificationMode, newRoomNotification, newMessageNotification, notificationsSoundVolume, muteFocusedConversations, sidebarShowUnread, sidebarShowFavorites, sidebarViewMode, idleTimeLimit, sidebarGroupByType, desktopNotificationRequireInteraction, sidebarSortby, desktopNotificationDuration, displayAvatars, sidebarDisplayAvatar, pushNotifications, audioNotifications, mobileNotifications, hideAvatars, sidebarHideAvatar, alsoSendThreadToChannel, showMessageInMainThread, enableNewMessageTemplate, omnichannelTranscriptEmail, themeAppearence, showThreadsInMainChannel, notifyCalendarEvents, enableMobileRinging
     }
+    
 }

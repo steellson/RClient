@@ -1,5 +1,5 @@
 //
-//  MoyaService.swift
+//  RocketChatAPI.swift
 //  RClient
 //
 //  Created by Andrew Steellson on 23.08.2023.
@@ -12,7 +12,7 @@ enum RocketChatAPI {
     
     // Auth
     case login(user: UserLoginForm)
-    case loginWithToken(resume: String)
+    case loginWithToken(user: UserLoginForm)
     case signUp(form: UserRegistrationForm)
     
     // Channels
@@ -22,16 +22,11 @@ enum RocketChatAPI {
 
 extension RocketChatAPI: TargetType {
     
-    public var serverUrl: String {
-        (
-            UserDefaults.standard
-            .object(forKey: LocalStorageService.UDKeys.serverItems.rawValue) as? [ServerItem]
-        )?
-            .first?
-            .url ?? "https://open.rocket.chat"
-    }
+    static var serverUrl: String = "http://localhost:3000"
     
-    public var baseURL: URL { URL(string: "\(serverUrl)/api/v1")! }
+    public var baseURL: URL {
+        URL(string: "\(RocketChatAPI.serverUrl)/api/v1")!
+    }
     
     public var path: String {
         switch self {
@@ -53,7 +48,7 @@ extension RocketChatAPI: TargetType {
     public var task: Moya.Task {
         switch self {
         case .login(let user): return .requestJSONEncodable(user)
-        case .loginWithToken(let token): return .requestJSONEncodable(token)
+        case .loginWithToken(let user): return .requestJSONEncodable(user)
         case .signUp(let form): return .requestJSONEncodable(form)
             
         case .getJoinedChannelsList: return .requestPlain
@@ -85,4 +80,11 @@ extension RocketChatAPI: TargetType {
         ]
         }
     }
+}
+
+
+//MARK: - Methods
+
+extension RocketChatAPI {
+    
 }

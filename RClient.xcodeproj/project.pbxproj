@@ -15,9 +15,9 @@
 		3D38A2802AD052C500EC637D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A27F2AD052C500EC637D /* Channel.swift */; };
 		3D38A2832AD0593200EC637D /* TimeStampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2822AD0593200EC637D /* TimeStampFormatter.swift */; };
 		3D38A2852AD183E600EC637D /* ServerListToolbarButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2842AD183E600EC637D /* ServerListToolbarButtonModifier.swift */; };
-		3D38A2872AD18C0D00EC637D /* AddServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2862AD18C0D00EC637D /* AddServerView.swift */; };
-		3D38A2892AD18C2200EC637D /* AddServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2882AD18C2200EC637D /* AddServerViewModel.swift */; };
 		3D38A28C2AD18C9F00EC637D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A28B2AD18C9F00EC637D /* SettingsViewModel.swift */; };
+		3D38A2902AD2AA2E00EC637D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A28F2AD2AA2E00EC637D /* APIService.swift */; };
+		3D38A2942AD5852D00EC637D /* RClientContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38A2932AD5852D00EC637D /* RClientContentView.swift */; };
 		3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444652A9CD13700A26D83 /* Color+Extension.swift */; };
 		3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */; };
 		3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8442A9238BD0039F608 /* RClientApp.swift */; };
@@ -31,19 +31,16 @@
 		3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87B2A92472E0039F608 /* ChatSectionView.swift */; };
 		3DADF8802A9247E90039F608 /* DetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF87F2A9247E90039F608 /* DetailSectionView.swift */; };
 		3DADF8832A92509A0039F608 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8822A92509A0039F608 /* User.swift */; };
-		3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88B2A9399620039F608 /* JoinServerView.swift */; };
 		3DADF88E2A939BE30039F608 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88D2A939BE30039F608 /* Resources.swift */; };
-		3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */; };
 		3DADF8932A9635B70039F608 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8922A9635B70039F608 /* CombineMoya */; };
 		3DADF8952A9635B70039F608 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3DADF8942A9635B70039F608 /* Moya */; };
-		3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8972A9636A70039F608 /* MoyaService.swift */; };
+		3DADF8982A9636A70039F608 /* RocketChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8972A9636A70039F608 /* RocketChatAPI.swift */; };
 		3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */; };
 		3DADF89D2A965B860039F608 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89C2A965B860039F608 /* LocalStorageService.swift */; };
 		3DADF89F2A9667EA0039F608 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF89E2A9667EA0039F608 /* UserService.swift */; };
 		3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */; };
 		3DADF8A62A9677F40039F608 /* RClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A52A9677F40039F608 /* RClientFactory.swift */; };
 		3DADF8A82A9769FC0039F608 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A72A9769FC0039F608 /* LoginView.swift */; };
-		3DADF8AA2A976A7E0039F608 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8A92A976A7E0039F608 /* RootViewModel.swift */; };
 		3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DADF8AE2A976B990039F608 /* RegistrationView.swift */; };
 		3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C862AB1D51E00D7468E /* ValidationService.swift */; };
 		3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C892AB361C300D7468E /* TextFieldModifier.swift */; };
@@ -66,7 +63,6 @@
 		3DE462E92AC0B43000E78FC1 /* Other(temp).swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462E82AC0B43000E78FC1 /* Other(temp).swift */; };
 		3DE462EB2AC0D14C00E78FC1 /* ChannelRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462EA2AC0D14C00E78FC1 /* ChannelRowView.swift */; };
 		3DE462ED2AC18C5100E78FC1 /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462EC2AC18C5100E78FC1 /* ChatMessageView.swift */; };
-		3DE462EF2AC3618B00E78FC1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE462EE2AC3618B00E78FC1 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,9 +91,9 @@
 		3D38A27F2AD052C500EC637D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		3D38A2822AD0593200EC637D /* TimeStampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStampFormatter.swift; sourceTree = "<group>"; };
 		3D38A2842AD183E600EC637D /* ServerListToolbarButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListToolbarButtonModifier.swift; sourceTree = "<group>"; };
-		3D38A2862AD18C0D00EC637D /* AddServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServerView.swift; sourceTree = "<group>"; };
-		3D38A2882AD18C2200EC637D /* AddServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServerViewModel.swift; sourceTree = "<group>"; };
 		3D38A28B2AD18C9F00EC637D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3D38A28F2AD2AA2E00EC637D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		3D38A2932AD5852D00EC637D /* RClientContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientContentView.swift; sourceTree = "<group>"; };
 		3D4444652A9CD13700A26D83 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		3D4444672A9CD52F00A26D83 /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		3D44446F2AA20F5300A26D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -116,17 +112,14 @@
 		3DADF87B2A92472E0039F608 /* ChatSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectionView.swift; sourceTree = "<group>"; };
 		3DADF87F2A9247E90039F608 /* DetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionView.swift; sourceTree = "<group>"; };
 		3DADF8822A92509A0039F608 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		3DADF88B2A9399620039F608 /* JoinServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerView.swift; sourceTree = "<group>"; };
 		3DADF88D2A939BE30039F608 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
-		3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerViewModel.swift; sourceTree = "<group>"; };
-		3DADF8972A9636A70039F608 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
+		3DADF8972A9636A70039F608 /* RocketChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketChatAPI.swift; sourceTree = "<group>"; };
 		3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		3DADF89C2A965B860039F608 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		3DADF89E2A9667EA0039F608 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientAppViewModel.swift; sourceTree = "<group>"; };
 		3DADF8A52A9677F40039F608 /* RClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RClientFactory.swift; sourceTree = "<group>"; };
 		3DADF8A72A9769FC0039F608 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		3DADF8A92A976A7E0039F608 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		3DADF8AE2A976B990039F608 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3DB39C852AB197F100D7468E /* RClientDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RClientDebug.entitlements; sourceTree = "<group>"; };
 		3DB39C862AB1D51E00D7468E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
@@ -149,7 +142,6 @@
 		3DE462E82AC0B43000E78FC1 /* Other(temp).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other(temp).swift"; sourceTree = "<group>"; };
 		3DE462EA2AC0D14C00E78FC1 /* ChannelRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRowView.swift; sourceTree = "<group>"; };
 		3DE462EC2AC18C5100E78FC1 /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
-		3DE462EE2AC3618B00E78FC1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,13 +198,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		3D38A28A2AD18C3A00EC637D /* AddServer */ = {
+		3D38A2912AD2AA3600EC637D /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3D38A2862AD18C0D00EC637D /* AddServerView.swift */,
-				3D38A2882AD18C2200EC637D /* AddServerViewModel.swift */,
+				3D38A28F2AD2AA2E00EC637D /* APIService.swift */,
+				3DADF8972A9636A70039F608 /* RocketChatAPI.swift */,
 			);
-			path = AddServer;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3D38A2922AD2AA4B00EC637D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				3DADF89C2A965B860039F608 /* LocalStorageService.swift */,
+				3DB39C9B2AB7199700D7468E /* KeyChainService.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		3D4444642A9CD03600A26D83 /* Extensions */ = {
@@ -292,6 +293,7 @@
 			children = (
 				3DADF8442A9238BD0039F608 /* RClientApp.swift */,
 				3DADF8A02A9669760039F608 /* RClientAppViewModel.swift */,
+				3D38A2932AD5852D00EC637D /* RClientContentView.swift */,
 				3DADF8A52A9677F40039F608 /* RClientFactory.swift */,
 				3DADF84A2A9238BE0039F608 /* Preview Content */,
 				3DB39C922AB6EEBF00D7468E /* Protocols */,
@@ -311,14 +313,11 @@
 		3DADF8712A9239DC0039F608 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				3DADF88A2A93993A0039F608 /* JoinServer */,
 				3DADF8992A96564E0039F608 /* Authorization */,
-				3DE462F02AC363C500E78FC1 /* Root */,
 				3DADF8772A923F320039F608 /* ServerListSideBar */,
 				3DADF8782A9246600039F608 /* ChannelList */,
 				3DADF87D2A92474E0039F608 /* Chat */,
 				3DADF87E2A9247B70039F608 /* DetailBar */,
-				3D38A28A2AD18C3A00EC637D /* AddServer */,
 				3D38A2772ACF1F8B00EC637D /* Settings */,
 			);
 			path = Modules;
@@ -382,24 +381,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		3DADF88A2A93993A0039F608 /* JoinServer */ = {
-			isa = PBXGroup;
-			children = (
-				3DADF88B2A9399620039F608 /* JoinServerView.swift */,
-				3DADF88F2A96344E0039F608 /* JoinServerViewModel.swift */,
-			);
-			path = JoinServer;
-			sourceTree = "<group>";
-		};
 		3DADF8962A96367F0039F608 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3DB39C9B2AB7199700D7468E /* KeyChainService.swift */,
-				3DADF89C2A965B860039F608 /* LocalStorageService.swift */,
-				3DADF8972A9636A70039F608 /* MoyaService.swift */,
-				3D38A26E2AC8344400EC637D /* NavigationStateService.swift */,
 				3DADF89E2A9667EA0039F608 /* UserService.swift */,
+				3D38A26E2AC8344400EC637D /* NavigationStateService.swift */,
 				3DB39C862AB1D51E00D7468E /* ValidationService.swift */,
+				3D38A2912AD2AA3600EC637D /* Network */,
+				3D38A2922AD2AA4B00EC637D /* Storage */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -407,9 +396,9 @@
 		3DADF8992A96564E0039F608 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */,
 				3DADF8A72A9769FC0039F608 /* LoginView.swift */,
 				3DADF8AE2A976B990039F608 /* RegistrationView.swift */,
+				3DADF89A2A9656630039F608 /* AuthorizationViewModel.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -430,15 +419,6 @@
 				3DB39C902AB6EEBC00D7468E /* Stored.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		3DE462F02AC363C500E78FC1 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				3DE462EE2AC3618B00E78FC1 /* RootView.swift */,
-				3DADF8A92A976A7E0039F608 /* RootViewModel.swift */,
-			);
-			path = Root;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,7 +563,6 @@
 				3D4444682A9CD52F00A26D83 /* NSTextField+Extension.swift in Sources */,
 				3D38A2742ACC538F00EC637D /* SettingsView.swift in Sources */,
 				3D4444662A9CD13700A26D83 /* Color+Extension.swift in Sources */,
-				3DADF8AA2A976A7E0039F608 /* RootViewModel.swift in Sources */,
 				3D38A2802AD052C500EC637D /* Channel.swift in Sources */,
 				3D38A2762ACDB4FC00EC637D /* ChannelEmptyView.swift in Sources */,
 				3DADF87C2A92472E0039F608 /* ChatSectionView.swift in Sources */,
@@ -597,24 +576,22 @@
 				3DE462D82ABF1DC900E78FC1 /* ChatSectionViewModel.swift in Sources */,
 				3DE462E92AC0B43000E78FC1 /* Other(temp).swift in Sources */,
 				3DADF89B2A9656630039F608 /* AuthorizationViewModel.swift in Sources */,
-				3D38A2872AD18C0D00EC637D /* AddServerView.swift in Sources */,
 				3DE462E32AC0902500E78FC1 /* ServersListViewModel.swift in Sources */,
 				3DADF8832A92509A0039F608 /* User.swift in Sources */,
 				3D38A2852AD183E600EC637D /* ServerListToolbarButtonModifier.swift in Sources */,
 				3DB39C9C2AB7199700D7468E /* KeyChainService.swift in Sources */,
 				3DE462E52AC0B37B00E78FC1 /* Encoded+DecodedHelpers.swift in Sources */,
-				3DADF8902A96344E0039F608 /* JoinServerViewModel.swift in Sources */,
+				3D38A2902AD2AA2E00EC637D /* APIService.swift in Sources */,
 				3DADF8A12A9669760039F608 /* RClientAppViewModel.swift in Sources */,
-				3DE462EF2AC3618B00E78FC1 /* RootView.swift in Sources */,
 				3DADF8AF2A976B990039F608 /* RegistrationView.swift in Sources */,
 				3DE462ED2AC18C5100E78FC1 /* ChatMessageView.swift in Sources */,
 				3DADF8452A9238BD0039F608 /* RClientApp.swift in Sources */,
+				3D38A2942AD5852D00EC637D /* RClientContentView.swift in Sources */,
 				3DB39C982AB7104800D7468E /* Forms.swift in Sources */,
 				3DB5742F2AC3674800E11087 /* ChannelListSectionView.swift in Sources */,
 				3DADF8A82A9769FC0039F608 /* LoginView.swift in Sources */,
 				3DB39C942AB70FE500D7468E /* Settings.swift in Sources */,
 				3DB39C962AB7101000D7468E /* Responses.swift in Sources */,
-				3DADF88C2A9399620039F608 /* JoinServerView.swift in Sources */,
 				3DE462DC2ABF281E00E78FC1 /* ServerItem.swift in Sources */,
 				3DADF8762A923DA70039F608 /* ServerListSideBarView.swift in Sources */,
 				3DE462D62ABF1D9000E78FC1 /* ChannelSectionViewModel.swift in Sources */,
@@ -628,9 +605,8 @@
 				3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */,
 				3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */,
 				3D38A28C2AD18C9F00EC637D /* SettingsViewModel.swift in Sources */,
-				3D38A2892AD18C2200EC637D /* AddServerViewModel.swift in Sources */,
 				3D38A26F2AC8344400EC637D /* NavigationStateService.swift in Sources */,
-				3DADF8982A9636A70039F608 /* MoyaService.swift in Sources */,
+				3DADF8982A9636A70039F608 /* RocketChatAPI.swift in Sources */,
 				3DADF88E2A939BE30039F608 /* Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

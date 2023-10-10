@@ -10,7 +10,7 @@ import Foundation
 public enum R {
     
     enum SystemDebugError: String {
-        case serverItemsContainerExists = "UserDefaults: ** Server items container already configured **"
+        case serverItemsContainerExists = "UserDefaults: ** Server items container configured **"
         case userInfoContainerExists = "UserDefaults: ** Initial user configured **"
     }
     
@@ -21,7 +21,7 @@ public enum R {
         
         case loginScreenWelcomeTitle = "Welcome to the Rocket.Chat!"
         case loginScreenSubtitle = "Enter your creditnails: "
-        case loginScreenEmailFieldPlaceholder = "Enter email"
+        case loginScreenEmailFieldPlaceholder = "Enter your username"
         case loginScreenPasswordFieldPlaceholder = "Enter password"
         
         case registrationTitleLabelText = "Please, fill in all this fields"
