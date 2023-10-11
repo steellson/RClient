@@ -40,6 +40,34 @@ struct MessageCreditions: Codable {
     let roomId: String
 }
 
+struct MessageToSend: Codable {
+
+    var message: Msg
+    
+    struct Msg: Codable {
+        var rid, msg: String
+        var alias, emoji: String?
+        var avatar: String?
+        var attachments: [Attachment]?
+        
+        init(
+            rid: String,
+            msg: String,
+            alias: String? = nil,
+            emoji: String? = nil,
+            avatar: String? = nil,
+            attachments: [Attachment]? = nil
+        ) {
+            self.rid = rid
+            self.msg = msg
+            self.alias = alias
+            self.emoji = emoji
+            self.avatar = avatar
+            self.attachments = attachments
+        }
+    }
+}
+
 struct Rid: Codable {
     
 }

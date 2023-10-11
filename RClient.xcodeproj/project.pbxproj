@@ -45,7 +45,6 @@
 		3DB39C872AB1D51E00D7468E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C862AB1D51E00D7468E /* ValidationService.swift */; };
 		3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C892AB361C300D7468E /* TextFieldModifier.swift */; };
 		3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */; };
-		3DB39C912AB6EEBC00D7468E /* Stored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C902AB6EEBC00D7468E /* Stored.swift */; };
 		3DB39C942AB70FE500D7468E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C932AB70FE500D7468E /* Settings.swift */; };
 		3DB39C962AB7101000D7468E /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C952AB7101000D7468E /* Responses.swift */; };
 		3DB39C982AB7104800D7468E /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB39C972AB7104800D7468E /* Forms.swift */; };
@@ -125,7 +124,6 @@
 		3DB39C862AB1D51E00D7468E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		3DB39C892AB361C300D7468E /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
 		3DB39C8B2AB364CC00D7468E /* RCButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCButtonModifier.swift; sourceTree = "<group>"; };
-		3DB39C902AB6EEBC00D7468E /* Stored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stored.swift; sourceTree = "<group>"; };
 		3DB39C932AB70FE500D7468E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3DB39C952AB7101000D7468E /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
 		3DB39C972AB7104800D7468E /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 				3D38A2932AD5852D00EC637D /* RClientContentView.swift */,
 				3DADF8A52A9677F40039F608 /* RClientFactory.swift */,
 				3DADF84A2A9238BE0039F608 /* Preview Content */,
-				3DB39C922AB6EEBF00D7468E /* Protocols */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -411,14 +408,6 @@
 				3D38A2842AD183E600EC637D /* ServerListToolbarButtonModifier.swift */,
 			);
 			path = Modifiers;
-			sourceTree = "<group>";
-		};
-		3DB39C922AB6EEBF00D7468E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				3DB39C902AB6EEBC00D7468E /* Stored.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -600,7 +589,6 @@
 				3D38A27B2ACF264B00EC637D /* ChatToolbarView.swift in Sources */,
 				3DB39C8C2AB364CC00D7468E /* RCButtonModifier.swift in Sources */,
 				3DB39C8A2AB361C300D7468E /* TextFieldModifier.swift in Sources */,
-				3DB39C912AB6EEBC00D7468E /* Stored.swift in Sources */,
 				3DADF8742A923B510039F608 /* ServerIconView.swift in Sources */,
 				3DB39C9A2AB710BF00D7468E /* AuthServices.swift in Sources */,
 				3DE462E72AC0B3FC00E78FC1 /* Message.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable, Stored {
+struct User: Codable {
     let id: String
     let services: Services
     let emails: [Email]

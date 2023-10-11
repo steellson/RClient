@@ -34,7 +34,7 @@ final class APIService: ObservableObject {
 
 extension APIService {
     
-    func login(with 
+    func login(with
                user: UserLoginForm,
                serverUrl: String,
                completion: @escaping (Result<LoginResponse, MoyaError>
@@ -94,7 +94,7 @@ extension APIService {
                         settings: loginResponse.data.me.settings,
                         avatarURL: loginResponse.data.me.avatarURL
                     )
-
+                    
                     // Send user
                     if response.statusCode == 200 {
                         completion(.success(user))
@@ -110,11 +110,11 @@ extension APIService {
         }
     }
     
-    func registration(with 
+    func registration(with
                       form: UserRegistrationForm,
                       completion: @escaping (Result<RegistrationResponse, MoyaError>
                       ) -> Void) {
-
+        
         apiProvider.request(.signUp(form: form), completion: { result in
             switch result {
             case .success(let response):
@@ -142,7 +142,7 @@ extension APIService {
 
 extension APIService {
     
-    func fetchChannels(forServer 
+    func fetchChannels(forServer
                        url: String,
                        currentUserId: String,
                        token: String,
@@ -175,12 +175,12 @@ extension APIService {
         })
     }
     
-    func fetchChatMessages(with 
+    func fetchChatMessages(with
                            creditions: MessageCreditions,
                            completion: @escaping (Result<MessagesResponse, MoyaError>) -> Void
     ) {
-
-        apiProvider.request(.getChannelMessages(creditions)) { result in
+        
+        apiProvider.request(.getChannelMessages(creds: creditions)) { result in
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
@@ -202,6 +202,32 @@ extension APIService {
             case .failure(let error):
                 print("Fetching messages error: \(error)")
                 completion(.failure(error))
+            }
+        }
+    }
+}
+
+//MARK: - Sending
+
+extension APIService {
+    
+    func sendMessage(with
+                     creds: MessageCreditions,
+                     message: MessageToSend,
+                     serverURL: String
+    ) {
+        setupRocketChatAPI(with: serverURL)
+        print("Creds: \(creds)\nMessage: \(message)")
+        apiProvider.request(.sendMessage(creds: creds, message: message)) { result in
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    print("Message: \(message) sended!")
+                } else {
+                    print("Sending message status code: \(response.statusCode)")
+                }
+            case .failure(let error):
+                print("Sending message error: \(error)")
             }
         }
     }

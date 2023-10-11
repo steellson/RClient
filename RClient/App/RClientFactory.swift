@@ -78,7 +78,12 @@ final class ApplicationFactory {
             navigationStateService: navigationStateService,
             userService: userService
         )
-        chatToolbarViewModel = ChatToolbarViewModel()
+        chatToolbarViewModel = ChatToolbarViewModel(
+            apiService: apiService,
+            navigationStateService: navigationStateService,
+            localStorageService: localStorageService,
+            userService: userService
+        )
         detailSectionViewModel = DetailSectionViewModel()
         settingsViewModel = SettingsViewModel()
         

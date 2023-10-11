@@ -17,7 +17,10 @@ enum RocketChatAPI {
     
     // Channels
     case getJoinedChannelsList(token: String, userID: String)
-    case getChannelMessages(MessageCreditions)
+    case getChannelMessages(creds: MessageCreditions)
+    
+    // Messaging
+    case sendMessage(creds: MessageCreditions, message: MessageToSend)
 }
 
 extension RocketChatAPI: TargetType {
@@ -35,12 +38,14 @@ extension RocketChatAPI: TargetType {
             
         case .getJoinedChannelsList: return "/channels.list.joined"
         case .getChannelMessages: return "/channels.messages"
+            
+        case .sendMessage: return "/chat.sendMessage"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login, .loginWithToken, .signUp: return .post
+        case .login, .loginWithToken, .signUp, .sendMessage: return .post
         case .getJoinedChannelsList, .getChannelMessages: return .get
         }
     }
@@ -53,18 +58,16 @@ extension RocketChatAPI: TargetType {
             
         case .getJoinedChannelsList: return .requestPlain
         case .getChannelMessages(let creds): return .requestParameters(parameters: ["roomId": creds.roomId], encoding: URLEncoding.default)
+            
+        case .sendMessage(_, let message): return .requestJSONEncodable(message)
         }
     }
     
     public var headers: [String : String]? {
         switch self {
-        case .login, .loginWithToken: return [
+        case .login, .loginWithToken, .signUp: return [
             "Content-Type": "application/json"
             
-        ]
-
-        case .signUp: return [
-            "Content-Type": "application/json"
         ]
             
         case .getJoinedChannelsList(let token, let userID): return [
@@ -78,13 +81,12 @@ extension RocketChatAPI: TargetType {
             "X-User-Id": "\(creds.userID)",
             "Content-Type": "application/json"
         ]
+            
+        case .sendMessage(let creds, _): return [
+            "X-Auth-Token": "\(creds.token)",
+            "X-User-Id": "\(creds.userID)",
+            "Content-Type": "application/json"
+        ]
         }
     }
-}
-
-
-//MARK: - Methods
-
-extension RocketChatAPI {
-    
 }

@@ -22,7 +22,7 @@ struct ChatToolbarView: View {
             
             TextField(
                 R.Strings.chatTextFieldPlaceholder.rawValue,
-                text: $viewModel.message
+                text: $viewModel.messageText
             )
                 .font(.title2)
                 .fontWeight(.medium)
@@ -33,11 +33,15 @@ struct ChatToolbarView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 10)
             
-            Image(systemName: "paperplane")
-                .resizable()
-                .clipped()
-                .foregroundStyle(.gray)
-                .frame(width: 18, height: 18)
+            Button {
+                viewModel.sendMessage()
+            } label: {
+                Image(systemName: "paperplane")
+                    .resizable()
+                    .clipped()
+                    .foregroundStyle(.gray)
+                    .frame(width: 18, height: 18)
+            }
             
         }
         .padding(.horizontal, 10)

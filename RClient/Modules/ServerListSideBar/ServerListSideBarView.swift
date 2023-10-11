@@ -34,7 +34,7 @@ struct ServerListSideBarView: View {
         .safeAreaInset(edge: .bottom, content: {
             VStack {
                 Button {
-                    openWindow(id: "addServer")
+                    openWindow(id: "auth")
                 } label: {
                     Text("+")
                         .font(.system(size: 28))

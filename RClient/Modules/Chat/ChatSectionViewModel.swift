@@ -34,10 +34,13 @@ final class ChatSectionViewModel: ObservableObject {
     }
     
     func isMyMessageCheck(message: Message) -> Bool {
-        guard let currentUsername = localStorageService.getUserInfo().first?.username else {
+        guard let myUsername = localStorageService.getUserInfo().first?.username else {
             print("CurrentUsername cannot be found"); return false
         }
-        return message.u.username != currentUsername
+        guard let recievedMessageUsername = message.u.username else {
+            print("Recieved message username is not found"); return false
+        }
+        return recievedMessageUsername != myUsername
     }
 
     private func fetchMessages(forRoom roomId: String, server serverURL: String, user userID: String) {

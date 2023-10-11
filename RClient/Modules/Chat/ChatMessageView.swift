@@ -12,7 +12,9 @@ struct ChatMessageView: View {
     let message: Message
     
     private var formatterdTimestamp: String {
-        TimeStampFormatter.instance.timestampToTime(fromString: message.ts)
+        TimeStampFormatter
+            .instance
+            .timestampToTime(fromString: message.ts)
     }
     
     var isMyMessage: Bool = true
